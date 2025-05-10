@@ -1,16 +1,15 @@
 import type React from "react"
 import "./globals.css"
 import type { Metadata } from "next"
-import { Noto_Sans } from "next/font/google"
+import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import GoogleAnalytics from "@/components/google-analytics"
 import AnalyticsRouteTracker from "@/components/analytics-route-tracker"
 import { Suspense } from "react"
 
-const notoSans = Noto_Sans({
+const inter = Inter({
   subsets: ["latin", "latin-ext"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-noto-sans",
+  variable: "--font-inter",
   display: "swap",
 })
 
@@ -30,7 +29,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${notoSans.variable} font-sans`}>
+      <body className={`${inter.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Suspense>
             {children}

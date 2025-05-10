@@ -27,7 +27,7 @@
     --radius: 0.5rem;
 
     /* Typography */
-    --font-sans: "Noto Sans", var(--font-noto-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    --font-sans: "Inter", var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       "Helvetica Neue", Arial, sans-serif;
 
     /* Font sizes using a modular scale */

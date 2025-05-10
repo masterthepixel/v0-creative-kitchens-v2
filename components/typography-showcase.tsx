@@ -4,14 +4,14 @@ export function TypographyShowcase() {
       <section className="space-y-6">
         <h2 className="text-3xl font-semibold tracking-tight">Typography Scale</h2>
         <p className="text-muted-foreground max-w-prose">
-          Our typography system uses Noto Sans, a versatile font with excellent multilingual support, and a modular
-          scale for consistent sizing and improved readability across all screen sizes.
+          Our typography system uses Inter, a versatile font with excellent multilingual support, and a modular scale
+          for consistent sizing and improved readability across all screen sizes.
         </p>
         <div className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
               <div className="text-9xl font-extrabold">Aa</div>
-              <p className="text-sm text-muted-foreground">Noto Sans</p>
+              <p className="text-sm text-muted-foreground">Inter</p>
             </div>
             <div className="space-y-1">
               <p className="text-xs">The quick brown fox jumps over the lazy dog. (xs - 12px)</p>
@@ -30,7 +30,7 @@ export function TypographyShowcase() {
       <section className="space-y-6">
         <h2 className="text-3xl font-semibold tracking-tight">Multilingual Support</h2>
         <p className="text-muted-foreground max-w-prose">
-          Noto Sans provides excellent support for multiple languages, making it perfect for our bilingual site.
+          Inter provides excellent support for multiple languages, making it perfect for our bilingual site.
         </p>
         <div className="grid gap-6 md:grid-cols-2">
           <div className="space-y-2 border p-4 rounded-md">
@@ -52,24 +52,23 @@ export function TypographyShowcase() {
       <section className="space-y-6">
         <h2 className="text-3xl font-semibold tracking-tight">Font Weights</h2>
         <p className="text-muted-foreground max-w-prose">
-          Noto Sans provides a full range of weights from Thin (100) to Black (900), giving us great flexibility in our
-          typography.
+          Inter provides a range of weights, giving us flexibility in our typography.
         </p>
         <div className="grid gap-4 md:grid-cols-3">
           <div className="space-y-2">
-            <p className="font-thin text-xl">Noto Sans Thin (100)</p>
-            <p className="font-extralight text-xl">Noto Sans Extra Light (200)</p>
-            <p className="font-light text-xl">Noto Sans Light (300)</p>
+            <p className="font-thin text-xl">Inter Thin (100)</p>
+            <p className="font-extralight text-xl">Inter Extra Light (200)</p>
+            <p className="font-light text-xl">Inter Light (300)</p>
           </div>
           <div className="space-y-2">
-            <p className="font-normal text-xl">Noto Sans Regular (400)</p>
-            <p className="font-medium text-xl">Noto Sans Medium (500)</p>
-            <p className="font-semibold text-xl">Noto Sans Semibold (600)</p>
+            <p className="font-normal text-xl">Inter Regular (400)</p>
+            <p className="font-medium text-xl">Inter Medium (500)</p>
+            <p className="font-semibold text-xl">Inter Semibold (600)</p>
           </div>
           <div className="space-y-2">
-            <p className="font-bold text-xl">Noto Sans Bold (700)</p>
-            <p className="font-extrabold text-xl">Noto Sans Extra Bold (800)</p>
-            <p className="font-black text-xl">Noto Sans Black (900)</p>
+            <p className="font-bold text-xl">Inter Bold (700)</p>
+            <p className="font-extrabold text-xl">Inter Extra Bold (800)</p>
+            <p className="font-black text-xl">Inter Black (900)</p>
           </div>
         </div>
       </section>
