@@ -7,12 +7,11 @@ import GoogleAnalytics from "@/components/google-analytics"
 import AnalyticsRouteTracker from "@/components/analytics-route-tracker"
 import { Suspense } from "react"
 
-// Load Inter font with all available weights
+// Load Inter font
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
   display: "swap",
+  variable: "--font-inter",
 })
 
 export const metadata: Metadata = {
@@ -30,8 +29,8 @@ export default function RootLayout({
   const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans`}>
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
+      <body className="font-sans">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Suspense>
             {children}
