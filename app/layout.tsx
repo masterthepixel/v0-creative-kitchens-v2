@@ -7,8 +7,10 @@ import GoogleAnalytics from "@/components/google-analytics"
 import AnalyticsRouteTracker from "@/components/analytics-route-tracker"
 import { Suspense } from "react"
 
+// Load Inter font with all available weights
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-inter",
   display: "swap",
 })
