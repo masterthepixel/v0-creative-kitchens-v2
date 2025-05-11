@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useLanguage } from "./language-provider"
+import AnimatedSection from "./animated-section"
 
 type Category = {
   title: string
@@ -45,7 +46,7 @@ export default function ProductBentoGrid2() {
   const categories = gridData.categories.slice(0, 4)
 
   return (
-    <div className="py-24 sm:py-32">
+    <AnimatedSection className="py-24 sm:py-32">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
         <h2 className="text-base/7 font-semibold text-primary">{gridData.tagline}</h2>
         <p className="mt-2 max-w-lg text-4xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white sm:text-5xl">
@@ -125,6 +126,6 @@ export default function ProductBentoGrid2() {
           </div>
         </div>
       </div>
-    </div>
+    </AnimatedSection>
   )
 }

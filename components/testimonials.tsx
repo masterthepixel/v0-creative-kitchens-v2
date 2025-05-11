@@ -3,6 +3,8 @@
 import { useLanguage } from "./language-provider"
 import { useState, useEffect } from "react"
 import StarRating from "./star-rating"
+import AnimatedSection from "./animated-section"
+import { motion } from "framer-motion"
 
 // Helper function to combine class names
 function classNames(...classes: string[]) {
@@ -91,15 +93,32 @@ export default function Testimonials({ reviews, businessInfo }: TestimonialsProp
   ]
 
   return (
-    <div className="relative isolate pt-24 pb-32 sm:pt-32">
+    <AnimatedSection className="relative isolate pt-24 pb-32 sm:pt-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-base/7 font-semibold text-primary">{title}</h2>
-          <p className="mt-2 text-4xl font-semibold tracking-tight text-balance text-gray-900 dark:text-white sm:text-5xl">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-base/7 font-semibold text-primary"
+          >
+            {title}
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-2 text-4xl font-semibold tracking-tight text-balance text-gray-900 dark:text-white sm:text-5xl"
+          >
             {subtitle}
-          </p>
+          </motion.p>
         </div>
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm/6 text-gray-900 dark:text-gray-100 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm/6 text-gray-900 dark:text-gray-100 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4"
+        >
           <figure className="rounded-2xl bg-white dark:bg-gray-800 shadow-lg ring-1 ring-gray-900/5 dark:ring-gray-100/5 sm:col-span-2 xl:col-start-2 xl:row-end-1">
             <blockquote className="p-6 text-lg font-semibold tracking-tight text-gray-900 dark:text-white sm:p-12 sm:text-xl/8">
               <p>{`"${language === "en" ? featuredTestimonial.text : featuredTestimonial.text_es}"`}</p>
@@ -158,8 +177,8 @@ export default function Testimonials({ reviews, businessInfo }: TestimonialsProp
               ))}
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </AnimatedSection>
   )
 }

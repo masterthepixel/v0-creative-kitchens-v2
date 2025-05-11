@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { motion } from "framer-motion"
 
 // Import Splide styles
 import "@splidejs/splide/dist/css/splide.min.css"
@@ -254,13 +255,21 @@ export default function HeroCarousel() {
   }, [language])
 
   return (
-    <div className="w-full mx-auto max-w-7xl">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      className="w-full mx-auto max-w-7xl"
+    >
       <div ref={splideRef} className="splide">
         <div className="splide__track">
           <ul className="splide__list">
             {content.slides.map((slide, index) => (
               <li key={index} className="splide__slide">
-                <div
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.1 * Math.min(index, 5) }}
                   className="rounded-xl overflow-hidden shadow-2xl h-[600px] w-full max-w-[350px] md:max-w-[320px] lg:max-w-[380px] mx-auto relative"
                   style={{
                     backgroundImage: `url(${slide.backgroundImage})`,
@@ -272,25 +281,45 @@ export default function HeroCarousel() {
                   <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
 
                   <div className="relative z-10 p-6 md:p-8 h-full flex flex-col justify-end">
-                    <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 md:mb-4">{slide.title}</h2>
-                    <p className="text-white/90 text-sm md:text-base mb-5 md:mb-6 line-clamp-4">{slide.subtitle}</p>
-                    <Button
-                      asChild
-                      size="lg"
-                      className="bg-white text-gray-900 hover:bg-gray-100 hover:text-gray-900 w-fit"
+                    <motion.h2
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 + 0.05 * Math.min(index, 5) }}
+                      className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 md:mb-4"
                     >
-                      <Link href={slide.ctaLink}>
-                        {slide.cta}
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
+                      {slide.title}
+                    </motion.h2>
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 + 0.05 * Math.min(index, 5) }}
+                      className="text-white/90 text-sm md:text-base mb-5 md:mb-6 line-clamp-4"
+                    >
+                      {slide.subtitle}
+                    </motion.p>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.4 + 0.05 * Math.min(index, 5) }}
+                    >
+                      <Button
+                        asChild
+                        size="lg"
+                        className="bg-white text-gray-900 hover:bg-gray-100 hover:text-gray-900 w-fit"
+                      >
+                        <Link href={slide.ctaLink}>
+                          {slide.cta}
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </motion.div>
                   </div>
-                </div>
+                </motion.div>
               </li>
             ))}
           </ul>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

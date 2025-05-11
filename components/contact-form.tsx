@@ -6,6 +6,8 @@ import { ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
+import AnimatedSection from "./animated-section"
+import { motion } from "framer-motion"
 
 type FormTranslations = {
   title: string
@@ -76,14 +78,33 @@ export default function ContactForm() {
   }, [language])
 
   return (
-    <div className="px-6 py-24 sm:py-32 lg:px-8">
+    <AnimatedSection className="px-6 py-24 sm:py-32 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-4xl font-semibold tracking-tight text-balance text-gray-900 dark:text-white sm:text-5xl">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-semibold tracking-tight text-balance text-gray-900 dark:text-white sm:text-5xl"
+        >
           {t.title}
-        </h2>
-        <p className="mt-2 text-lg/8 text-gray-600 dark:text-gray-300">{t.subtitle}</p>
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mt-2 text-lg/8 text-gray-600 dark:text-gray-300"
+        >
+          {t.subtitle}
+        </motion.p>
       </div>
-      <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
+      <motion.form
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        action="#"
+        method="POST"
+        className="mx-auto mt-16 max-w-xl sm:mt-20"
+      >
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
             <label htmlFor="first-name" className="block text-sm/6 font-semibold text-gray-900 dark:text-gray-100">
@@ -206,7 +227,7 @@ export default function ContactForm() {
             {t.submitButton}
           </Button>
         </div>
-      </form>
-    </div>
+      </motion.form>
+    </AnimatedSection>
   )
 }

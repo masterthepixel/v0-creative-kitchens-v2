@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { useLanguage } from "./language-provider"
+import AnimatedSection from "./animated-section"
+import { motion } from "framer-motion"
 
 type FAQItem = {
   id: number
@@ -148,10 +150,22 @@ export default function FAQSection() {
   }, [language])
 
   return (
-    <div>
+    <AnimatedSection>
       <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
-        <h2 className="text-4xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">{title}</h2>
-        <p className="mt-6 max-w-2xl text-base/7 text-gray-600 dark:text-gray-300">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl"
+        >
+          {title}
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mt-6 max-w-2xl text-base/7 text-gray-600 dark:text-gray-300"
+        >
           {introText}{" "}
           <a
             href="#"
@@ -160,22 +174,32 @@ export default function FAQSection() {
             {contactText}
           </a>{" "}
           {emailText}
-        </p>
-        <div className="mt-20">
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-20"
+        >
           <dl className="space-y-16 sm:grid sm:grid-cols-2 sm:space-y-0 sm:gap-x-6 sm:gap-y-16 lg:grid-cols-3 lg:gap-x-10">
-            {faqs.map((faq) => (
-              <div key={faq.id}>
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={faq.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * index }}
+              >
                 <dt className="text-base/7 font-semibold text-gray-900 dark:text-white">
                   {language === "en" ? faq.questionEN : faq.questionES}
                 </dt>
                 <dd className="mt-2 text-base/7 text-gray-600 dark:text-gray-300">
                   {language === "en" ? faq.answerEN : faq.answerES}
                 </dd>
-              </div>
+              </motion.div>
             ))}
           </dl>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </AnimatedSection>
   )
 }
