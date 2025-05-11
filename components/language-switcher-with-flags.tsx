@@ -3,17 +3,10 @@
 import { useLanguage } from "./language-provider"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Globe } from "lucide-react"
 import getCountryFlag from "country-flag-icons/react/3x2"
 
 export default function LanguageSwitcherWithFlags() {
   const { language, setLanguage } = useLanguage()
-
-  // Map language codes to country codes for flags
-  const countryMap: Record<string, string> = {
-    en: "US", // United States for English
-    es: "ES", // Spain for Spanish
-  }
 
   // Get flag components
   const USFlag = getCountryFlag.US
@@ -22,11 +15,8 @@ export default function LanguageSwitcherWithFlags() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="relative">
-          <Globe className="h-[1.2rem] w-[1.2rem]" />
-          <span className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center overflow-hidden rounded-full border border-white bg-background">
-            {language === "en" ? <USFlag className="h-full w-full" /> : <ESFlag className="h-full w-full" />}
-          </span>
+        <Button variant="ghost" size="icon" className="relative h-8 w-8 overflow-hidden rounded-full">
+          {language === "en" ? <USFlag className="h-full w-full" /> : <ESFlag className="h-full w-full" />}
           <span className="sr-only">Switch language</span>
         </Button>
       </DropdownMenuTrigger>

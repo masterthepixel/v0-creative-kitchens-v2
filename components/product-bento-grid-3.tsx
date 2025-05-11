@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react"
 import { useLanguage } from "./language-provider"
-import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
 
 type Category = {
   title: string
@@ -43,41 +41,118 @@ export default function ProductBentoGrid3() {
     return <div className="text-center py-10">Loading...</div>
   }
 
+  // Get the first 5 categories for the bento grid
+  const categories = gridData.categories.slice(0, 5)
+
   return (
-    <div className="space-y-4">
-      <div className="text-center mb-8">
-        <p className="text-sm font-medium uppercase tracking-wider text-primary">{gridData.tagline}</p>
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{gridData.heading}</h2>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {gridData.categories.slice(0, -1).map((category, index) => (
-          <Link href={category.link} key={index} className="group">
-            <Card className="overflow-hidden h-full transition-all hover:shadow-lg">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">{category.title}</h3>
-                <p className="text-sm text-muted-foreground">{category.description}</p>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
-      </div>
-
-      {/* Special CTA card */}
-      {gridData.categories.length > 0 && (
-        <div className="mt-8">
-          <Link href={gridData.categories[gridData.categories.length - 1].link} className="group">
-            <Card className="overflow-hidden transition-all hover:shadow-lg bg-primary text-primary-foreground">
-              <CardContent className="p-6 text-center">
-                <h3 className="text-xl font-bold mb-2">{gridData.categories[gridData.categories.length - 1].title}</h3>
-                <p className="text-primary-foreground/80">
-                  {gridData.categories[gridData.categories.length - 1].description}
+    <div className="bg-white py-24 sm:py-32 dark:bg-gray-800">
+      <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+        <h2 className="text-base/7 font-semibold text-primary">{gridData.tagline}</h2>
+        <p className="mt-2 max-w-lg text-4xl font-semibold tracking-tight text-pretty text-gray-950 dark:text-gray-50 sm:text-5xl">
+          {gridData.heading}
+        </p>
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">
+          {/* First card - 3 columns */}
+          <div className="relative lg:col-span-3">
+            <div className="absolute inset-px rounded-lg bg-white dark:bg-gray-700 max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)] lg:rounded-tl-[calc(2rem+1px)]">
+              <img
+                alt={categories[0].title}
+                src="https://tailwindcss.com/plus-assets/img/component-images/bento-01-performance.png"
+                className="h-80 object-cover object-left"
+              />
+              <div className="p-10 pt-4">
+                <h3 className="text-sm/4 font-semibold text-primary">{categories[0].title}</h3>
+                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 dark:text-gray-50">
+                  {categories[0].title}
                 </p>
-              </CardContent>
-            </Card>
-          </Link>
+                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300">{categories[0].description}</p>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 dark:ring-white/10 max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]" />
+          </div>
+
+          {/* Second card - 3 columns */}
+          <div className="relative lg:col-span-3">
+            <div className="absolute inset-px rounded-lg bg-white dark:bg-gray-700 lg:rounded-tr-[2rem]" />
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-tr-[calc(2rem+1px)]">
+              <img
+                alt={categories[1].title}
+                src="https://tailwindcss.com/plus-assets/img/component-images/bento-01-releases.png"
+                className="h-80 object-cover object-left lg:object-right"
+              />
+              <div className="p-10 pt-4">
+                <h3 className="text-sm/4 font-semibold text-primary">{categories[1].title}</h3>
+                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 dark:text-gray-50">
+                  {categories[1].title}
+                </p>
+                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300">{categories[1].description}</p>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 dark:ring-white/10 lg:rounded-tr-[2rem]" />
+          </div>
+
+          {/* Third card - 2 columns */}
+          <div className="relative lg:col-span-2">
+            <div className="absolute inset-px rounded-lg bg-white dark:bg-gray-700 lg:rounded-bl-[2rem]" />
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-bl-[calc(2rem+1px)]">
+              <img
+                alt={categories[2].title}
+                src="https://tailwindcss.com/plus-assets/img/component-images/bento-01-speed.png"
+                className="h-80 object-cover object-left"
+              />
+              <div className="p-10 pt-4">
+                <h3 className="text-sm/4 font-semibold text-primary">{categories[2].title}</h3>
+                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 dark:text-gray-50">
+                  {categories[2].title}
+                </p>
+                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300">{categories[2].description}</p>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 dark:ring-white/10 lg:rounded-bl-[2rem]" />
+          </div>
+
+          {/* Fourth card - 2 columns */}
+          <div className="relative lg:col-span-2">
+            <div className="absolute inset-px rounded-lg bg-white dark:bg-gray-700" />
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
+              <img
+                alt={categories[3].title}
+                src="https://tailwindcss.com/plus-assets/img/component-images/bento-01-integrations.png"
+                className="h-80 object-cover"
+              />
+              <div className="p-10 pt-4">
+                <h3 className="text-sm/4 font-semibold text-primary">{categories[3].title}</h3>
+                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 dark:text-gray-50">
+                  {categories[3].title}
+                </p>
+                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300">{categories[3].description}</p>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 dark:ring-white/10" />
+          </div>
+
+          {/* Fifth card - 2 columns */}
+          <div className="relative lg:col-span-2">
+            <div className="absolute inset-px rounded-lg bg-white dark:bg-gray-700 max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]" />
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-br-[calc(2rem+1px)]">
+              <img
+                alt={categories[4].title}
+                src="https://tailwindcss.com/plus-assets/img/component-images/bento-01-network.png"
+                className="h-80 object-cover"
+              />
+              <div className="p-10 pt-4">
+                <h3 className="text-sm/4 font-semibold text-primary">{categories[4].title}</h3>
+                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 dark:text-gray-50">
+                  {categories[4].title}
+                </p>
+                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300">{categories[4].description}</p>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-px rounded-lg shadow-sm ring-1 ring-black/5 dark:ring-white/10 max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]" />
+          </div>
         </div>
-      )}
+      </div>
     </div>
   )
 }
