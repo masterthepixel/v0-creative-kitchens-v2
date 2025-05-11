@@ -3,6 +3,7 @@ import "@/app/globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import MobileBottomNav from "@/components/mobile-bottom-nav"
+import BackToTop from "@/components/back-to-top"
 import PageTransition from "@/components/page-transition"
 import { LanguageProvider } from "@/components/language-provider"
 import type { Metadata } from "next"
@@ -32,6 +33,7 @@ export default function LangLayout({
         </main>
         <Footer />
         <MobileBottomNav />
+        <BackToTop />
       </div>
     </LanguageProvider>
   )
