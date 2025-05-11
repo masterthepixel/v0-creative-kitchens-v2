@@ -198,27 +198,28 @@ export default function HeroCarousel() {
         autoplay: true,
         interval: 5000,
         pauseOnHover: true,
-        gap: "1.5rem",
+        gap: "1rem",
         padding: { left: "4%", right: "4%" },
         arrows: true,
         pagination: false,
-        speed: 1000,
+        speed: 600,
         easing: "cubic-bezier(0.25, 1, 0.5, 1)",
         lazyLoad: "nearby",
+        preloadPages: 2,
         breakpoints: {
           1024: {
             perPage: 3,
-            gap: "1.5rem",
+            gap: "1rem",
             padding: { left: "4%", right: "4%" },
           },
           768: {
             perPage: 2,
-            gap: "1rem",
+            gap: "0.75rem",
             padding: { left: "8%", right: "8%" },
           },
           640: {
             perPage: 1,
-            gap: "1rem",
+            gap: "0.5rem",
             padding: { left: "15%", right: "15%" },
           },
         },
@@ -267,40 +268,43 @@ export default function HeroCarousel() {
             {content.slides.map((slide, index) => (
               <li key={index} className="splide__slide">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.1 * Math.min(index, 5) }}
-                  className="rounded-xl overflow-hidden shadow-2xl h-[600px] w-full max-w-[350px] md:max-w-[320px] lg:max-w-[380px] mx-auto relative"
-                  style={{
-                    backgroundImage: `url(${slide.backgroundImage})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
+                  transition={{ duration: 0.3, delay: 0.05 * Math.min(index, 3) }}
+                  className="rounded-xl overflow-hidden shadow-2xl h-[500px] md:h-[550px] w-full max-w-[320px] md:max-w-[320px] lg:max-w-[380px] mx-auto relative"
                 >
+                  <img
+                    src={slide.backgroundImage || "/placeholder.svg"}
+                    alt={slide.title}
+                    className="absolute inset-0 w-full h-full object-cover object-center"
+                    loading={index < 3 ? "eager" : "lazy"}
+                    width="380"
+                    height="550"
+                  />
                   {/* Dark overlay for better text readability */}
                   <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
 
                   <div className="relative z-10 p-6 md:p-8 h-full flex flex-col justify-end">
                     <motion.h2
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.2 + 0.05 * Math.min(index, 5) }}
-                      className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3 md:mb-4"
+                      transition={{ duration: 0.3, delay: 0.1 + 0.05 * Math.min(index, 2) }}
+                      className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-3"
                     >
                       {slide.title}
                     </motion.h2>
                     <motion.p
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.3 + 0.05 * Math.min(index, 5) }}
-                      className="text-white/90 text-sm md:text-base mb-5 md:mb-6 line-clamp-4"
+                      transition={{ duration: 0.3, delay: 0.15 + 0.05 * Math.min(index, 2) }}
+                      className="text-white/90 text-sm md:text-base mb-4 md:mb-5 line-clamp-3"
                     >
                       {slide.subtitle}
                     </motion.p>
                     <motion.div
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.4 + 0.05 * Math.min(index, 5) }}
+                      transition={{ duration: 0.3, delay: 0.2 + 0.05 * Math.min(index, 2) }}
                     >
                       <Button
                         asChild

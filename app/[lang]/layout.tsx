@@ -27,7 +27,7 @@ export default function LangLayout({
       <div className="flex min-h-screen flex-col">
         <Header className="hidden lg:block" />
         <main className="flex-1 pt-0 lg:pt-16">
-          <Suspense fallback={<div className="p-8">Loading...</div>}>
+          <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
             <PageTransition>{children}</PageTransition>
           </Suspense>
         </main>

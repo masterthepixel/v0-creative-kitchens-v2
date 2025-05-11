@@ -4,6 +4,8 @@ import { useEffect, useState, useRef } from "react"
 import { useLanguage } from "./language-provider"
 import HeroCarousel from "./hero-carousel"
 import { motion } from "framer-motion"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 
 type HeroContent = {
   title: string
@@ -54,7 +56,7 @@ export default function HeroSectionWithCarousel() {
   }, [])
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-20">
+    <div className="relative min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center overflow-hidden py-12 md:py-20">
       {/* Video background with overlay */}
       <div className="absolute inset-0 z-0">
         <motion.div
@@ -95,31 +97,45 @@ export default function HeroSectionWithCarousel() {
       </div>
 
       {/* Hero Text Container */}
-      <div className="relative z-20 w-full px-4 text-center mb-8 md:mb-12">
+      <div className="relative z-20 w-full px-4 text-center mb-6 md:mb-12">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 tracking-tight"
         >
           {content.title}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto"
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-6"
         >
           {content.subtitle}
         </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="flex justify-center"
+        >
+          <Link
+            href={`/${language}/contact`}
+            className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-100 md:text-lg"
+          >
+            {language === "en" ? "Get Started" : "Comenzar"}
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
+        </motion.div>
       </div>
 
       {/* Carousel container - full width for multiple cards */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className="relative z-20 w-full px-4 py-8"
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="relative z-20 w-full px-4 py-4 md:py-8"
       >
         <HeroCarousel />
       </motion.div>
