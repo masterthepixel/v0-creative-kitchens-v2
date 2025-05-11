@@ -254,7 +254,7 @@ export default function HeroCarousel() {
   }, [language])
 
   return (
-    <div className="w-full">
+    <div className="w-full mx-auto max-w-7xl">
       <div ref={splideRef} className="splide">
         <div className="splide__track">
           <ul className="splide__list">

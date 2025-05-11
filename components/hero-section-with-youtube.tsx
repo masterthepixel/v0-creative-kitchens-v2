@@ -1,6 +1,5 @@
 "use client"
 import HeroCarousel from "./hero-carousel"
-import YouTubeBackground from "./youtube-background"
 
 export default function HeroSectionWithYouTube() {
   const videoId = "rX-BgElvD24" // YouTube video ID
@@ -24,9 +23,11 @@ export default function HeroSectionWithYouTube() {
         <div className="absolute inset-0 bg-black/50 z-10" />
       </div>
 
-      {/* Carousel container */}
+      {/* Carousel container - with max width */}
       <div className="relative z-20 w-full px-4 py-16">
-        <HeroCarousel />
+        <div className="mx-auto max-w-7xl">
+          <HeroCarousel />
+        </div>
       </div>
 
       {/* Decorative elements */}
@@ -50,6 +51,20 @@ export default function HeroSectionWithYouTube() {
           <path d="m19 12-7 7-7-7" />
         </svg>
       </div>
+    </div>
+  )
+}
+
+// Import the YouTubeBackground component to avoid errors
+function YouTubeBackground({ videoId, startTime, endTime, fallbackImageUrl }) {
+  return (
+    <div className="absolute inset-0 overflow-hidden bg-black">
+      {/* Fallback image shown until YouTube player is ready */}
+      <img
+        src={fallbackImageUrl || "/placeholder.svg"}
+        alt="Video background"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
     </div>
   )
 }
