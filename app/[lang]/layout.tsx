@@ -2,36 +2,38 @@ import type React from "react"
 import "@/app/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@/components/google-analytics"
-import type { Metadata } from "next"
-import { LanguageProvider } from "@/components/language-provider"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import { LanguageProvider } from "@/components/language-provider"
+import type { Metadata } from "next"
 import { Suspense } from "react"
+import type { Locale } from "@/lib/dictionary"
 
 export const metadata: Metadata = {
   title: "Creative Kitchens",
   description: "Premium kitchen and bathroom solutions",
-    generator: 'v0.dev'
 }
 
-export default function RootLayout({
+export default function LangLayout({
   children,
+  params,
 }: {
   children: React.ReactNode
+  params: { lang: Locale }
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={params.lang} suppressHydrationWarning>
       <head>
         <Analytics />
       </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <LanguageProvider>
+          <LanguageProvider initialLanguage={params.lang}>
             <div className="flex min-h-screen flex-col">
-              <Suspense>
-                <Header />
-              </Suspense>
-              <main className="flex-1 pt-16">{children}</main>
+              <Header />
+              <main className="flex-1">
+                <Suspense>{children}</Suspense>
+              </main>
               <Footer />
             </div>
           </LanguageProvider>

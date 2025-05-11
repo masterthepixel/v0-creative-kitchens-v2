@@ -4,9 +4,13 @@ import Link from "next/link"
 import ThemeToggle from "./theme-toggle"
 import LanguageSwitcherWithFlags from "./language-switcher-with-flags"
 import { useEffect, useState } from "react"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { ChevronDown } from "lucide-react"
+import { useLanguage } from "./language-provider"
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
+  const { language } = useLanguage()
 
   // Add scroll event listener to enhance glassmorphism effect on scroll
   useEffect(() => {
@@ -40,6 +44,34 @@ export default function Header() {
           >
             Home
           </Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary ${
+                scrolled ? "text-gray-900 dark:text-white" : "text-white"
+              }`}
+            >
+              Products <ChevronDown className="h-4 w-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-48">
+              <DropdownMenuItem asChild>
+                <Link href={`/products/cabinets`}>{language === "en" ? "Cabinets" : "Gabinetes"}</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href={`/products/countertops`}>{language === "en" ? "Countertops" : "Encimeras"}</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href={`/products/cabinet-lighting`}>
+                  {language === "en" ? "Cabinet Lighting" : "Iluminación para Gabinetes"}
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href={`/products/bath-tubs`}>{language === "en" ? "Bath Tubs" : "Bañeras"}</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href={`/products`}>{language === "en" ? "View All Products" : "Ver Todos los Productos"}</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Link
             href="/about"
             className={`text-sm font-medium transition-colors hover:text-primary ${

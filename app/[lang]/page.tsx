@@ -7,8 +7,9 @@ import Testimonials from "@/components/testimonials"
 import FAQSection from "@/components/faq-section"
 import ContactForm from "@/components/contact-form"
 import { reviewsData } from "@/lib/testimonials-data"
+import type { Locale } from "@/lib/dictionary"
 
-export default function Home() {
+export default function Home({ params }: { params: { lang: Locale } }) {
   return (
     <>
       <HeroSectionWithYouTube />
