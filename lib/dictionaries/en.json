@@ -1,0 +1,87 @@
+{
+  "gridSections": [
+    {
+      "tagline": "Premium Selection",
+      "heading": "Transform Your Kitchen With Quality Essentials",
+      "categories": [
+        {
+          "title": "Cabinets",
+          "description": "Transform your space with our premium cabinet collections, offering superior craftsmanship and timeless designs to suit any style preference.",
+          "link": "/en/cabinets"
+        },
+        {
+          "title": "Countertops",
+          "description": "Discover durable, elegant countertop solutions in granite, quartz, marble and more, crafted to elevate both functionality and aesthetics.",
+          "link": "/en/countertops"
+        },
+        {
+          "title": "Cabinet Lighting",
+          "description": "Illuminate your space with strategic cabinet lighting options that combine energy efficiency with stunning visual impact.",
+          "link": "/en/cabinet-lighting"
+        },
+        {
+          "title": "Bath Tubs",
+          "description": "Indulge in luxury with our selection of bathtubs, from sleek modern designs to classic styles that create your perfect sanctuary.",
+          "link": "/en/bath-tubs"
+        }
+      ]
+    },
+    {
+      "tagline": "Designer Quality",
+      "heading": "Elevate Your Bathroom With Expert Solutions",
+      "categories": [
+        {
+          "title": "Flooring",
+          "description": "Step onto quality with our range of flooring options, engineered for durability and designed to complement any interior aesthetic.",
+          "link": "/en/flooring"
+        },
+        {
+          "title": "Appliances",
+          "description": "Enhance your home with cutting-edge appliances that blend innovative technology with sophisticated design for everyday convenience.",
+          "link": "/en/appliances"
+        },
+        {
+          "title": "Hardware",
+          "description": "Perfect your design with our curated hardware collection, where small details make a significant impact in your space.",
+          "link": "/en/hardware"
+        },
+        {
+          "title": "Medicine Cabinets",
+          "description": "Combine storage and style with our medicine cabinets, offering practical solutions without compromising on design aesthetics.",
+          "link": "/en/medicine-cabinets"
+        }
+      ]
+    },
+    {
+      "tagline": "Finishing Touches",
+      "heading": "Complete Your Home With Perfect Details",
+      "categories": [
+        {
+          "title": "Faucets",
+          "description": "Elevate your daily routine with our premium faucets, merging elegant design with advanced functionality for lasting performance.",
+          "link": "/en/faucets"
+        },
+        {
+          "title": "Door Hardware",
+          "description": "Make a statement with distinctive door hardware options that add character and security to your entrances and passages.",
+          "link": "/en/door-hardware"
+        },
+        {
+          "title": "Plumbing",
+          "description": "Build with confidence using our reliable plumbing solutions, expertly engineered for efficiency and long-term dependability.",
+          "link": "/en/plumbing"
+        },
+        {
+          "title": "Sinks",
+          "description": "Choose from our versatile sink collection, featuring designs that balance practical workspace needs with sophisticated style.",
+          "link": "/en/sinks"
+        },
+        {
+          "title": "Start Your Project",
+          "description": "Ready to transform your space? Connect with our design experts today for personalized guidance on your kitchen or bathroom renovation.",
+          "link": "/en/contact"
+        }
+      ]
+    }
+  ]
+}

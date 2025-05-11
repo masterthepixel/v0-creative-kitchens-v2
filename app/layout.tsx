@@ -1,22 +1,13 @@
 import type React from "react"
-import "./globals.css"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import "@/app/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import GoogleAnalytics from "@/components/google-analytics"
-import AnalyticsRouteTracker from "@/components/analytics-route-tracker"
+import { Analytics } from "@/components/google-analytics"
+import type { Metadata } from "next"
 import { Suspense } from "react"
-
-// Load Inter font
-const inter = Inter({
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-  variable: "--font-inter",
-})
 
 export const metadata: Metadata = {
   title: "Creative Kitchens",
-  description: "Premium kitchen design and installation",
+  description: "Premium kitchen and bathroom solutions",
     generator: 'v0.dev'
 }
 
@@ -25,18 +16,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  // Get the Google Analytics Measurement ID from environment variables
-  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""
-
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
-      <body className="font-sans">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <Analytics />
+      </head>
+      <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <Suspense>
-            {children}
-            <GoogleAnalytics GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
-            <AnalyticsRouteTracker GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
-          </Suspense>
+          <Suspense>{children}</Suspense>
         </ThemeProvider>
       </body>
     </html>

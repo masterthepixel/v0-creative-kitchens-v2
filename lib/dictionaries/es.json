@@ -1,0 +1,87 @@
+{
+  "gridSections": [
+    {
+      "tagline": "Selección Premium",
+      "heading": "Transforma Tu Cocina Con Elementos Esenciales de Calidad",
+      "categories": [
+        {
+          "title": "Gabinetes",
+          "description": "Transforma tu espacio con nuestras colecciones premium de gabinetes, ofreciendo artesanía superior y diseños atemporales para cualquier estilo.",
+          "link": "/es/cabinets"
+        },
+        {
+          "title": "Encimeras",
+          "description": "Descubre soluciones duraderas y elegantes en granito, cuarzo, mármol y más, diseñadas para elevar tanto la funcionalidad como la estética.",
+          "link": "/es/countertops"
+        },
+        {
+          "title": "Iluminación para Gabinetes",
+          "description": "Ilumina tu espacio con opciones estratégicas que combinan eficiencia energética con un impacto visual impresionante.",
+          "link": "/es/cabinet-lighting"
+        },
+        {
+          "title": "Bañeras",
+          "description": "Disfruta del lujo con nuestra selección de bañeras, desde diseños modernos hasta estilos clásicos que crean tu santuario perfecto.",
+          "link": "/es/bath-tubs"
+        }
+      ]
+    },
+    {
+      "tagline": "Calidad de Diseñador",
+      "heading": "Eleva Tu Baño Con Soluciones Expertas",
+      "categories": [
+        {
+          "title": "Pisos",
+          "description": "Camina sobre calidad con nuestra gama de opciones de pisos, diseñados para durabilidad y para complementar cualquier estética interior.",
+          "link": "/es/flooring"
+        },
+        {
+          "title": "Electrodomésticos",
+          "description": "Mejora tu hogar con electrodomésticos de vanguardia que combinan tecnología innovadora con diseño sofisticado para tu comodidad diaria.",
+          "link": "/es/appliances"
+        },
+        {
+          "title": "Herrajes",
+          "description": "Perfecciona tu diseño con nuestra colección de herrajes, donde los pequeños detalles generan un impacto significativo en tu espacio.",
+          "link": "/es/hardware"
+        },
+        {
+          "title": "Botiquines",
+          "description": "Combina almacenamiento y estilo con nuestros botiquines, ofreciendo soluciones prácticas sin comprometer la estética del diseño.",
+          "link": "/es/medicine-cabinets"
+        }
+      ]
+    },
+    {
+      "tagline": "Toques Finales",
+      "heading": "Completa Tu Hogar Con Detalles Perfectos",
+      "categories": [
+        {
+          "title": "Grifos",
+          "description": "Eleva tu rutina diaria con nuestros grifos premium, fusionando diseño elegante con funcionalidad avanzada para un rendimiento duradero.",
+          "link": "/es/faucets"
+        },
+        {
+          "title": "Herrajes para Puertas",
+          "description": "Haz una declaración con opciones distintivas que añaden carácter y seguridad a tus entradas y pasajes.",
+          "link": "/es/door-hardware"
+        },
+        {
+          "title": "Plomería",
+          "description": "Construye con confianza usando nuestras soluciones confiables, expertamente diseñadas para eficiencia y dependabilidad a largo plazo.",
+          "link": "/es/plumbing"
+        },
+        {
+          "title": "Fregaderos",
+          "description": "Elige de nuestra versátil colección, con diseños que equilibran las necesidades prácticas del espacio de trabajo con un estilo sofisticado.",
+          "link": "/es/sinks"
+        },
+        {
+          "title": "Inicia Tu Proyecto",
+          "description": "¿Listo para transformar tu espacio? Conecta con nuestros expertos en diseño hoy para una orientación personalizada en tu renovación.",
+          "link": "/es/contact"
+        }
+      ]
+    }
+  ]
+}
