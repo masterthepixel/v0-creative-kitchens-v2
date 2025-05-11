@@ -30,14 +30,17 @@ export default function Header() {
     >
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center">
-          <Link href="/" className={`font-bold text-xl ${scrolled ? "text-gray-900 dark:text-white" : "text-white"}`}>
+          <Link
+            href={`/${language}`}
+            className={`font-bold text-xl ${scrolled ? "text-gray-900 dark:text-white" : "text-white"}`}
+          >
             Creative Kitchens
           </Link>
         </div>
 
         <nav className="flex items-center gap-6">
           <Link
-            href="/"
+            href={`/${language}`}
             className={`text-sm font-medium transition-colors hover:text-primary ${
               scrolled ? "text-gray-900 dark:text-white" : "text-white"
             }`}
@@ -54,26 +57,30 @@ export default function Header() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-48">
               <DropdownMenuItem asChild>
-                <Link href={`/products/cabinets`}>{language === "en" ? "Cabinets" : "Gabinetes"}</Link>
+                <Link href={`/${language}/products/cabinets`}>{language === "en" ? "Cabinets" : "Gabinetes"}</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href={`/products/countertops`}>{language === "en" ? "Countertops" : "Encimeras"}</Link>
+                <Link href={`/${language}/products/countertops`}>
+                  {language === "en" ? "Countertops" : "Encimeras"}
+                </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href={`/products/cabinet-lighting`}>
+                <Link href={`/${language}/products/cabinet-lighting`}>
                   {language === "en" ? "Cabinet Lighting" : "Iluminación para Gabinetes"}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href={`/products/bath-tubs`}>{language === "en" ? "Bath Tubs" : "Bañeras"}</Link>
+                <Link href={`/${language}/products/bath-tubs`}>{language === "en" ? "Bath Tubs" : "Bañeras"}</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href={`/products`}>{language === "en" ? "View All Products" : "Ver Todos los Productos"}</Link>
+                <Link href={`/${language}/products`}>
+                  {language === "en" ? "View All Products" : "Ver Todos los Productos"}
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
           <Link
-            href="/about"
+            href={`/${language}/about`}
             className={`text-sm font-medium transition-colors hover:text-primary ${
               scrolled ? "text-gray-900 dark:text-white" : "text-white"
             }`}
@@ -81,7 +88,7 @@ export default function Header() {
             About
           </Link>
           <Link
-            href="/kitchen-sink"
+            href={`/${language}/kitchen-sink`}
             className={`text-sm font-medium transition-colors hover:text-primary ${
               scrolled ? "text-gray-900 dark:text-white" : "text-white"
             }`}

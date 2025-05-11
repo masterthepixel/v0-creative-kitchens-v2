@@ -8,6 +8,11 @@ export function middleware(request: NextRequest) {
   // Get the pathname
   const pathname = request.nextUrl.pathname
 
+  // Skip for API routes and static files
+  if (pathname.startsWith("/_next") || pathname.startsWith("/api") || pathname.includes(".")) {
+    return NextResponse.next()
+  }
+
   // Check if the pathname already includes a supported language
   const pathnameHasLanguage = supportedLanguages.some(
     (language) => pathname.startsWith(`/${language}/`) || pathname === `/${language}`,

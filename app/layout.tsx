@@ -3,9 +3,6 @@ import "@/app/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@/components/google-analytics"
 import type { Metadata } from "next"
-import { LanguageProvider } from "@/components/language-provider"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
 import { Suspense } from "react"
 
 export const metadata: Metadata = {
@@ -26,15 +23,7 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <LanguageProvider>
-            <div className="flex min-h-screen flex-col">
-              <Suspense>
-                <Header />
-              </Suspense>
-              <main className="flex-1 pt-16">{children}</main>
-              <Footer />
-            </div>
-          </LanguageProvider>
+          <Suspense>{children}</Suspense>
         </ThemeProvider>
       </body>
     </html>
