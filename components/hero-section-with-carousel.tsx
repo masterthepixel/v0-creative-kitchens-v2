@@ -1,12 +1,35 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
+import { useLanguage } from "./language-provider"
 import HeroCarousel from "./hero-carousel"
 import { motion } from "framer-motion"
 
+type HeroContent = {
+  title: string
+  subtitle: string
+}
+
+const heroContent: Record<string, HeroContent> = {
+  en: {
+    title: "Transform Your Space",
+    subtitle: "Premium kitchen and bathroom solutions crafted with excellence and designed for your lifestyle",
+  },
+  es: {
+    title: "Transforma Tu Espacio",
+    subtitle: "Soluciones premium para cocinas y baños elaboradas con excelencia y diseñadas para tu estilo de vida",
+  },
+}
+
 export default function HeroSectionWithCarousel() {
+  const { language } = useLanguage()
+  const [content, setContent] = useState<HeroContent>(heroContent.en)
   const videoRef = useRef<HTMLVideoElement>(null)
   const [videoLoaded, setVideoLoaded] = useState(false)
+
+  useEffect(() => {
+    setContent(heroContent[language])
+  }, [language])
 
   useEffect(() => {
     const video = videoRef.current
@@ -31,7 +54,7 @@ export default function HeroSectionWithCarousel() {
   }, [])
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
+    <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-20">
       {/* Video background with overlay */}
       <div className="absolute inset-0 z-0">
         <motion.div
@@ -71,12 +94,32 @@ export default function HeroSectionWithCarousel() {
         />
       </div>
 
+      {/* Hero Text Container */}
+      <div className="relative z-20 w-full px-4 text-center mb-8 md:mb-12">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight"
+        >
+          {content.title}
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto"
+        >
+          {content.subtitle}
+        </motion.p>
+      </div>
+
       {/* Carousel container - full width for multiple cards */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-        className="relative z-20 w-full px-4 py-16"
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className="relative z-20 w-full px-4 py-8"
       >
         <HeroCarousel />
       </motion.div>

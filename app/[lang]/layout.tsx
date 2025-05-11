@@ -2,6 +2,8 @@ import type React from "react"
 import "@/app/globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import MobileBottomNav from "@/components/mobile-bottom-nav"
+import PageTransition from "@/components/page-transition"
 import { LanguageProvider } from "@/components/language-provider"
 import type { Metadata } from "next"
 import { Suspense } from "react"
@@ -22,11 +24,14 @@ export default function LangLayout({
   return (
     <LanguageProvider initialLanguage={params.lang}>
       <div className="flex min-h-screen flex-col">
-        <Header />
-        <main className="flex-1 pt-16">
-          <Suspense fallback={<div className="p-8">Loading...</div>}>{children}</Suspense>
+        <Header className="hidden lg:block" />
+        <main className="flex-1 pt-0 lg:pt-16">
+          <Suspense fallback={<div className="p-8">Loading...</div>}>
+            <PageTransition>{children}</PageTransition>
+          </Suspense>
         </main>
         <Footer />
+        <MobileBottomNav />
       </div>
     </LanguageProvider>
   )

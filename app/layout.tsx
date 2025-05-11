@@ -2,6 +2,7 @@ import type React from "react"
 import "@/app/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@/components/google-analytics"
+import ScrollRestoration from "@/components/scroll-restoration"
 import type { Metadata } from "next"
 import { Suspense } from "react"
 
@@ -23,6 +24,7 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <ScrollRestoration />
           <Suspense>{children}</Suspense>
         </ThemeProvider>
       </body>

@@ -22,7 +22,11 @@ import {
   ShowerHead,
 } from "lucide-react"
 
-export default function Header() {
+interface HeaderProps {
+  className?: string
+}
+
+export default function Header({ className = "" }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false)
   const { language } = useLanguage()
 
@@ -151,7 +155,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
         scrolled ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-md" : "bg-transparent"
-      }`}
+      } ${className}`}
     >
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center">

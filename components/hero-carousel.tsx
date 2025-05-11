@@ -201,7 +201,7 @@ export default function HeroCarousel() {
         gap: "1.5rem",
         padding: { left: "4%", right: "4%" },
         arrows: true,
-        pagination: true,
+        pagination: false,
         speed: 1000,
         easing: "cubic-bezier(0.25, 1, 0.5, 1)",
         lazyLoad: "nearby",
