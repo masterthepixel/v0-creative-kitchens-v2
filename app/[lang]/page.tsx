@@ -5,7 +5,6 @@ import ProductBentoGrid3 from "@/components/product-bento-grid-3"
 import AboutUs from "@/components/about-us"
 import Testimonials from "@/components/testimonials"
 import FAQSection from "@/components/faq-section"
-import ContactForm from "@/components/contact-form"
 import { reviewsData } from "@/lib/testimonials-data"
 import type { Locale } from "@/lib/dictionary"
 
@@ -19,7 +18,6 @@ export default function Home({ params }: { params: { lang: Locale } }) {
       <AboutUs />
       <Testimonials reviews={reviewsData.reviews} businessInfo={reviewsData.businessInfo} />
       <FAQSection />
-      <ContactForm />
     </>
   )
 }

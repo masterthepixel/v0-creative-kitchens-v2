@@ -1,23 +1,26 @@
 import type React from "react"
-import "@/app/globals.css"
-import "@/app/bento-grid.css"
-import "@/app/navbar.css"
-import Navbar from "@/components/navbar"
+import type { Metadata } from "next"
+import { LanguageProvider } from "@/components/language-provider"
+import { ThemeProvider } from "@/components/theme-provider"
+import GoogleAnalytics from "@/components/google-analytics"
 import Footer from "@/components/footer"
 import MobileBottomNav from "@/components/mobile-bottom-nav"
-import BackToTop from "@/components/back-to-top"
-import PageTransition from "@/components/page-transition"
-import { LanguageProvider } from "@/components/language-provider"
-import type { Metadata } from "next"
-import { Suspense } from "react"
+import MainNavbar from "@/components/main-navbar"
 import type { Locale } from "@/lib/dictionary"
+import { InteractiveGridPattern } from "@/components/interactive-grid-pattern"
+import { Suspense } from "react"
+
+import "@/app/globals.css"
+import "@/app/splide-custom.css"
+import "@/app/bento-grid.css"
+import "@/app/navbar.css"
 
 export const metadata: Metadata = {
   title: "Creative Kitchens",
-  description: "Premium kitchen and bathroom solutions",
+  description: "Premium kitchen design and installation",
 }
 
-export default function LangLayout({
+export default function RootLayout({
   children,
   params,
 }: {
@@ -25,18 +28,21 @@ export default function LangLayout({
   params: { lang: Locale }
 }) {
   return (
-    <LanguageProvider initialLanguage={params.lang}>
-      <div className="flex min-h-screen flex-col">
-        <Navbar />
-        <main className="flex-1 pt-0">
-          <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
-            <PageTransition>{children}</PageTransition>
-          </Suspense>
-        </main>
-        <Footer />
-        <MobileBottomNav />
-        <BackToTop />
-      </div>
-    </LanguageProvider>
+    <html lang={params.lang} suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <LanguageProvider lang={params.lang}>
+            <InteractiveGridPattern />
+            <Suspense>
+              <MainNavbar />
+              <main className="pt-24">{children}</main>
+              <Footer />
+              <MobileBottomNav />
+            </Suspense>
+          </LanguageProvider>
+        </ThemeProvider>
+        <GoogleAnalytics />
+      </body>
+    </html>
   )
 }

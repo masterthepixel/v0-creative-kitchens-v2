@@ -1,12 +1,14 @@
 "use client"
-import React from "react"
+import type React from "react"
 import { motion } from "framer-motion"
-import { cn } from "@/lib/utils"
 
-// Simplify the transition to remove spring physics that cause the curved artifacts
 const transition = {
-  type: "tween", // Change from "spring" to "tween"
-  duration: 0.2, // Simple duration-based transition
+  type: "spring",
+  mass: 0.5,
+  damping: 11.5,
+  stiffness: 100,
+  restDelta: 0.001,
+  restSpeed: 0.001,
 }
 
 export const MenuItem = ({
@@ -21,19 +23,32 @@ export const MenuItem = ({
   children?: React.ReactNode
 }) => {
   return (
-    <div onMouseEnter={() => setActive(item)} className="relative mx-2">
+    <div onMouseEnter={() => setActive(item)} className="relative ">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer text-white hover:text-yellow-400 transition-colors px-4 py-2"
+        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
       >
         {item}
       </motion.p>
       {active !== null && (
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={transition}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={transition}
+        >
           {active === item && (
             <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4">
-              <motion.div transition={transition} className="bg-black rounded-2xl overflow-hidden shadow-xl">
-                <div className="w-max h-full p-4">{children}</div>
+              <motion.div
+                transition={transition}
+                layoutId="active" // layoutId ensures smooth animation
+                className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+              >
+                <motion.div
+                  layout // layout ensures smooth animation
+                  className="w-max h-full p-4"
+                >
+                  {children}
+                </motion.div>
               </motion.div>
             </div>
           )}
@@ -46,19 +61,14 @@ export const MenuItem = ({
 export const Menu = ({
   setActive,
   children,
-  className,
 }: {
   setActive: (item: string | null) => void
   children: React.ReactNode
-  className?: string
 }) => {
   return (
     <nav
-      onMouseLeave={() => setActive(null)}
-      className={cn(
-        "relative flex justify-center items-center rounded-full bg-black px-4 py-3 shadow-[0_8px_30px_rgb(0,0,0,0.3)]",
-        className,
-      )}
+      onMouseLeave={() => setActive(null)} // resets the state
+      className="relative rounded-full border border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-6 "
     >
       {children}
     </nav>
@@ -70,58 +80,32 @@ export const ProductItem = ({
   description,
   href,
   src,
-  icon,
 }: {
   title: string
   description: string
   href: string
-  src?: string
-  icon?: React.ReactNode
+  src: string
 }) => {
   return (
-    <a
-      href={href}
-      className="flex space-x-3 p-3 rounded-lg transition-all group relative"
-      aria-label={`${title}: ${description}`}
-    >
-      {/* Icon container */}
-      <div className="relative z-10">
-        {src ? (
-          <img
-            src={src || "/placeholder.svg"}
-            width={140}
-            height={70}
-            alt=""
-            className="shrink-0 rounded-md shadow-md"
-          />
-        ) : (
-          icon && (
-            <div className="shrink-0 w-10 h-10 rounded-md bg-black flex items-center justify-center">
-              {React.isValidElement(icon)
-                ? React.cloneElement(icon as React.ReactElement, {
-                    className: "text-yellow-400 h-5 w-5",
-                  })
-                : icon}
-            </div>
-          )
-        )}
+    <a href={href} className="flex space-x-2">
+      <img
+        src={src || "/placeholder.svg"}
+        width={140}
+        height={70}
+        alt={title}
+        className="shrink-0 rounded-md shadow-2xl"
+      />
+      <div>
+        <h4 className="text-xl font-bold mb-1 text-black dark:text-white">{title}</h4>
+        <p className="text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300">{description}</p>
       </div>
-
-      {/* Text content with reduced font sizes */}
-      <div className="relative z-10">
-        <h4 className="text-base font-medium mb-0.5 text-white">{title}</h4>
-        <p className="text-xs text-gray-300 max-w-[10rem]">{description}</p>
-      </div>
-
-      {/* Focus indicator for keyboard navigation */}
-      <div className="absolute inset-0 rounded-lg ring-0 group-focus-visible:ring-2 ring-yellow-400 ring-offset-2 ring-offset-black pointer-events-none"></div>
     </a>
   )
 }
 
 export const HoveredLink = ({ children, ...rest }: any) => {
   return (
-    <a {...rest} className="text-gray-300 hover:text-white focus:text-white focus:outline-none">
+    <a {...rest} className="text-neutral-700 dark:text-neutral-200 hover:text-black ">
       {children}
     </a>
   )
