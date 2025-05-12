@@ -2,7 +2,6 @@
 
 import { useLanguage } from "./language-provider"
 import { useEffect, useState, useRef } from "react"
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
@@ -186,6 +185,8 @@ export default function HeroCarousel() {
 
   useEffect(() => {
     setContent(carouselContent[language])
+    // Preload images when content changes
+    setTimeout(() => preloadImages(), 100)
   }, [language])
 
   const initSplide = () => {
@@ -206,6 +207,8 @@ export default function HeroCarousel() {
         easing: "cubic-bezier(0.25, 1, 0.5, 1)",
         lazyLoad: "nearby",
         preloadPages: 2,
+        updateOnMove: true /* Ensures images update properly during movement */,
+        waitForTransition: true /* Ensures transitions complete before updating */,
         breakpoints: {
           1024: {
             perPage: 3,
@@ -226,6 +229,18 @@ export default function HeroCarousel() {
       }).mount()
     }
     return null
+  }
+
+  const preloadImages = () => {
+    if (content && content.slides) {
+      content.slides.forEach((slide, index) => {
+        if (index < 5) {
+          // Preload first 5 images
+          const img = new Image()
+          img.src = slide.backgroundImage
+        }
+      })
+    }
   }
 
   useEffect(() => {
@@ -271,8 +286,13 @@ export default function HeroCarousel() {
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: 0.05 * Math.min(index, 3) }}
-                  className="rounded-xl overflow-hidden shadow-2xl h-[500px] md:h-[550px] w-full max-w-[320px] md:max-w-[320px] lg:max-w-[380px] mx-auto relative"
+                  className="glassmorphism-card rounded-xl overflow-hidden h-[500px] md:h-[550px] w-full max-w-[320px] md:max-w-[320px] lg:max-w-[380px] mx-auto relative group"
+                  style={{
+                    perspective: "1000px",
+                    transformStyle: "preserve-3d",
+                  }}
                 >
+                  {/* Background image */}
                   <img
                     src={slide.backgroundImage || "/placeholder.svg"}
                     alt={slide.title}
@@ -280,16 +300,49 @@ export default function HeroCarousel() {
                     loading={index < 3 ? "eager" : "lazy"}
                     width="380"
                     height="550"
+                    style={{
+                      objectFit: "cover",
+                      imageRendering: "high-quality",
+                      transform: "translateZ(0)",
+                      backfaceVisibility: "hidden",
+                      willChange: "transform",
+                    }}
                   />
-                  {/* Dark overlay for better text readability */}
-                  <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
 
-                  <div className="relative z-10 p-6 md:p-8 h-full flex flex-col justify-end">
+                  {/* Glass overlay with gradient */}
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 backdrop-blur-[3px] transition-all duration-500 group-hover:backdrop-blur-[5px]"
+                    style={{
+                      boxShadow: "inset 0 0 0 1px rgba(255, 255, 255, 0.1)",
+                      transform: "translateZ(1px)",
+                    }}
+                  ></div>
+
+                  {/* Subtle border glow */}
+                  <div
+                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      boxShadow: "inset 0 0 20px rgba(255, 255, 255, 0.15), 0 0 10px rgba(255, 255, 255, 0.05)",
+                      transform: "translateZ(2px)",
+                    }}
+                  ></div>
+
+                  {/* Content container */}
+                  <div
+                    className="relative z-10 p-6 md:p-8 h-full flex flex-col justify-end"
+                    style={{
+                      transform: "translateZ(20px)",
+                      transformStyle: "preserve-3d",
+                    }}
+                  >
                     <motion.h2
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: 0.1 + 0.05 * Math.min(index, 2) }}
-                      className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-3"
+                      className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-3 text-shadow-sm"
+                      style={{
+                        transform: "translateZ(10px)",
+                      }}
                     >
                       {slide.title}
                     </motion.h2>
@@ -297,7 +350,10 @@ export default function HeroCarousel() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: 0.15 + 0.05 * Math.min(index, 2) }}
-                      className="text-white/90 text-sm md:text-base mb-4 md:mb-5 line-clamp-3"
+                      className="text-white/90 text-xs md:text-sm mb-4 md:mb-5 line-clamp-3 text-shadow-xs"
+                      style={{
+                        transform: "translateZ(5px)",
+                      }}
                     >
                       {slide.subtitle}
                     </motion.p>
@@ -305,17 +361,18 @@ export default function HeroCarousel() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: 0.2 + 0.05 * Math.min(index, 2) }}
+                      style={{
+                        transform: "translateZ(15px)",
+                      }}
                     >
-                      <Button
-                        asChild
-                        size="lg"
-                        className="bg-white text-gray-900 hover:bg-gray-100 hover:text-gray-900 w-fit"
-                      >
-                        <Link href={slide.ctaLink}>
-                          {slide.cta}
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                      </Button>
+                      <Link href={slide.ctaLink} className="no-underline">
+                        <button className="button-6 glass-button" role="button">
+                          <span className="text flex items-center">
+                            {slide.cta}
+                            <ArrowRight className="ml-2 h-4 w-4" />
+                          </span>
+                        </button>
+                      </Link>
                     </motion.div>
                   </div>
                 </motion.div>

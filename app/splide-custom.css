@@ -45,12 +45,11 @@
 
 /* Card hover effect */
 .splide__slide > div {
-  transition: transform 0.5s ease;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .splide__slide.is-active > div:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) rotateX(2deg) rotateY(-1deg);
 }
 
 /* Make non-active slides more visible but still focused on center */
@@ -63,6 +62,34 @@
 .splide__track {
   overflow: visible;
   padding-bottom: 2rem;
+}
+
+/* Improve image quality */
+.splide__slide img {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Ensure active slide has highest quality */
+.splide__slide.is-active img {
+  z-index: 1;
+}
+
+/* Prevent blurry images during transitions */
+.splide__track {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Sharpen image edges */
+.splide__slide > div {
+  overflow: hidden;
+  border-radius: 0.75rem;
+  transform: translateZ(0);
 }
 
 @media (max-width: 640px) {
