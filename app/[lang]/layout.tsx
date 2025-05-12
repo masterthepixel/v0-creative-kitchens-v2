@@ -1,6 +1,8 @@
 import type React from "react"
 import "@/app/globals.css"
-import Header from "@/components/header"
+import "@/app/bento-grid.css"
+import "@/app/navbar.css"
+import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import MobileBottomNav from "@/components/mobile-bottom-nav"
 import BackToTop from "@/components/back-to-top"
@@ -25,8 +27,8 @@ export default function LangLayout({
   return (
     <LanguageProvider initialLanguage={params.lang}>
       <div className="flex min-h-screen flex-col">
-        <Header className="hidden lg:block" />
-        <main className="flex-1 pt-0 lg:pt-16">
+        <Navbar />
+        <main className="flex-1 pt-0">
           <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
             <PageTransition>{children}</PageTransition>
           </Suspense>

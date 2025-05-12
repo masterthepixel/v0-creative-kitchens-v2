@@ -275,7 +275,7 @@ export default function HeroCarousel() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="w-full mx-auto max-w-7xl"
+      className="w-full mx-auto max-w-7xl pt-16"
     >
       <div ref={splideRef} className="splide">
         <div className="splide__track">

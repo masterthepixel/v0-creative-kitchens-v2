@@ -1,184 +1,98 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "./splide-custom.css";
 
-@layer base {
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.5% 48%;
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  margin: 0;
+  padding: 0;
 }
 
-/* Button 6 styles */
-.button-6 {
-  touch-action: manipulation;
-  background-image: linear-gradient(#4098ff, #4058ff 62%, #4075ff);
-  border: .5px solid #3247cf;
-  border-radius: 8px;
-  box-shadow:
-    rgba(0, 0, 0, 0.12) 0 1px 3px, rgba(0, 0, 0, 0.14) 0 1px .5px, rgba(182, 229, 255, 0.4) 0 1px .5px inset, rgba(
-      23,
-      45,
-      202,
-      0.46
-    ) 0 -1px .5px inset, #233ced 0 0 0 .5px inset;
-  color: #fff;
-  font-weight: 600;
-  outline: 3px #fff;
-  outline-offset: 0;
-  position: relative;
-  text-shadow: #233ced 0 -1px .5px;
-  top: 0;
-  display: inline-block;
-  font-size: 16px;
-  line-height: 100%;
-  padding: 10px 20px 12px;
-
-  /* optional */
-  transition-property: outline-offset, border-color, transform;
-  transition-duration: .2s;
+/* Custom dropdown styling */
+.dropdown-item {
+  transition: all 0.2s ease;
 }
 
-.button-6:active,
-.button-6:hover {
-  outline: 0;
+.dropdown-item:hover {
+  transform: translateY(-2px);
 }
 
-.button-6:hover {
-  background-image: linear-gradient(#40a6ff, #4058ff 62%, #4075ff);
-  box-shadow:
-    rgba(0, 0, 0, 0.12) 0 2px 6px, rgba(0, 0, 0, 0.14) 0 1px .5px, rgba(182, 229, 255, 0.4) 0 1px .5px inset, rgba(
-      23,
-      45,
-      202,
-      0.46
-    ) 0 -1px .5px inset, #233ced 0 0 0 .5px inset;
+.dropdown-icon {
+  filter: drop-shadow(0 0 5px rgba(250, 204, 21, 0.5));
+}
+
+/* Improved focus styles */
+a:focus,
+button:focus {
+  outline: 2px solid rgba(250, 204, 21, 0.5);
+  outline-offset: 2px;
+}
+
+/* Remove gap at the top of hero sections */
+.hero-section {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Ensure content starts from the top */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Adjust for fixed navbar */
+.content-with-navbar {
+  padding-top: 4rem;
+}
+
+/* Add AOS custom animations at the end of the file */
+
+/* AOS custom animations */
+[data-aos="fade-up"] {
+  transform: translate3d(0, 30px, 0);
+  opacity: 0;
+  transition-property: transform, opacity;
+}
+
+[data-aos="fade-up"].aos-animate {
+  transform: translate3d(0, 0, 0);
   opacity: 1;
-
-  /* optional */
-  transform: scale(1.04);
 }
 
-.button-6:active {
-  background-image: linear-gradient(#0a40ce, #4058ff 38%, #40a0ff);
-  border-color: #192ba1;
-  box-shadow: #0b1c95 0 1px inset, transparent 0 -1px .5px inset, rgba(13, 33, 176, 0.53) 0 2px .5px inset,
-    rgba(35, 60, 237, 0.31) 0 0 0 .5px inset;
-  text-shadow: #233ced 0 1px .5px;
-
-  /* optional */
-  transform: scale(0.98);
+/* Custom animation for cards */
+[data-aos="card-animation"] {
+  transform: translate3d(0, 30px, 0) scale(0.95);
+  opacity: 0;
+  transition-property: transform, opacity;
 }
 
-/* Glass button styles */
-.glass-button {
-  backdrop-filter: blur(4px);
-  background-image: linear-gradient(
-    135deg,
-    rgba(64, 152, 255, 0.8),
-    rgba(64, 88, 255, 0.8) 62%,
-    rgba(64, 117, 255, 0.8)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.2),
-    inset 0 -1px 1px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+[data-aos="card-animation"].aos-animate {
+  transform: translate3d(0, 0, 0) scale(1);
+  opacity: 1;
 }
 
-.glass-button:hover {
-  background-image: linear-gradient(
-    135deg,
-    rgba(64, 166, 255, 0.9),
-    rgba(64, 88, 255, 0.9) 62%,
-    rgba(64, 117, 255, 0.9)
-  );
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 2px 5px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3),
-    inset 0 -1px 1px rgba(0, 0, 0, 0.15);
+/* Ensure AOS animations work properly in dark mode */
+.dark [data-aos="fade-up"],
+.dark [data-aos="card-animation"] {
+  opacity: 0;
 }
 
-.glass-button:active {
-  background-image: linear-gradient(135deg, rgba(10, 64, 206, 0.9), rgba(64, 88, 255, 0.9) 38%, rgba(64, 160, 255, 0.9));
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.2), inset 0 -1px 1px
-    rgba(255, 255, 255, 0.1);
-}
-
-/* Glassmorphism card styles */
-.glassmorphism-card {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 1px 8px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  overflow: hidden;
-  transform: translateY(0) rotateX(0) rotateY(0);
-}
-
-.glassmorphism-card:hover {
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 5px 15px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.12);
-  transform: translateY(-5px) rotateX(2deg) rotateY(-1deg);
-}
-
-/* Text shadow utilities */
-.text-shadow-xs {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.text-shadow-sm {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-}
-
-/* Responsive adjustments for button-6 */
-@media (max-width: 640px) {
-  .button-6 {
-    font-size: 14px;
-    padding: 8px 16px 10px;
-  }
+.dark [data-aos="fade-up"].aos-animate,
+.dark [data-aos="card-animation"].aos-animate {
+  opacity: 1;
 }

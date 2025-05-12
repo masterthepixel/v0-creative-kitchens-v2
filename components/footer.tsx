@@ -47,22 +47,22 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="text-gray-800 dark:text-gray-200">
       <div className="mx-auto max-w-7xl px-6 py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <h3 className="text-lg font-semibold">Creative Kitchens</h3>
-            <p className="mt-4 text-gray-300">
+            <p className="mt-4 text-gray-600 dark:text-gray-400">
               {language === "en"
                 ? "Premium kitchen and bathroom solutions for your home."
                 : "Soluciones premium para cocinas y baños para su hogar."}
             </p>
 
-            <dl className="mt-6 space-y-4 text-base/7 text-gray-300">
+            <dl className="mt-6 space-y-4 text-base/7 text-gray-600 dark:text-gray-400">
               <div className="flex gap-x-4">
                 <dt className="flex-none">
                   <span className="sr-only">Address</span>
-                  <Building2 aria-hidden="true" className="h-6 w-6 text-gray-400" />
+                  <Building2 aria-hidden="true" className="h-6 w-6 text-gray-500 dark:text-gray-400" />
                 </dt>
                 <dd>
                   3101 Hubbard Rd.
@@ -73,10 +73,10 @@ export default function Footer() {
               <div className="flex gap-x-4">
                 <dt className="flex-none">
                   <span className="sr-only">Telephone</span>
-                  <Phone aria-hidden="true" className="h-6 w-6 text-gray-400" />
+                  <Phone aria-hidden="true" className="h-6 w-6 text-gray-500 dark:text-gray-400" />
                 </dt>
                 <dd>
-                  <a href="tel:(240)-714-3180" className="hover:text-white">
+                  <a href="tel:(240)-714-3180" className="hover:text-gray-900 dark:hover:text-white">
                     (240)-714-3180
                   </a>
                 </dd>
@@ -84,19 +84,19 @@ export default function Footer() {
               <div className="flex gap-x-4">
                 <dt className="flex-none">
                   <span className="sr-only">Fax</span>
-                  <Printer aria-hidden="true" className="h-6 w-6 text-gray-400" />
+                  <Printer aria-hidden="true" className="h-6 w-6 text-gray-500 dark:text-gray-400" />
                 </dt>
                 <dd>
-                  <span className="text-gray-300">(240)-714-3187</span>
+                  <span className="text-gray-600 dark:text-gray-400">(240)-714-3187</span>
                 </dd>
               </div>
               <div className="flex gap-x-4">
                 <dt className="flex-none">
                   <span className="sr-only">Email</span>
-                  <Mail aria-hidden="true" className="h-6 w-6 text-gray-400" />
+                  <Mail aria-hidden="true" className="h-6 w-6 text-gray-500 dark:text-gray-400" />
                 </dt>
                 <dd>
-                  <a href="mailto:info@creativekitchensmd.com" className="hover:text-white">
+                  <a href="mailto:info@creativekitchensmd.com" className="hover:text-gray-900 dark:hover:text-white">
                     info@creativekitchensmd.com
                   </a>
                 </dd>
@@ -104,7 +104,7 @@ export default function Footer() {
               <div className="flex gap-x-4">
                 <dt className="flex-none">
                   <span className="sr-only">Hours</span>
-                  <Clock aria-hidden="true" className="h-6 w-6 text-gray-400" />
+                  <Clock aria-hidden="true" className="h-6 w-6 text-gray-500 dark:text-gray-400" />
                 </dt>
                 <dd>
                   8am - 5pm; Monday - Friday
@@ -119,22 +119,28 @@ export default function Footer() {
             <h3 className="text-lg font-semibold">{language === "en" ? "Company" : "Empresa"}</h3>
             <ul className="mt-4 space-y-2">
               <li>
-                <Link href={`/${language}/about`} className="text-gray-300 hover:text-white">
+                <Link
+                  href={`/${language}/about`}
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                >
                   {language === "en" ? "About Us" : "Sobre Nosotros"}
                 </Link>
               </li>
               <li>
-                <Link href={`/${language}/contact`} className="text-gray-300 hover:text-white">
+                <Link
+                  href={`/${language}/contact`}
+                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                >
                   {language === "en" ? "Contact" : "Contacto"}
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-300 hover:text-white">
+                <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
                   {language === "en" ? "Privacy Policy" : "Política de Privacidad"}
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-300 hover:text-white">
+                <Link href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
                   {language === "en" ? "Terms of Service" : "Términos de Servicio"}
                 </Link>
               </li>
@@ -148,7 +154,10 @@ export default function Footer() {
             <ul className="mt-4 space-y-2">
               {kitchenProducts.map((product) => (
                 <li key={product.href}>
-                  <Link href={`/${language}/products/${product.href}`} className="text-gray-300 hover:text-white">
+                  <Link
+                    href={`/${language}/products/${product.href}`}
+                    className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                  >
                     {language === "en" ? product.en : product.es}
                   </Link>
                 </li>
@@ -163,7 +172,10 @@ export default function Footer() {
             <ul className="mt-4 space-y-2">
               {bathroomHardwareProducts.map((product) => (
                 <li key={product.href}>
-                  <Link href={`/${language}/products/${product.href}`} className="text-gray-300 hover:text-white">
+                  <Link
+                    href={`/${language}/products/${product.href}`}
+                    className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                  >
                     {language === "en" ? product.en : product.es}
                   </Link>
                 </li>
@@ -172,7 +184,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-gray-800 pt-8">
+        <div className="mt-12 border-t border-gray-200 dark:border-gray-800 pt-8">
           <div className="md:flex md:items-center md:justify-between">
             <div className="flex justify-center gap-x-6 md:order-2">
               {socialLinks.map((item) => (
@@ -181,14 +193,14 @@ export default function Footer() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
                   <span className="sr-only">{item.name}</span>
                   <item.icon aria-hidden="true" className="h-6 w-6" />
                 </a>
               ))}
             </div>
-            <p className="mt-8 text-center text-sm text-gray-400 md:order-1 md:mt-0">
+            <p className="mt-8 text-center text-sm text-gray-500 dark:text-gray-400 md:order-1 md:mt-0">
               &copy; {new Date().getFullYear()} Creative Kitchens MD.{" "}
               {language === "en" ? "All rights reserved." : "Todos los derechos reservados."}
             </p>
