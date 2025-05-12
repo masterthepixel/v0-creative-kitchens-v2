@@ -1,92 +1,63 @@
-"use client"
-
-import { useLanguage } from "./language-provider"
-import { useEffect, useState } from "react"
+// Server Component
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Phone } from "lucide-react"
 
-type HeroContent = {
-  title: string
-  subtitle: string
-  cta: string
-  ctaLink: string
+type HeroSectionProps = {
+  language: string
 }
 
-const heroContent: Record<string, HeroContent> = {
-  en: {
-    title: "Transform Your Space",
-    subtitle: "Premium kitchen and bathroom solutions crafted with excellence and designed for your lifestyle",
-    cta: "Explore Our Collections",
-    ctaLink: "/en/collections",
-  },
-  es: {
-    title: "Transforma Tu Espacio",
-    subtitle: "Soluciones premium para cocinas y baños elaboradas con excelencia y diseñadas para tu estilo de vida",
-    cta: "Explora Nuestras Colecciones",
-    ctaLink: "/es/collections",
-  },
-}
+export default function HeroSection({ language }: HeroSectionProps) {
+  const content = {
+    en: {
+      headline: "Premium kitchen designs",
+      description:
+        "Expert craftsmanship and innovative solutions for your dream kitchen with quality materials and installation.",
+      primaryCta: "View Our Work",
+      primaryCtaLink: `/en/products`,
+      secondaryCta: "Call Us",
+      phone: "(240)-714-3180",
+    },
+    es: {
+      headline: "Diseños de cocina premium",
+      description:
+        "Artesanía experta y soluciones innovadoras para la cocina de tus sueños con materiales de calidad e instalación profesional.",
+      primaryCta: "Ver Nuestro Trabajo",
+      primaryCtaLink: `/es/products`,
+      secondaryCta: "Llámanos",
+      phone: "(240)-714-3180",
+    },
+  }
 
-export default function HeroSection() {
-  const { language } = useLanguage()
-  const [content, setContent] = useState<HeroContent>(heroContent.en)
-
-  useEffect(() => {
-    setContent(heroContent[language])
-  }, [language])
+  // Use the language prop directly
+  const currentContent = content[language as keyof typeof content] || content.en
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image with overlay */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-black/40 z-10" />
-        <img
-          src="https://tailwindcss.com/plus-assets/img/component-images/bento-01-performance.png"
-          alt="Kitchen background"
-          className="w-full h-full object-cover"
-        />
-      </div>
-
-      {/* Content container */}
-      <div className="container relative z-20 px-4 py-32 sm:px-6 lg:px-8 mx-auto text-center">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            {content.title}
+    <div className="relative overflow-hidden min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+      {/* Content overlay - centered both horizontally and vertically */}
+      <div className="relative z-20 w-full flex items-center justify-center min-h-screen px-4">
+        <div className="text-center max-w-3xl backdrop-blur-md bg-white/50 dark:bg-gray-900/50 p-8 sm:p-10 rounded-2xl shadow-lg border border-white/20 dark:border-gray-800/30">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
+            {currentContent.headline}
           </h1>
-          <p className="mt-6 text-xl text-white/90 max-w-3xl mx-auto">{content.subtitle}</p>
-          <div className="mt-10 flex justify-center gap-x-6">
-            <Button
-              asChild
-              size="lg"
-              className="bg-white text-gray-900 hover:bg-gray-100 hover:text-gray-900 px-8 py-6 text-lg font-medium"
+          <p className="mt-6 text-lg leading-8 text-gray-800 dark:text-gray-200 mx-auto max-w-2xl">
+            {currentContent.description}
+          </p>
+          <div className="mt-10 flex items-center justify-center gap-x-6">
+            <Link
+              href={currentContent.primaryCtaLink}
+              className="shadow-[0_4px_14px_0_rgb(0,118,255,39%)] hover:shadow-[0_6px_20px_rgba(0,118,255,23%)] hover:bg-[rgba(0,118,255,0.9)] px-8 py-3 bg-[#0070f3] rounded-md text-white font-medium transition duration-200 ease-linear"
             >
-              <Link href={content.ctaLink}>
-                {content.cta}
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
+              {currentContent.primaryCta}
+            </Link>
+            <a
+              href={`tel:${currentContent.phone}`}
+              className="flex items-center text-base font-semibold text-gray-900 dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] transition-colors"
+            >
+              <Phone className="mr-2 h-5 w-5" />
+              {currentContent.secondaryCta}: {currentContent.phone}
+            </a>
           </div>
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="text-white"
-        >
-          <path d="M12 5v14" />
-          <path d="m19 12-7 7-7-7" />
-        </svg>
       </div>
     </div>
   )

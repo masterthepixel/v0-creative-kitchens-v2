@@ -1,386 +1,147 @@
 "use client"
 
-import { useLanguage } from "./language-provider"
-import { useEffect, useState, useRef } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
-import { motion } from "framer-motion"
-
-// Import Splide styles
-import "@splidejs/splide/dist/css/splide.min.css"
-import Splide from "@splidejs/splide"
-
-type CarouselSlide = {
-  title: string
-  subtitle: string
-  cta: string
-  ctaLink: string
-  backgroundImage: string
-}
-
-type CarouselContent = {
-  slides: CarouselSlide[]
-}
-
-const carouselContent: Record<string, CarouselContent> = {
-  en: {
-    slides: [
-      {
-        title: "Premium Cabinets",
-        subtitle: "Explore our collection of high-quality cabinets designed for both style and functionality",
-        cta: "View Cabinet Options",
-        ctaLink: "/en/cabinets",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1696986681606-b156ccd761c5?q=80&w=2340&auto=format&fit=crop",
-      },
-      {
-        title: "Elegant Countertops",
-        subtitle: "Discover durable and beautiful countertop solutions for your kitchen and bathroom",
-        cta: "Explore Countertops",
-        ctaLink: "/en/countertops",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1564078516393-cf04bd966897?q=80&w=2487&auto=format&fit=crop",
-      },
-      {
-        title: "Modern Sinks",
-        subtitle: "Find the perfect sink to complement your kitchen or bathroom design",
-        cta: "Browse Sinks",
-        ctaLink: "/en/sinks",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1518733057094-95b53143d2a7?q=80&w=2465&auto=format&fit=crop",
-      },
-      {
-        title: "Stylish Faucets",
-        subtitle: "Enhance your space with our selection of premium faucets combining form and function",
-        cta: "View Faucets",
-        ctaLink: "/en/faucets",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1576698483491-8c43f0862543?q=80&w=1799&auto=format&fit=crop",
-      },
-      {
-        title: "High-End Appliances",
-        subtitle: "Upgrade your kitchen with state-of-the-art appliances that make cooking a pleasure",
-        cta: "Shop Appliances",
-        ctaLink: "/en/appliances",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?q=80&w=2535&auto=format&fit=crop",
-      },
-      {
-        title: "Premium Flooring",
-        subtitle: "Transform your space with our selection of quality flooring options for every room",
-        cta: "Explore Flooring",
-        ctaLink: "/en/flooring",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1604578762246-41134e37f9cc?q=80&w=2535&auto=format&fit=crop",
-      },
-      {
-        title: "Luxury Bath Tubs",
-        subtitle: "Create your personal sanctuary with our collection of elegant and comfortable bath tubs",
-        cta: "View Bath Tubs",
-        ctaLink: "/en/bath-tubs",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1502005097973-6a7082348e28?q=80&w=2487&auto=format&fit=crop",
-      },
-      {
-        title: "Quality Hardware",
-        subtitle: "Find the perfect finishing touches with our selection of premium hardware options",
-        cta: "Browse Hardware",
-        ctaLink: "/en/hardware",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1540932239986-30128078f3c5?q=80&w=2487&auto=format&fit=crop",
-      },
-      {
-        title: "Dining & Kitchen Spaces",
-        subtitle: "Create beautiful dining areas that blend seamlessly with your kitchen design",
-        cta: "Get Inspired",
-        ctaLink: "/en/inspiration",
-        backgroundImage:
-          "https://sjc.microlink.io/KED1wzbXGQZaufLtDgW8s2IUp-Uy2ZEHSoNbxaVAZiLsk4zWAs2GbQAoO6mPkJDsCeJiJiX7O2oWnrSOjpkkqg.jpeg",
-      },
-    ],
-  },
-  es: {
-    slides: [
-      {
-        title: "Gabinetes Premium",
-        subtitle: "Explora nuestra colección de gabinetes de alta calidad diseñados para estilo y funcionalidad",
-        cta: "Ver Opciones de Gabinetes",
-        ctaLink: "/es/cabinets",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1696986681606-b156ccd761c5?q=80&w=2340&auto=format&fit=crop",
-      },
-      {
-        title: "Encimeras Elegantes",
-        subtitle: "Descubre soluciones de encimeras duraderas y hermosas para tu cocina y baño",
-        cta: "Explorar Encimeras",
-        ctaLink: "/es/countertops",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1564078516393-cf04bd966897?q=80&w=2487&auto=format&fit=crop",
-      },
-      {
-        title: "Fregaderos Modernos",
-        subtitle: "Encuentra el fregadero perfecto para complementar el diseño de tu cocina o baño",
-        cta: "Explorar Fregaderos",
-        ctaLink: "/es/sinks",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1518733057094-95b53143d2a7?q=80&w=2465&auto=format&fit=crop",
-      },
-      {
-        title: "Grifos con Estilo",
-        subtitle: "Mejora tu espacio con nuestra selección de grifos premium que combinan forma y función",
-        cta: "Ver Grifos",
-        ctaLink: "/es/faucets",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1576698483491-8c43f0862543?q=80&w=1799&auto=format&fit=crop",
-      },
-      {
-        title: "Electrodomésticos de Alta Gama",
-        subtitle: "Actualiza tu cocina con electrodomésticos de última generación que hacen de cocinar un placer",
-        cta: "Comprar Electrodomésticos",
-        ctaLink: "/es/appliances",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?q=80&w=2535&auto=format&fit=crop",
-      },
-      {
-        title: "Pisos Premium",
-        subtitle: "Transforma tu espacio con nuestra selección de opciones de pisos de calidad para cada habitación",
-        cta: "Explorar Pisos",
-        ctaLink: "/es/flooring",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1604578762246-41134e37f9cc?q=80&w=2535&auto=format&fit=crop",
-      },
-      {
-        title: "Bañeras de Lujo",
-        subtitle: "Crea tu santuario personal con nuestra colección de bañeras elegantes y cómodas",
-        cta: "Ver Bañeras",
-        ctaLink: "/es/bath-tubs",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1502005097973-6a7082348e28?q=80&w=2487&auto=format&fit=crop",
-      },
-      {
-        title: "Herrajes de Calidad",
-        subtitle: "Encuentra los toques finales perfectos con nuestra selección de opciones de herrajes premium",
-        cta: "Explorar Herrajes",
-        ctaLink: "/es/hardware",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1540932239986-30128078f3c5?q=80&w=2487&auto=format&fit=crop",
-      },
-      {
-        title: "Espacios de Comedor y Cocina",
-        subtitle: "Crea hermosas áreas de comedor que se integren perfectamente con el diseño de tu cocina",
-        cta: "Inspírate",
-        ctaLink: "/es/inspiration",
-        backgroundImage:
-          "https://sjc.microlink.io/KED1wzbXGQZaufLtDgW8s2IUp-Uy2ZEHSoNbxaVAZiLsk4zWAs2GbQAoO6mPkJDsCeJiJiX7O2oWnrSOjpkkqg.jpeg",
-      },
-    ],
-  },
-}
+import { motion, AnimatePresence } from "framer-motion"
 
 export default function HeroCarousel() {
-  const { language } = useLanguage()
-  const [content, setContent] = useState<CarouselContent>(carouselContent.en)
-  const splideRef = useRef<HTMLDivElement>(null)
-  const splideInstance = useRef<Splide | null>(null)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isLoaded, setIsLoaded] = useState(false)
 
+  const slides = [
+    {
+      id: 1,
+      image: "/modern-kitchen-cabinets.png",
+      title: "Premium Cabinets",
+      subtitle: "High-quality designs for style and functionality",
+      cta: "Explore Cabinets",
+      ctaLink: "/en/products/cabinets",
+    },
+    {
+      id: 2,
+      image: "/kitchen-countertops.png",
+      title: "Elegant Countertops",
+      subtitle: "Durable and beautiful solutions for your home",
+      cta: "View Countertops",
+      ctaLink: "/en/products/countertops",
+    },
+    {
+      id: 3,
+      image: "/cabinet-lighting.png",
+      title: "Cabinet Lighting",
+      subtitle: "Illuminate your space with style",
+      cta: "Discover Lighting",
+      ctaLink: "/en/products/cabinet-lighting",
+    },
+    {
+      id: 4,
+      image: "/luxury-bathtub.png",
+      title: "Luxury Bath Tubs",
+      subtitle: "Create your personal sanctuary",
+      cta: "View Bath Tubs",
+      ctaLink: "/en/products/bath-tubs",
+    },
+    {
+      id: 5,
+      image: "/kitchen-flooring.png",
+      title: "Premium Flooring",
+      subtitle: "Quality options for every room",
+      cta: "Explore Flooring",
+      ctaLink: "/en/products/flooring",
+    },
+  ]
+
+  // Set loaded state after mount
   useEffect(() => {
-    setContent(carouselContent[language])
-    // Preload images when content changes
-    setTimeout(() => preloadImages(), 100)
-  }, [language])
-
-  const initSplide = () => {
-    if (splideRef.current) {
-      return new Splide(splideRef.current, {
-        type: "loop",
-        perPage: 3,
-        perMove: 1,
-        focus: "center",
-        autoplay: true,
-        interval: 5000,
-        pauseOnHover: true,
-        gap: "1rem",
-        padding: { left: "4%", right: "4%" },
-        arrows: true,
-        pagination: false,
-        speed: 600,
-        easing: "cubic-bezier(0.25, 1, 0.5, 1)",
-        lazyLoad: "nearby",
-        preloadPages: 2,
-        updateOnMove: true /* Ensures images update properly during movement */,
-        waitForTransition: true /* Ensures transitions complete before updating */,
-        breakpoints: {
-          1024: {
-            perPage: 3,
-            gap: "1rem",
-            padding: { left: "4%", right: "4%" },
-          },
-          768: {
-            perPage: 2,
-            gap: "0.75rem",
-            padding: { left: "8%", right: "8%" },
-          },
-          640: {
-            perPage: 1,
-            gap: "0.5rem",
-            padding: { left: "15%", right: "15%" },
-          },
-        },
-      }).mount()
-    }
-    return null
-  }
-
-  const preloadImages = () => {
-    if (content && content.slides) {
-      content.slides.forEach((slide, index) => {
-        if (index < 5) {
-          // Preload first 5 images
-          const img = new Image()
-          img.src = slide.backgroundImage
-        }
-      })
-    }
-  }
-
-  useEffect(() => {
-    if (splideRef.current && !splideInstance.current) {
-      splideInstance.current = initSplide()
-    }
-
-    return () => {
-      if (splideInstance.current) {
-        splideInstance.current.destroy()
-        splideInstance.current = null
-      }
-    }
+    setIsLoaded(true)
   }, [])
 
-  // Reinitialize when language changes
+  // Auto-rotation with useEffect
   useEffect(() => {
-    if (splideInstance.current) {
-      splideInstance.current.destroy()
-      splideInstance.current = null
-    }
+    if (!isLoaded) return
 
-    if (splideRef.current) {
-      setTimeout(() => {
-        splideInstance.current = initSplide()
-      }, 100)
-    }
-  }, [language])
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [isLoaded, slides.length])
+
+  // Preload images
+  useEffect(() => {
+    slides.forEach((slide) => {
+      const img = new Image()
+      img.src = slide.image
+    })
+  }, [])
+
+  if (!isLoaded) {
+    return (
+      <div className="relative overflow-hidden rounded-3xl shadow-xl bg-gray-100 dark:bg-gray-800 animate-pulse">
+        <div className="aspect-[4/3] w-full h-[400px] lg:h-[500px] lg:aspect-auto"></div>
+      </div>
+    )
+  }
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      className="w-full mx-auto max-w-7xl pt-16"
-    >
-      <div ref={splideRef} className="splide">
-        <div className="splide__track">
-          <ul className="splide__list">
-            {content.slides.map((slide, index) => (
-              <li key={index} className="splide__slide">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.05 * Math.min(index, 3) }}
-                  className="glassmorphism-card rounded-xl overflow-hidden h-[500px] md:h-[550px] w-full max-w-[320px] md:max-w-[320px] lg:max-w-[380px] mx-auto relative group"
-                  style={{
-                    perspective: "1000px",
-                    transformStyle: "preserve-3d",
-                  }}
-                >
-                  {/* Background image */}
-                  <img
-                    src={slide.backgroundImage || "/placeholder.svg"}
-                    alt={slide.title}
-                    className="absolute inset-0 w-full h-full object-cover object-center"
-                    loading={index < 3 ? "eager" : "lazy"}
-                    width="380"
-                    height="550"
-                    style={{
-                      objectFit: "cover",
-                      imageRendering: "high-quality",
-                      transform: "translateZ(0)",
-                      backfaceVisibility: "hidden",
-                      willChange: "transform",
-                    }}
-                  />
+    <div className="relative overflow-hidden rounded-3xl shadow-xl w-full max-w-lg">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentSlide}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="aspect-[4/3] w-full lg:h-[500px] lg:aspect-auto"
+        >
+          <img
+            src={slides[currentSlide].image || "/placeholder.svg"}
+            alt={slides[currentSlide].title}
+            className="h-full w-full object-cover"
+          />
 
-                  {/* Glass overlay with gradient */}
-                  <div
-                    className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 backdrop-blur-[3px] transition-all duration-500 group-hover:backdrop-blur-[5px]"
-                    style={{
-                      boxShadow: "inset 0 0 0 1px rgba(255, 255, 255, 0.1)",
-                      transform: "translateZ(1px)",
-                    }}
-                  ></div>
+          <div className="absolute inset-0 flex flex-col justify-between p-6">
+            <div>
+              <h2
+                className="text-2xl md:text-3xl font-bold text-white"
+                style={{ textShadow: "0px 1px 2px rgba(0,0,0,0.7), 0px 2px 4px rgba(0,0,0,0.5)" }}
+              >
+                {slides[currentSlide].title}
+              </h2>
+              <p
+                className="text-xs md:text-sm mt-2 text-white/90 max-w-[95%]"
+                style={{ textShadow: "0px 1px 2px rgba(0,0,0,0.6)" }}
+              >
+                {slides[currentSlide].subtitle}
+              </p>
+            </div>
 
-                  {/* Subtle border glow */}
-                  <div
-                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      boxShadow: "inset 0 0 20px rgba(255, 255, 255, 0.15), 0 0 10px rgba(255, 255, 255, 0.05)",
-                      transform: "translateZ(2px)",
-                    }}
-                  ></div>
+            <div className="mt-auto">
+              <Link href={slides[currentSlide].ctaLink} className="no-underline">
+                <button className="shadow-[0_4px_14px_0_rgb(0,118,255,39%)] hover:shadow-[0_6px_20px_rgba(0,118,255,23%)] hover:bg-[rgba(0,118,255,0.9)] px-6 py-2 bg-[#0070f3] rounded-md text-white font-light transition duration-200 ease-linear flex items-center text-sm">
+                  {slides[currentSlide].cta}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </button>
+              </Link>
+            </div>
+          </div>
 
-                  {/* Content container */}
-                  <div
-                    className="relative z-10 p-6 md:p-8 h-full flex flex-col justify-end"
-                    style={{
-                      transform: "translateZ(20px)",
-                      transformStyle: "preserve-3d",
-                    }}
-                  >
-                    <motion.h2
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: 0.1 + 0.05 * Math.min(index, 2) }}
-                      className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-3 text-shadow-sm"
-                      style={{
-                        transform: "translateZ(10px)",
-                      }}
-                    >
-                      {slide.title}
-                    </motion.h2>
-                    <motion.p
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: 0.15 + 0.05 * Math.min(index, 2) }}
-                      className="text-white/90 text-xs md:text-sm mb-4 md:mb-5 line-clamp-3 text-shadow-xs"
-                      style={{
-                        transform: "translateZ(5px)",
-                      }}
-                    >
-                      {slide.subtitle}
-                    </motion.p>
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: 0.2 + 0.05 * Math.min(index, 2) }}
-                      style={{
-                        transform: "translateZ(15px)",
-                      }}
-                    >
-                      <Link href={slide.ctaLink} className="no-underline">
-                        <button className="button-6 glass-button" role="button">
-                          <span className="text flex items-center">
-                            {slide.cta}
-                            <ArrowRight className="ml-2 h-4 w-4" />
-                          </span>
-                        </button>
-                      </Link>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              </li>
+          {/* Slide indicators */}
+          <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  currentSlide === index ? "bg-white" : "bg-white/40"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
             ))}
-          </ul>
-        </div>
-      </div>
-    </motion.div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
   )
 }

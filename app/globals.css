@@ -268,3 +268,8 @@ body {
   background-size: 24px 24px;
   background-position: 0 0;
 }
+
+/* 3D transform utility */
+.transform-3d {
+  transform-style: preserve-3d;
+}

@@ -1,23 +1,42 @@
-import HeroSectionWithCarousel from "@/components/hero-section-with-carousel"
+import { getDictionary } from "@/lib/dictionary"
 import ProductBentoGrid1 from "@/components/product-bento-grid-1"
 import ProductBentoGrid2 from "@/components/product-bento-grid-2"
 import ProductBentoGrid3 from "@/components/product-bento-grid-3"
-import AboutUs from "@/components/about-us"
 import Testimonials from "@/components/testimonials"
-import FAQSection from "@/components/faq-section"
+import AboutUs from "@/components/about-us"
+import FaqSection from "@/components/faq-section"
 import { reviewsData } from "@/lib/testimonials-data"
-import type { Locale } from "@/lib/dictionary"
 
-export default function Home({ params }: { params: { lang: Locale } }) {
+export default async function Home({ params: { lang } }: { params: { lang: string } }) {
+  const dict = await getDictionary(lang)
+
   return (
-    <>
-      <HeroSectionWithCarousel />
-      <ProductBentoGrid1 />
-      <ProductBentoGrid2 />
-      <ProductBentoGrid3 />
-      <AboutUs />
-      <Testimonials reviews={reviewsData.reviews} businessInfo={reviewsData.businessInfo} />
-      <FAQSection />
-    </>
+    <main className="flex min-h-screen flex-col items-center justify-between">
+      {/* Hero section has been removed */}
+      
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <ProductBentoGrid1 />
+      </section>
+
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50 dark:bg-gray-800">
+        <AboutUs />
+      </section>
+
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <ProductBentoGrid2 />
+      </section>
+
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50 dark:bg-gray-800">
+        <Testimonials reviews={reviewsData.reviews} businessInfo={reviewsData.businessInfo} />
+      </section>
+
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <ProductBentoGrid3 />
+      </section>
+
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50 dark:bg-gray-800">
+        <FaqSection />
+      </section>
+    </main>
   )
 }
