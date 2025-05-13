@@ -6,14 +6,18 @@ import Testimonials from "@/components/testimonials"
 import AboutUs from "@/components/about-us"
 import FaqSection from "@/components/faq-section"
 import { reviewsData } from "@/lib/testimonials-data"
+import HeroSectionCombined from "@/components/hero-section-combined"
 
 export default async function Home({ params: { lang } }: { params: { lang: string } }) {
   const dict = await getDictionary(lang)
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-      {/* Hero section has been removed */}
-      
+      {/* Hero section */}
+      <section className="w-full py-12 md:py-16 lg:py-20">
+        <HeroSectionCombined />
+      </section>
+
       <section className="w-full py-12 md:py-24 lg:py-32">
         <ProductBentoGrid1 />
       </section>

@@ -71,7 +71,7 @@ export default function HeroSectionWithWordRotation() {
   }
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
       {/* Content container */}
       <div className="relative z-20 w-full flex items-center justify-center min-h-screen">
         <div className="max-w-7xl w-full mx-auto px-4">
@@ -139,7 +139,7 @@ export default function HeroSectionWithWordRotation() {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-white"
+          className="text-gray-500 dark:text-gray-400"
         >
           <path d="M12 5v14" />
           <path d="m19 12-7 7-7-7" />

@@ -32,7 +32,7 @@ export default function HeroSection({ language }: HeroSectionProps) {
   const currentContent = content[language as keyof typeof content] || content.en
 
   return (
-    <div className="relative overflow-hidden min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+    <div className="relative overflow-hidden min-h-screen w-full flex items-center justify-center">
       {/* Content overlay - centered both horizontally and vertically */}
       <div className="relative z-20 w-full flex items-center justify-center min-h-screen px-4">
         <div className="text-center max-w-3xl backdrop-blur-md bg-white/50 dark:bg-gray-900/50 p-8 sm:p-10 rounded-2xl shadow-lg border border-white/20 dark:border-gray-800/30">
