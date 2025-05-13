@@ -14,7 +14,7 @@ export default async function Home({ params: { lang } }: { params: { lang: strin
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       {/* Hero section */}
-      <section className="w-full py-12 md:py-16 lg:py-20">
+      <section className="w-full py-8 md:py-10 lg:py-12">
         <HeroSectionCombined />
       </section>
 
@@ -30,12 +30,13 @@ export default async function Home({ params: { lang } }: { params: { lang: strin
         <ProductBentoGrid2 />
       </section>
 
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50 dark:bg-gray-800">
-        <Testimonials reviews={reviewsData.reviews} businessInfo={reviewsData.businessInfo} />
-      </section>
-
       <section className="w-full py-12 md:py-24 lg:py-32">
         <ProductBentoGrid3 />
+      </section>
+
+      {/* Testimonials section - removed background color */}
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <Testimonials reviews={reviewsData.reviews} businessInfo={reviewsData.businessInfo} />
       </section>
 
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50 dark:bg-gray-800">

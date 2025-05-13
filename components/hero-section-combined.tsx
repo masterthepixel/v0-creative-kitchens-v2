@@ -2,7 +2,7 @@
 
 import { useLanguage } from "./language-provider"
 import Link from "next/link"
-import { Phone } from "lucide-react"
+import { Phone, Grid } from "lucide-react"
 import HeroCarousel from "./hero-carousel"
 
 export default function HeroSectionCombined() {
@@ -15,7 +15,9 @@ export default function HeroSectionCombined() {
         "Creative Kitchens delivers exceptional craftsmanship and innovative solutions for your dream kitchen. From custom cabinets to elegant countertops, we bring your vision to life with quality materials and expert installation.",
       primaryCta: "View Our Work",
       primaryCtaLink: `/en/products`,
-      secondaryCta: "Call Us",
+      secondaryCta: "Browse Products",
+      secondaryCtaLink: `/en/products`,
+      callUs: "Call Us",
       phone: "(240)-714-3180",
     },
     es: {
@@ -24,7 +26,9 @@ export default function HeroSectionCombined() {
         "Creative Kitchens ofrece artesanía excepcional y soluciones innovadoras para la cocina de tus sueños. Desde gabinetes personalizados hasta elegantes encimeras, damos vida a tu visión con materiales de calidad e instalación experta.",
       primaryCta: "Ver Nuestro Trabajo",
       primaryCtaLink: `/es/products`,
-      secondaryCta: "Llámanos",
+      secondaryCta: "Explorar Productos",
+      secondaryCtaLink: `/es/products`,
+      callUs: "Llámanos",
       phone: "(240)-714-3180",
     },
   }
@@ -33,9 +37,18 @@ export default function HeroSectionCombined() {
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12">
         {/* Text content - left side */}
-        <div className="lg:w-1/2 space-y-6">
+        <div className="lg:w-1/2 space-y-5 pt-2 lg:pt-4">
+          {/* Phone link above the headline */}
+          <a
+            href={`tel:${currentContent.phone}`}
+            className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] transition-colors mb-2 pb-1 border-b border-gray-200/30 dark:border-gray-800/30"
+          >
+            <Phone className="mr-2 h-5 w-5" />
+            {currentContent.callUs}: {currentContent.phone}
+          </a>
+
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white">
             {currentContent.headline}
           </h1>
@@ -45,23 +58,25 @@ export default function HeroSectionCombined() {
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Link
               href={currentContent.primaryCtaLink}
-              className="shadow-[0_4px_14px_0_rgb(0,118,255,39%)] hover:shadow-[0_6px_20px_rgba(0,118,255,23%)] hover:bg-[rgba(0,118,255,0.9)] px-8 py-3 bg-[#0070f3] rounded-md text-white font-medium transition duration-200 ease-linear text-center sm:text-left"
+              className="shadow-[0_4px_14px_0_rgb(0,118,255,39%)] hover:shadow-[0_8px_30px_rgba(0,118,255,45%)] px-8 py-3 bg-[#0070f3] rounded-md text-white hover:text-white font-medium transition-all duration-200 ease-out text-center sm:text-left hover:scale-[1.1] origin-center"
             >
               {currentContent.primaryCta}
             </Link>
 
-            <a
-              href={`tel:${currentContent.phone}`}
-              className="flex items-center justify-center sm:justify-start text-base font-semibold text-gray-900 dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] transition-colors"
+            <Link
+              href={currentContent.secondaryCtaLink}
+              className="flex items-center justify-center px-8 py-3 border border-[#00a86b]/70 dark:border-[#00a86b]/70 rounded-md text-white hover:text-white bg-[#00a86b] dark:bg-[#00a86b] font-medium transition-all duration-200 ease-out shadow-[0_4px_14px_0_rgba(0,168,107,39%)] hover:shadow-[0_8px_30px_rgba(0,168,107,45%)] hover:scale-[1.1] origin-center group"
             >
-              <Phone className="mr-2 h-5 w-5" />
-              {currentContent.secondaryCta}: {currentContent.phone}
-            </a>
+              <span className="text-white group-hover:text-white">
+                <Grid className="mr-2 h-5 w-5" />
+              </span>
+              {currentContent.secondaryCta}
+            </Link>
           </div>
         </div>
 
         {/* Carousel - right side */}
-        <div className="lg:w-1/2">
+        <div className="lg:w-1/2 flex justify-center lg:justify-end">
           <HeroCarousel />
         </div>
       </div>

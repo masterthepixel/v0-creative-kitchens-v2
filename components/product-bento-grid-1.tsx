@@ -46,7 +46,7 @@ export default function ProductBentoGrid1() {
   const categories = gridData.categories.slice(0, 4)
 
   return (
-    <div className="bg-gray-50 py-24 sm:py-32 dark:bg-gray-900">
+    <div className="py-24 sm:py-32">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

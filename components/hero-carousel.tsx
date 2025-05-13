@@ -79,7 +79,7 @@ export default function HeroCarousel() {
   if (!isLoaded) {
     return (
       <div className="relative overflow-hidden rounded-3xl shadow-xl">
-        <div className="aspect-[4/6] md:aspect-[4/7] lg:aspect-[4/8] w-full h-[600px] lg:h-[800px]"></div>
+        <div className="aspect-[4/3] w-full h-[300px] md:h-[350px] lg:h-[400px]"></div>
       </div>
     )
   }
@@ -93,7 +93,7 @@ export default function HeroCarousel() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="aspect-[4/6] md:aspect-[4/7] lg:aspect-[4/8] w-full h-[600px] lg:h-[800px]"
+          className="aspect-[4/3] w-full h-[300px] md:h-[350px] lg:h-[400px]"
         >
           <img
             src={slides[currentSlide].image || "/placeholder.svg"}

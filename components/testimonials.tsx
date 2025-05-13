@@ -2,38 +2,10 @@
 
 import { useLanguage } from "./language-provider"
 import { useState, useEffect } from "react"
-import StarRating from "./star-rating"
-import AnimatedSection from "./animated-section"
-import { motion } from "framer-motion"
+import { InfiniteMovingCards } from "./ui/infinite-moving-cards"
 
-// Helper function to combine class names
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ")
-}
-
-type Review = {
-  name: string
-  location: string | null
-  friends: number | null
-  reviews: number
-  photos: number
-  date: string
-  text: string
-  text_es: string
-  photos_count: number
-  photo_captions: string[]
-  owner_response: string | null
-  owner_response_es: string | null
-}
-
-type TestimonialsProps = {
-  reviews: Review[]
-  businessInfo: {
-    owner_name: string
-    business_name: string
-    business_name_es: string
-  }
-}
+// Import the reviews data
+import { reviewsData } from "@/data/reviews-data"
 
 // Array of random face images
 const faceImages = [
@@ -51,7 +23,7 @@ const faceImages = [
   "https://randomuser.me/api/portraits/men/6.jpg",
 ]
 
-export default function Testimonials({ reviews, businessInfo }: TestimonialsProps) {
+export default function Testimonials() {
   const { language } = useLanguage()
   const [title, setTitle] = useState("")
   const [subtitle, setSubtitle] = useState("")
@@ -59,126 +31,49 @@ export default function Testimonials({ reviews, businessInfo }: TestimonialsProp
   useEffect(() => {
     if (language === "en") {
       setTitle("Testimonials")
-      setSubtitle(`What our customers say about ${businessInfo.business_name}`)
+      setSubtitle(`What our customers say about ${reviewsData.businessInfo.business_name}`)
     } else {
       setTitle("Testimonios")
-      setSubtitle(`Lo que dicen nuestros clientes sobre ${businessInfo.business_name_es}`)
+      setSubtitle(`Lo que dicen nuestros clientes sobre ${reviewsData.businessInfo.business_name_es}`)
     }
-  }, [language, businessInfo])
+  }, [language])
 
-  // Assign a random face image to each review
-  const reviewsWithImages = reviews.map((review, index) => ({
-    ...review,
-    imageUrl: faceImages[index % faceImages.length],
-  }))
+  // Transform the reviews data into the format expected by InfiniteMovingCards
+  const testimonialItems = reviewsData.reviews
+    .map((review, index) => {
+      // Filter out Ruben L. explicitly
+      if (review.name === "Ruben L.") return null
 
-  // Select featured testimonial (using the first review with a longer text)
-  const featuredTestimonial =
-    reviewsWithImages.find((review) => (language === "en" ? review.text.length : review.text_es.length) > 100) ||
-    reviewsWithImages[0]
-
-  // Organize remaining testimonials into the grid structure
-  const remainingReviews = reviewsWithImages.filter((review) => review !== featuredTestimonial).slice(0, 8)
-
-  // Create the grid structure similar to the example
-  const testimonials = [
-    [
-      [remainingReviews[0], remainingReviews[1]].filter(Boolean),
-      [remainingReviews[2], remainingReviews[3]].filter(Boolean),
-    ],
-    [
-      [remainingReviews[4], remainingReviews[5]].filter(Boolean),
-      [remainingReviews[6], remainingReviews[7]].filter(Boolean),
-    ],
-  ]
+      return {
+        quote: language === "en" ? review.text : review.text_es || review.text,
+        name: review.name,
+        title: review.location || (language === "en" ? "Customer" : "Cliente"),
+        rating: 5, // Assuming all reviews are 5-star
+        imageUrl: faceImages[index % faceImages.length], // Add back the portrait images
+      }
+    })
+    .filter(Boolean) // Remove null items (Ruben's review)
 
   return (
-    <AnimatedSection className="relative isolate pt-24 pb-32 sm:pt-32">
+    <div className="relative isolate pt-24 pb-32 sm:pt-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-base/7 font-semibold text-primary"
-          >
-            {title}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-2 text-4xl font-semibold tracking-tight text-balance text-gray-900 dark:text-white sm:text-5xl"
-          >
+          <h2 className="text-base/7 font-semibold text-primary">{title}</h2>
+          <p className="mt-2 text-4xl font-semibold tracking-tight text-balance text-gray-900 dark:text-white sm:text-5xl">
             {subtitle}
-          </motion.p>
+          </p>
         </div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm/6 text-gray-900 dark:text-gray-100 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4"
-        >
-          <figure className="rounded-2xl bg-white dark:bg-gray-800 shadow-lg ring-1 ring-gray-900/5 dark:ring-gray-100/5 sm:col-span-2 xl:col-start-2 xl:row-end-1">
-            <blockquote className="p-6 text-lg font-semibold tracking-tight text-gray-900 dark:text-white sm:p-12 sm:text-xl/8">
-              <p>{`"${language === "en" ? featuredTestimonial.text : featuredTestimonial.text_es}"`}</p>
-            </blockquote>
-            <figcaption className="flex flex-wrap items-center gap-x-4 gap-y-4 border-t border-gray-900/10 dark:border-gray-100/10 px-6 py-4 sm:flex-nowrap">
-              <img
-                src={featuredTestimonial.imageUrl || "/placeholder.svg"}
-                alt={featuredTestimonial.name}
-                className="size-12 flex-none rounded-full object-cover"
-              />
-              <div className="flex-auto">
-                <div className="font-semibold">{featuredTestimonial.name}</div>
-                <div className="mt-1">
-                  <StarRating size="md" />
-                </div>
-              </div>
-            </figcaption>
-          </figure>
-          {testimonials.map((columnGroup, columnGroupIdx) => (
-            <div key={columnGroupIdx} className="space-y-8 xl:contents xl:space-y-0">
-              {columnGroup.map((column, columnIdx) => (
-                <div
-                  key={columnIdx}
-                  className={classNames(
-                    (columnGroupIdx === 0 && columnIdx === 0) ||
-                      (columnGroupIdx === testimonials.length - 1 && columnIdx === columnGroup.length - 1)
-                      ? "xl:row-span-2"
-                      : "xl:row-start-1",
-                    "space-y-8",
-                  )}
-                >
-                  {column.map((testimonial) => (
-                    <figure
-                      key={testimonial.name}
-                      className="rounded-2xl bg-white dark:bg-gray-800 p-6 shadow-lg ring-1 ring-gray-900/5 dark:ring-gray-100/5"
-                    >
-                      <blockquote className="text-gray-900 dark:text-white">
-                        <p>{`"${language === "en" ? testimonial.text : testimonial.text_es}"`}</p>
-                      </blockquote>
-                      <figcaption className="mt-6 flex items-center gap-x-4">
-                        <img
-                          src={testimonial.imageUrl || "/placeholder.svg"}
-                          alt={testimonial.name}
-                          className="size-10 rounded-full object-cover"
-                        />
-                        <div>
-                          <div className="font-semibold">{testimonial.name}</div>
-                          <div className="mt-1">
-                            <StarRating />
-                          </div>
-                        </div>
-                      </figcaption>
-                    </figure>
-                  ))}
-                </div>
-              ))}
-            </div>
-          ))}
-        </motion.div>
+
+        <div className="mt-16">
+          <InfiniteMovingCards
+            items={testimonialItems}
+            direction="right"
+            speed="slow"
+            pauseOnHover={true}
+            className="py-4"
+          />
+        </div>
       </div>
-    </AnimatedSection>
+    </div>
   )
 }

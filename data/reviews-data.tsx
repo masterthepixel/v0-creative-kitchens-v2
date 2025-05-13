@@ -134,21 +134,6 @@ export const reviewsData = {
       owner_response_es: "Gracias por confiar en Creative Kitchens. Agradecemos su amable comentario.",
     },
     {
-      name: "Ruben L.",
-      location: "Orlando, FL",
-      friends: 0,
-      reviews: 1,
-      photos: 0,
-      date: "Nov 1, 2021",
-      text: 'My wife and I are extremely happy with the whole experience. The level of professionalism shown from the beginning having our interest as a family as the only priority is the most gratifying experience we have ever had. When we tried to explain what we wanted to accomplish, Doug stepped in with his expertise. He helped us accomplish all that we wanted and saved us money with a great design. He kept us well informed throughout the process. Delays due to COVID and the "supply chain" issues were dealt with promptly. We are looking forward to our next home upgrade. We are not just happy with the quality of work and professionalism, we are also grateful for the optimization of our resources that resulted in an optimum house value increase and a very happy family! We highly recommend Creative kitchen Designs and the team of professionals making it happen! Thank you, Doug!',
-      text_es:
-        'Mi esposa y yo estamos extremadamente felices con toda la experiencia. El nivel de profesionalismo mostrado desde el principio, teniendo nuestro interés como familia como la única prioridad, es la experiencia más gratificante que hemos tenido. Cuando tratamos de explicar lo que queríamos lograr, Doug intervino con su experiencia. Nos ayudó a lograr todo lo que queríamos y nos ahorró dinero con un gran diseño. Nos mantuvo bien informados durante todo el proceso. Los retrasos debido al COVID y los problemas de "cadena de suministro" se trataron con prontitud. Estamos esperando nuestra próxima mejora del hogar. ¡No solo estamos felices con la calidad del trabajo y el profesionalismo, también estamos agradecidos por la optimización de nuestros recursos que resultó en un aumento óptimo del valor de la casa y una familia muy feliz! ¡Recomendamos ampliamente Creative Kitchen Designs y el equipo de profesionales que lo hacen posible! ¡Gracias, Doug!',
-      photos_count: 0,
-      photo_captions: [],
-      owner_response: null,
-      owner_response_es: null,
-    },
-    {
       name: "Melina G.",
       location: "New York, NY",
       friends: 0,
