@@ -34,12 +34,13 @@ export default async function Home({ params: { lang } }: { params: { lang: strin
         <ProductBentoGrid3 />
       </section>
 
-      {/* Testimonials section - removed background color */}
+      {/* Testimonials section */}
       <section className="w-full py-12 md:py-24 lg:py-32">
         <Testimonials reviews={reviewsData.reviews} businessInfo={reviewsData.businessInfo} />
       </section>
 
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50 dark:bg-gray-800">
+      {/* FAQ section - removed background color */}
+      <section className="w-full py-12 md:py-24 lg:py-32">
         <FaqSection />
       </section>
     </main>
