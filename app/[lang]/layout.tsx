@@ -35,7 +35,7 @@ export default function RootLayout({
             <InteractiveGridPattern />
             <Suspense>
               <MainNavbar />
-              <main className="pt-24">{children}</main>
+              <main className="pt-16">{children}</main>
               <Footer />
               <MobileBottomNav />
             </Suspense>

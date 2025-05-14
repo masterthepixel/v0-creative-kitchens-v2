@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useLanguage } from "./language-provider"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, ShoppingBag, Bath, Phone, X, ImageIcon, Globe } from "lucide-react"
+import { Home, ShoppingBag, Bath, Phone, X, ImageIcon } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 export default function MobileBottomNav() {
@@ -15,8 +15,8 @@ export default function MobileBottomNav() {
     home: "Home",
     kitchen: "Kitchen",
     bathroom: "Bathroom",
+    gallery: "Gallery",
     contact: "Contact",
-    language: "Language",
     kitchenEssentials: "Kitchen Essentials",
     bathroomSolutions: "Bathroom & Hardware Solutions",
   })
@@ -28,8 +28,8 @@ export default function MobileBottomNav() {
         home: "Inicio",
         kitchen: "Cocina",
         bathroom: "Baño",
+        gallery: "Galería",
         contact: "Contacto",
-        language: "Idioma",
         kitchenEssentials: "Esenciales de Cocina",
         bathroomSolutions: "Soluciones para Baños y Herrajes",
       })
@@ -38,8 +38,8 @@ export default function MobileBottomNav() {
         home: "Home",
         kitchen: "Kitchen",
         bathroom: "Bathroom",
+        gallery: "Gallery",
         contact: "Contact",
-        language: "Language",
         kitchenEssentials: "Kitchen Essentials",
         bathroomSolutions: "Bathroom & Hardware Solutions",
       })
@@ -72,10 +72,6 @@ export default function MobileBottomNav() {
     } else {
       setActivePopover(name)
     }
-  }
-
-  const toggleLanguage = () => {
-    setLanguage(language === "en" ? "es" : "en")
   }
 
   // Close popover when clicking outside
@@ -111,6 +107,9 @@ export default function MobileBottomNav() {
   // Check if a path is active
   const isActive = (path: string) => {
     if (path === `/${language}` && pathname === `/${language}`) {
+      return true
+    }
+    if (path === `/${language}/gallery` && pathname === `/${language}/gallery`) {
       return true
     }
     if (path === `/${language}/contact` && pathname === `/${language}/contact`) {
@@ -234,63 +233,6 @@ export default function MobileBottomNav() {
         )}
       </AnimatePresence>
 
-      {/* Language Popover */}
-      <AnimatePresence>
-        {activePopover === "language" && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed bottom-16 left-0 w-full z-50"
-          >
-            <div className="mx-4 mb-2 rounded-xl overflow-hidden backdrop-blur-lg bg-white/80 dark:bg-gray-900/80 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-200 dark:border-gray-700">
-              <div className="p-4">
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-bold text-primary">{translations.language}</h3>
-                  <button
-                    onClick={() => setActivePopover(null)}
-                    className="p-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
-                  >
-                    <X size={16} />
-                  </button>
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    onClick={() => {
-                      setLanguage("en")
-                      setActivePopover(null)
-                    }}
-                    className={`py-2 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center ${
-                      language === "en"
-                        ? "bg-primary/10 text-primary font-medium"
-                        : "text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
-                    }`}
-                  >
-                    <span className="mr-2 text-lg">🇺🇸</span>
-                    <span>English</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setLanguage("es")
-                      setActivePopover(null)
-                    }}
-                    className={`py-2 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center ${
-                      language === "es"
-                        ? "bg-primary/10 text-primary font-medium"
-                        : "text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
-                    }`}
-                  >
-                    <span className="mr-2 text-lg">🇪🇸</span>
-                    <span>Español</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Bottom Navigation Bar */}
       <motion.div
         initial={{ y: 100 }}
@@ -363,6 +305,25 @@ export default function MobileBottomNav() {
 
             <div className="flex-1 group">
               <Link
+                href={`/${language}/gallery`}
+                className={`flex flex-col items-center justify-center text-center pt-1 ${
+                  isActive(`/${language}/gallery`)
+                    ? "text-primary"
+                    : "text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary"
+                }`}
+              >
+                <ImageIcon size={22} />
+                <span className="text-xs mt-1">{translations.gallery}</span>
+                <div
+                  className={`w-6 h-1 mt-1 rounded-full ${
+                    isActive(`/${language}/gallery`) ? "bg-primary" : "bg-transparent"
+                  }`}
+                ></div>
+              </Link>
+            </div>
+
+            <div className="flex-1 group">
+              <Link
                 href={`/${language}/contact`}
                 className={`flex flex-col items-center justify-center text-center pt-1 ${
                   isActive(`/${language}/contact`)
@@ -378,26 +339,6 @@ export default function MobileBottomNav() {
                   }`}
                 ></div>
               </Link>
-            </div>
-
-            <div className="flex-1 group">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation()
-                  togglePopover("language")
-                }}
-                className={`w-full flex flex-col items-center justify-center text-center pt-1 focus:outline-none ${
-                  activePopover === "language"
-                    ? "text-primary"
-                    : "text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary"
-                }`}
-              >
-                <Globe size={22} />
-                <span className="text-xs mt-1">{translations.language}</span>
-                <div
-                  className={`w-6 h-1 mt-1 rounded-full ${activePopover === "language" ? "bg-primary" : "bg-transparent"}`}
-                ></div>
-              </button>
             </div>
           </div>
         </div>

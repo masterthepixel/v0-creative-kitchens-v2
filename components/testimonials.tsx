@@ -55,16 +55,16 @@ export default function Testimonials() {
     .filter(Boolean) // Remove null items (Ruben's review)
 
   return (
-    <div className="relative isolate pt-24 pb-32 sm:pt-32">
+    <div className="relative isolate py-8">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="max-w-2xl">
           <h2 className="text-base/7 font-semibold text-primary">{title}</h2>
           <p className="mt-2 text-4xl font-semibold tracking-tight text-balance text-gray-900 dark:text-white sm:text-5xl">
             {subtitle}
           </p>
         </div>
 
-        <div className="mt-16">
+        <div className="mt-6">
           <InfiniteMovingCards
             items={testimonialItems}
             direction="right"

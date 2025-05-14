@@ -36,10 +36,10 @@ const faqs: FAQItem[] = [
     id: 3,
     questionEN: "What is the average cost of a kitchen remodel?",
     answerEN:
-      "Kitchen remodel costs vary widely based on scope, materials, and size. Our projects typically range from $30,000 for basic renovations to $100,000+ for premium custom kitchens. We work with you to create a design that fits your budget and provide transparent pricing throughout the process.",
+      "Kitchen remodel costs vary widely based on scope, materials, and size. Our projects range from basic renovations to premium custom kitchens. We work with you to create a design that fits your budget and provide transparent pricing throughout the process.",
     questionES: "¿Cuál es el costo promedio de una remodelación de cocina?",
     answerES:
-      "Los costos de remodelación de cocinas varían ampliamente según el alcance, los materiales y el tamaño. Nuestros proyectos típicamente oscilan entre $30,000 para renovaciones básicas hasta más de $100,000 para cocinas personalizadas premium. Trabajamos con usted para crear un diseño que se ajuste a su presupuesto y proporcionamos precios transparentes durante todo el proceso.",
+      "Los costos de remodelación de cocinas varían ampliamente según el alcance, los materiales y el tamaño. Nuestros proyectos varían desde renovaciones básicas hasta cocinas personalizadas premium. Trabajamos con usted para crear un diseño que se ajuste a su presupuesto y proporcionamos precios transparentes durante todo el proceso.",
   },
   {
     id: 4,
@@ -77,51 +77,6 @@ const faqs: FAQItem[] = [
     answerES:
       "Ofrecemos una amplia selección de materiales de alta calidad. Para encimeras: granito, cuarzo, mármol, bloque de carnicero, concreto y laminado. Para gabinetes: madera sólida (arce, roble, cerezo), madera de ingeniería y varios acabados que incluyen opciones pintadas, teñidas y de termolaminado.",
   },
-  {
-    id: 8,
-    questionEN: "How do I prepare my home for a kitchen renovation?",
-    answerEN:
-      "We recommend clearing cabinets and drawers, setting up a temporary kitchen in another area of your home, protecting adjacent spaces from dust and debris, and making arrangements for pets. We'll provide a detailed preparation checklist before work begins.",
-    questionES: "¿Cómo preparo mi hogar para una renovación de cocina?",
-    answerES:
-      "Recomendamos vaciar gabinetes y cajones, establecer una cocina temporal en otra área de su hogar, proteger espacios adyacentes del polvo y escombros, y hacer arreglos para las mascotas. Proporcionaremos una lista detallada de preparación antes de comenzar el trabajo.",
-  },
-  {
-    id: 9,
-    questionEN: "Do you offer warranties on your work?",
-    answerEN:
-      "Yes, we stand behind our craftsmanship with a 2-year warranty on our installation work. Additionally, most manufacturers provide warranties on their products, such as appliances, cabinets, and countertops, which we'll provide documentation for upon completion.",
-    questionES: "¿Ofrecen garantías en su trabajo?",
-    answerES:
-      "Sí, respaldamos nuestra artesanía con una garantía de 2 años en nuestro trabajo de instalación. Además, la mayoría de los fabricantes proporcionan garantías para sus productos, como electrodomésticos, gabinetes y encimeras, para los cuales proporcionaremos documentación al finalizar.",
-  },
-  {
-    id: 10,
-    questionEN: "Can you incorporate smart home technology into kitchen designs?",
-    answerEN:
-      "We can integrate various smart home features including automated lighting, smart appliances, touchless faucets, voice-controlled systems, and charging stations. Our designers stay current with the latest tech innovations for kitchens.",
-    questionES: "¿Pueden incorporar tecnología de hogar inteligente en los diseños de cocina?",
-    answerES:
-      "¡Absolutamente! Podemos integrar varias características de hogar inteligente, incluyendo iluminación automatizada, electrodomésticos inteligentes, grifos sin contacto, sistemas controlados por voz y estaciones de carga. Nuestros diseñadores se mantienen actualizados con las últimas innovaciones tecnológicas para cocinas.",
-  },
-  {
-    id: 11,
-    questionEN: "Do you offer eco-friendly or sustainable options?",
-    answerEN:
-      "Yes, we're committed to sustainability. We offer eco-friendly options including Energy Star appliances, sustainable wood cabinetry, recycled materials, water-efficient fixtures, LED lighting, and low-VOC finishes. We can help you create a beautiful kitchen with minimal environmental impact.",
-    questionES: "¿Ofrecen opciones ecológicas o sostenibles?",
-    answerES:
-      "Sí, estamos comprometidos con la sostenibilidad. Ofrecemos opciones ecológicas que incluyen electrodomésticos Energy Star, gabinetes de madera sostenible, materiales reciclados, accesorios eficientes en agua, iluminación LED y acabados con bajo contenido de COV. Podemos ayudarle a crear una hermosa cocina con un impacto ambiental mínimo.",
-  },
-  {
-    id: 12,
-    questionEN: "What areas do you service?",
-    answerEN:
-      "We currently service the greater metropolitan area and surrounding suburbs within a 50-mile radius. For projects outside this area, please contact us to discuss possibilities as we evaluate these on a case-by-case basis.",
-    questionES: "¿Qué áreas atienden?",
-    answerES:
-      "Actualmente atendemos el área metropolitana y los suburbios circundantes dentro de un radio de 50 millas. Para proyectos fuera de esta área, contáctenos para discutir posibilidades, ya que los evaluamos caso por caso.",
-  },
 ]
 
 export default function FAQSection() {
@@ -151,7 +106,7 @@ export default function FAQSection() {
 
   return (
     <AnimatedSection>
-      <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 py-8 lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -164,7 +119,7 @@ export default function FAQSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-6 max-w-2xl text-base/7 text-gray-600 dark:text-gray-300"
+          className="mt-4 max-w-2xl text-base/7 text-gray-600 dark:text-gray-300"
         >
           {introText}{" "}
           <a
@@ -179,9 +134,9 @@ export default function FAQSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-20"
+          className="mt-8"
         >
-          <dl className="space-y-16 sm:grid sm:grid-cols-2 sm:space-y-0 sm:gap-x-6 sm:gap-y-16 lg:grid-cols-3 lg:gap-x-10">
+          <dl className="space-y-8 sm:grid sm:grid-cols-2 sm:space-y-0 sm:gap-x-6 sm:gap-y-8 lg:grid-cols-3 lg:gap-x-10">
             {faqs.map((faq, index) => (
               <motion.div
                 key={faq.id}

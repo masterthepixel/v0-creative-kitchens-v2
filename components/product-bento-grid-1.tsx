@@ -39,20 +39,20 @@ export default function ProductBentoGrid1() {
   }, [language])
 
   if (loading || !gridData) {
-    return <div className="text-center py-10">Loading...</div>
+    return <div className="text-center py-4">Loading...</div>
   }
 
   // Get the first 4 categories for the bento grid
   const categories = gridData.categories.slice(0, 4)
 
   return (
-    <div className="py-24 sm:py-32">
+    <div className="py-8">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center text-base/7 font-semibold text-primary"
+          className="text-left text-base/7 font-semibold text-primary"
         >
           {gridData.tagline}
         </motion.h2>
@@ -60,11 +60,11 @@ export default function ProductBentoGrid1() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-gray-950 dark:text-gray-50 sm:text-5xl"
+          className="mt-2 max-w-lg text-left text-4xl font-semibold tracking-tight text-balance text-gray-950 dark:text-gray-50 sm:text-5xl"
         >
           {gridData.heading}
         </motion.p>
-        <div className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
+        <div className="mt-6 grid gap-4 sm:mt-8 lg:grid-cols-3 lg:grid-rows-2">
           {/* First large card (left) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -79,7 +79,7 @@ export default function ProductBentoGrid1() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="mt-2 text-lg font-medium tracking-tight text-gray-950 dark:text-gray-50 max-lg:text-center"
+                  className="mt-2 text-lg font-medium tracking-tight text-gray-950 dark:text-gray-50 max-lg:text-left"
                 >
                   {categories[0].title}
                 </motion.p>
@@ -87,7 +87,7 @@ export default function ProductBentoGrid1() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300 max-lg:text-center"
+                  className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300 max-lg:text-left"
                 >
                   {categories[0].description}
                 </motion.p>
@@ -119,7 +119,7 @@ export default function ProductBentoGrid1() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  className="mt-2 text-lg font-medium tracking-tight text-gray-950 dark:text-gray-50 max-lg:text-center"
+                  className="mt-2 text-lg font-medium tracking-tight text-gray-950 dark:text-gray-50 max-lg:text-left"
                 >
                   {categories[1].title}
                 </motion.p>
@@ -127,7 +127,7 @@ export default function ProductBentoGrid1() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
-                  className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300 max-lg:text-center"
+                  className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300 max-lg:text-left"
                 >
                   {categories[1].description}
                 </motion.p>
@@ -157,7 +157,7 @@ export default function ProductBentoGrid1() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
-                  className="mt-2 text-lg font-medium tracking-tight text-gray-950 dark:text-gray-50 max-lg:text-center"
+                  className="mt-2 text-lg font-medium tracking-tight text-gray-950 dark:text-gray-50 max-lg:text-left"
                 >
                   {categories[2].title}
                 </motion.p>
@@ -165,7 +165,7 @@ export default function ProductBentoGrid1() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
-                  className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300 max-lg:text-center"
+                  className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300 max-lg:text-left"
                 >
                   {categories[2].description}
                 </motion.p>
@@ -195,7 +195,7 @@ export default function ProductBentoGrid1() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
-                  className="mt-2 text-lg font-medium tracking-tight text-gray-950 dark:text-gray-50 max-lg:text-center"
+                  className="mt-2 text-lg font-medium tracking-tight text-gray-950 dark:text-gray-50 max-lg:text-left"
                 >
                   {categories[3].title}
                 </motion.p>
@@ -203,7 +203,7 @@ export default function ProductBentoGrid1() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.7 }}
-                  className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300 max-lg:text-center"
+                  className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300 max-lg:text-left"
                 >
                   {categories[3].description}
                 </motion.p>

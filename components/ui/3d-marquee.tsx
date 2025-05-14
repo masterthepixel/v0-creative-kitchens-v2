@@ -19,7 +19,7 @@ export const ThreeDMarquee = ({
     return images.slice(start, start + chunkSize)
   })
   return (
-    <div className={cn("mx-auto block h-[100vh] w-full overflow-hidden", className)}>
+    <div className={cn("mx-auto block h-[600px] w-full overflow-hidden", className)}>
       <div className="flex size-full items-center justify-center">
         <div className="size-[2000px] shrink-0 scale-[0.6] sm:scale-[0.8] lg:scale-[1.1]">
           <div

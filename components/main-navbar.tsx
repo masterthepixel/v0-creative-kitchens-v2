@@ -176,6 +176,11 @@ export default function MainNavbar() {
                 </div>
               </MenuItem>
 
+              {/* Gallery - Simple link, no dropdown */}
+              <Link href={getLocalizedUrl("/gallery")} className="text-black dark:text-white hover:opacity-90 px-4">
+                {language === "en" ? "Gallery" : "Galería"}
+              </Link>
+
               {/* Contact - Simple link, no dropdown */}
               <Link href={getLocalizedUrl("/contact")} className="text-black dark:text-white hover:opacity-90 px-4">
                 {language === "en" ? "Contact" : "Contacto"}

@@ -3,7 +3,7 @@
 import { useLanguage } from "./language-provider"
 import Link from "next/link"
 import { Phone, Grid } from "lucide-react"
-import HeroCarousel from "./hero-carousel"
+import { HeroInfiniteCarousel } from "./hero-infinite-carousel"
 
 export default function HeroSectionCombined() {
   const { language } = useLanguage()
@@ -12,7 +12,7 @@ export default function HeroSectionCombined() {
     en: {
       headline: "Transform your space with premium kitchen designs",
       description:
-        "Creative Kitchens delivers exceptional craftsmanship and innovative solutions for your dream kitchen. From custom cabinets to elegant countertops, we bring your vision to life with quality materials and expert installation.",
+        "Creative Kitchens transforms homes with expert craftsmanship, materials and hardware in kitchens, bathrooms, and hardware solutions.",
       primaryCta: "View Our Work",
       primaryCtaLink: `/en/products`,
       secondaryCta: "Browse Products",
@@ -23,7 +23,7 @@ export default function HeroSectionCombined() {
     es: {
       headline: "Transforma tu espacio con diseños de cocina premium",
       description:
-        "Creative Kitchens ofrece artesanía excepcional y soluciones innovadoras para la cocina de tus sueños. Desde gabinetes personalizados hasta elegantes encimeras, damos vida a tu visión con materiales de calidad e instalación experta.",
+        "Creative Kitchens transforma hogares con artesanía experta, materiales y hardware en cocinas, baños y soluciones de hardware.",
       primaryCta: "Ver Nuestro Trabajo",
       primaryCtaLink: `/es/products`,
       secondaryCta: "Explorar Productos",
@@ -36,10 +36,10 @@ export default function HeroSectionCombined() {
   const currentContent = content[language] || content.en
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-4">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-8">
         {/* Text content - left side */}
-        <div className="lg:w-1/2 space-y-5 pt-2 lg:pt-4">
+        <div className="lg:w-1/2 space-y-3 pt-0">
           {/* Phone link above the headline */}
           <a
             href={`tel:${currentContent.phone}`}
@@ -77,7 +77,7 @@ export default function HeroSectionCombined() {
 
         {/* Carousel - right side */}
         <div className="lg:w-1/2 flex justify-center lg:justify-end">
-          <HeroCarousel />
+          <HeroInfiniteCarousel direction="right" speed="slow" pauseOnHover={true} />
         </div>
       </div>
     </div>

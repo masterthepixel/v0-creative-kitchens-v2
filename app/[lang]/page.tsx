@@ -7,42 +7,59 @@ import AboutUs from "@/components/about-us"
 import FaqSection from "@/components/faq-section"
 import { reviewsData } from "@/lib/testimonials-data"
 import HeroSectionCombined from "@/components/hero-section-combined"
+import dynamic from "next/dynamic"
+
+// Dynamically import the 3D marquee component with no SSR
+const ThreeDMarqueeDemo = dynamic(() => import("@/components/3d-marquee-demo"), {
+  ssr: false,
+})
 
 export default async function Home({ params: { lang } }: { params: { lang: string } }) {
   const dict = await getDictionary(lang)
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-      {/* Hero section */}
-      <section className="w-full py-8 md:py-10 lg:py-12">
-        <HeroSectionCombined />
-      </section>
+      <div className="space-y-0 pb-8">
+        {/* Hero section */}
+        <section className="w-full py-4">
+          <HeroSectionCombined />
+        </section>
 
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <ProductBentoGrid1 />
-      </section>
+        {/* 3D Marquee section */}
+        <section className="w-full">
+          <ThreeDMarqueeDemo />
+        </section>
 
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-50 dark:bg-gray-800">
-        <AboutUs />
-      </section>
+        {/* Product Bento Grid 1 */}
+        <section className="w-full">
+          <ProductBentoGrid1 />
+        </section>
 
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <ProductBentoGrid2 />
-      </section>
+        {/* Product Bento Grid 2 */}
+        <section className="w-full">
+          <ProductBentoGrid2 />
+        </section>
 
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <ProductBentoGrid3 />
-      </section>
+        {/* Product Bento Grid 3 */}
+        <section className="w-full">
+          <ProductBentoGrid3 />
+        </section>
 
-      {/* Testimonials section */}
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <Testimonials reviews={reviewsData.reviews} businessInfo={reviewsData.businessInfo} />
-      </section>
+        {/* About Us section - moved before Testimonials */}
+        <section className="w-full bg-gray-50 dark:bg-gray-800">
+          <AboutUs />
+        </section>
 
-      {/* FAQ section - removed background color */}
-      <section className="w-full py-12 md:py-24 lg:py-32">
-        <FaqSection />
-      </section>
+        {/* Testimonials section */}
+        <section className="w-full">
+          <Testimonials reviews={reviewsData.reviews} businessInfo={reviewsData.businessInfo} />
+        </section>
+
+        {/* FAQ section */}
+        <section className="w-full">
+          <FaqSection />
+        </section>
+      </div>
     </main>
   )
 }

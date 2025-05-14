@@ -7,10 +7,10 @@ export default function AboutUs() {
   const { language } = useLanguage()
 
   return (
-    <div className="overflow-hidden bg-white dark:bg-gray-900 py-32">
+    <div className="overflow-hidden bg-white dark:bg-gray-900 py-8">
       <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:max-w-none lg:min-w-full lg:flex-none lg:gap-y-8">
-          <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
+        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-8 lg:mx-0 lg:max-w-none lg:min-w-full lg:flex-none lg:gap-y-4">
+          <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-4">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -23,7 +23,7 @@ export default function AboutUs() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-6 text-xl/8 text-gray-600 dark:text-gray-300"
+              className="mt-4 text-xl/8 text-gray-600 dark:text-gray-300"
             >
               {language === "en"
                 ? "We're passionate about transforming kitchens into beautiful, functional spaces that suit your lifestyle. With decades of experience and dedication to quality craftsmanship."
@@ -33,7 +33,7 @@ export default function AboutUs() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-6 text-base/7 text-gray-600 dark:text-gray-400"
+              className="mt-4 text-base/7 text-gray-600 dark:text-gray-400"
             >
               {language === "en"
                 ? "At Creative Kitchens MD, we believe that the kitchen is the heart of the home. Our mission is to create spaces that inspire gathering, cooking, and creating memories. From initial design to final installation, our team works closely with you to ensure your vision becomes reality."
@@ -43,7 +43,7 @@ export default function AboutUs() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-10 flex"
+              className="mt-6 flex"
             >
               <a
                 href={language === "en" ? "/en/contact" : "/es/contact"}
