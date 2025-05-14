@@ -2,7 +2,6 @@
 
 import { cn } from "@/lib/utils"
 import React, { useEffect, useState } from "react"
-import StarRating from "@/components/star-rating"
 
 export const InfiniteMovingCards = ({
   items,
@@ -15,7 +14,6 @@ export const InfiniteMovingCards = ({
     quote: string
     name: string
     title: string
-    rating?: number
     imageUrl?: string
   }[]
   direction?: "left" | "right"
@@ -25,47 +23,60 @@ export const InfiniteMovingCards = ({
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null)
   const scrollerRef = React.useRef<HTMLUListElement>(null)
-
-  useEffect(() => {
-    addAnimation()
-  }, [])
   const [start, setStart] = useState(false)
-  function addAnimation() {
-    if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children)
 
+  // Move animation setup to useEffect to avoid creating promises during render
+  useEffect(() => {
+    let isMounted = true
+
+    const setupAnimation = () => {
+      if (!isMounted || !containerRef.current || !scrollerRef.current) return
+
+      // Clone nodes for infinite scroll effect
+      const scrollerContent = Array.from(scrollerRef.current.children)
       scrollerContent.forEach((item) => {
+        if (!isMounted || !scrollerRef.current) return
         const duplicatedItem = item.cloneNode(true)
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem)
-        }
+        scrollerRef.current.appendChild(duplicatedItem)
       })
 
-      getDirection()
-      getSpeed()
-      setStart(true)
-    }
-  }
-  const getDirection = () => {
-    if (containerRef.current) {
-      if (direction === "left") {
-        containerRef.current.style.setProperty("--animation-direction", "forwards")
-      } else {
-        containerRef.current.style.setProperty("--animation-direction", "reverse")
+      // Set animation direction
+      if (containerRef.current) {
+        if (direction === "left") {
+          containerRef.current.style.setProperty("--animation-direction", "forwards")
+        } else {
+          containerRef.current.style.setProperty("--animation-direction", "reverse")
+        }
+      }
+
+      // Set animation speed
+      if (containerRef.current) {
+        if (speed === "fast") {
+          containerRef.current.style.setProperty("--animation-duration", "20s")
+        } else if (speed === "normal") {
+          containerRef.current.style.setProperty("--animation-duration", "40s")
+        } else {
+          containerRef.current.style.setProperty("--animation-duration", "80s")
+        }
+      }
+
+      // Start animation
+      if (isMounted) {
+        setStart(true)
       }
     }
-  }
-  const getSpeed = () => {
-    if (containerRef.current) {
-      if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s")
-      } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "40s")
-      } else {
-        containerRef.current.style.setProperty("--animation-duration", "80s")
-      }
+
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(setupAnimation)
+
+    return () => {
+      isMounted = false
     }
-  }
+  }, [direction, speed, items])
+
+  // If no items, don't render anything
+  if (!items || items.length === 0) return null
+
   return (
     <div
       ref={containerRef}
@@ -84,34 +95,34 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-b-0 border-zinc-200 bg-[linear-gradient(180deg,#fafafa,#f5f5f5)] px-8 py-6 md:w-[450px] shadow-lg hover:shadow-xl transition-shadow duration-300 dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)] dark:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.3),0_10px_10px_-5px_rgba(0,0,0,0.2)]"
-            key={`${item.name}-${idx}`}
+            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-zinc-200 bg-white px-8 py-6 md:w-[450px] shadow-[0_4px_8px_rgba(0,0,0,0.05),0_10px_20px_rgba(0,0,0,0.1)] transition-all duration-300 hover:shadow-[0_6px_12px_rgba(0,0,0,0.1),0_12px_24px_rgba(0,0,0,0.15)] dark:border-zinc-700 dark:bg-zinc-900"
+            key={idx}
           >
             <blockquote>
               <div
                 aria-hidden="true"
-                className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
+                className="pointer-events-none absolute -inset-1 rounded-2xl opacity-30 blur-md"
+                style={{
+                  background: "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(120,120,120,0.2) 100%)",
+                }}
               ></div>
-              <span className="relative z-20 text-base md:text-lg leading-[1.6] font-normal text-neutral-800 dark:text-gray-100">
-                "{item.quote}"
+              <span className="relative z-20 text-sm leading-[1.6] font-normal text-neutral-800 dark:text-gray-100">
+                {item.quote}
               </span>
-              <div className="relative z-20 mt-6 flex items-center gap-4">
+              <div className="relative z-20 mt-6 flex flex-row items-center gap-4">
                 {item.imageUrl && (
-                  <img
-                    src={item.imageUrl || "/placeholder.svg"}
-                    alt={item.name}
-                    className="h-10 w-10 rounded-full object-cover ring-2 ring-white dark:ring-gray-800"
-                  />
+                  <div className="h-12 w-12 rounded-full overflow-hidden shadow-md ring-2 ring-white dark:ring-zinc-800">
+                    <img
+                      src={item.imageUrl || "/placeholder.svg"}
+                      alt={`${item.name}'s portrait`}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                 )}
-                <div className="flex flex-col">
-                  <span className="text-base font-semibold text-neutral-800 dark:text-gray-100">{item.name}</span>
-                  <span className="text-sm text-neutral-500 dark:text-gray-400">{item.title}</span>
-                  {item.rating && (
-                    <div className="mt-1">
-                      <StarRating rating={item.rating} />
-                    </div>
-                  )}
-                </div>
+                <span className="flex flex-col gap-1">
+                  <span className="text-sm font-semibold text-neutral-900 dark:text-white">{item.name}</span>
+                  <span className="text-sm font-normal text-neutral-500 dark:text-gray-400">{item.title}</span>
+                </span>
               </div>
             </blockquote>
           </li>

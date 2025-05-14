@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards"
 
 // Import the reviews data
-import { reviewsData } from "@/data/reviews-data"
+import { reviewsData } from "@/lib/testimonials-data"
 
 // Array of random face images
 const faceImages = [
@@ -23,12 +23,24 @@ const faceImages = [
   "https://randomuser.me/api/portraits/men/6.jpg",
 ]
 
+// Define the testimonial item type to match what InfiniteMovingCards expects
+type TestimonialItem = {
+  quote: string
+  name: string
+  title: string
+  imageUrl?: string
+}
+
 export default function Testimonials() {
   const { language } = useLanguage()
   const [title, setTitle] = useState("")
   const [subtitle, setSubtitle] = useState("")
+  const [testimonialItems, setTestimonialItems] = useState<TestimonialItem[]>([])
+  const [isLoaded, setIsLoaded] = useState(false)
 
+  // Process data once on mount and when language changes
   useEffect(() => {
+    // Set titles based on language
     if (language === "en") {
       setTitle("Testimonials")
       setSubtitle(`What our customers say about ${reviewsData.businessInfo.business_name}`)
@@ -36,26 +48,38 @@ export default function Testimonials() {
       setTitle("Testimonios")
       setSubtitle(`Lo que dicen nuestros clientes sobre ${reviewsData.businessInfo.business_name_es}`)
     }
-  }, [language])
 
-  // Transform the reviews data into the format expected by InfiniteMovingCards
-  const testimonialItems = reviewsData.reviews
-    .map((review, index) => {
-      // Filter out Ruben L. explicitly
-      if (review.name === "Ruben L.") return null
-
-      return {
+    // Process testimonial items
+    const items = reviewsData.reviews
+      .filter((review) => review.name !== "Ruben L.") // Filter out Ruben L.
+      .map((review, index) => ({
         quote: language === "en" ? review.text : review.text_es || review.text,
         name: review.name,
         title: review.location || (language === "en" ? "Customer" : "Cliente"),
-        rating: 5, // Assuming all reviews are 5-star
-        imageUrl: faceImages[index % faceImages.length], // Add back the portrait images
-      }
-    })
-    .filter(Boolean) // Remove null items (Ruben's review)
+        imageUrl: faceImages[index % faceImages.length], // Add portrait images
+      }))
+
+    setTestimonialItems(items)
+    setIsLoaded(true)
+  }, [language])
+
+  // Show a loading state until data is processed
+  if (!isLoaded) {
+    return (
+      <div className="relative isolate py-12 md:py-16">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <div className="h-7 w-32 bg-gray-200 dark:bg-gray-700 animate-pulse rounded"></div>
+            <div className="mt-2 h-12 w-full max-w-md bg-gray-200 dark:bg-gray-700 animate-pulse rounded"></div>
+          </div>
+          <div className="mt-10 h-64 bg-gray-100 dark:bg-gray-800 animate-pulse rounded"></div>
+        </div>
+      </div>
+    )
+  }
 
   return (
-    <div className="relative isolate py-8">
+    <div className="relative isolate py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-2xl">
           <h2 className="text-base/7 font-semibold text-primary">{title}</h2>
@@ -64,14 +88,16 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <div className="mt-6">
-          <InfiniteMovingCards
-            items={testimonialItems}
-            direction="right"
-            speed="slow"
-            pauseOnHover={true}
-            className="py-4"
-          />
+        <div className="mt-10">
+          {testimonialItems.length > 0 && (
+            <InfiniteMovingCards
+              items={testimonialItems}
+              direction="right"
+              speed="slow"
+              pauseOnHover={true}
+              className="py-4"
+            />
+          )}
         </div>
       </div>
     </div>

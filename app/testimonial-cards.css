@@ -1,0 +1,19 @@
+/* Testimonial card styles */
+.testimonial-card-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05), 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.testimonial-card-shadow:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.testimonial-portrait {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid white;
+}
+
+.dark .testimonial-portrait {
+  border-color: #27272a;
+}
