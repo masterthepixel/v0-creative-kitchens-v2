@@ -110,11 +110,13 @@ export default function TestimonialGrid({ language }: { language: string }) {
                   />
                 </div>
                 <div className="profile-text">
-                  <h3 className={testimonial.cardType === "white" ? "white-card" : ""}>{testimonial.name}</h3>
-                  <p className={testimonial.cardType === "white" ? "white-card" : ""}>{testimonial.title}</p>
+                  <h3 className={index === 2 || index === 3 ? "white-card" : "text-white"}>{testimonial.name}</h3>
+                  <p className={index === 2 || index === 3 ? "white-card" : "text-white opacity-70"}>
+                    {testimonial.title}
+                  </p>
                 </div>
               </div>
-              <h1 className={`card-heading ${testimonial.cardType === "white" ? "white-card" : ""}`}>
+              <h1 className={`card-heading ${index === 2 || index === 3 ? "white-card" : "text-white"}`}>
                 {testimonial.heading}
               </h1>
               <h2 className="card-subheading">"{testimonial.text}"</h2>

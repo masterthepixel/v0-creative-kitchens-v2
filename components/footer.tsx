@@ -4,6 +4,23 @@ import { useLanguage } from "./language-provider"
 import Link from "next/link"
 import { Facebook, Instagram, PinIcon as Pinterest, Building2, Phone, Mail, Clock, Printer } from "lucide-react"
 
+// Areas we serve - flat list
+const serviceAreas = [
+  { id: "bethesda-md", name: "Bethesda, MD" },
+  { id: "potomac-md", name: "Potomac, MD" },
+  { id: "north-bethesda-md", name: "North Bethesda, MD" },
+  { id: "georgetown-dc", name: "Georgetown, DC" },
+  { id: "mclean-va", name: "McLean, VA" },
+  { id: "arlington-va", name: "Arlington, VA" },
+  { id: "chevy-chase-md", name: "Chevy Chase, MD" },
+  { id: "alexandria-va", name: "Alexandria, VA" },
+  { id: "rockville-md", name: "Rockville, MD" },
+  { id: "vienna-va", name: "Vienna, VA" },
+  { id: "reston-va", name: "Reston, VA" },
+  { id: "great-falls-va", name: "Great Falls, VA" },
+  { id: "dupont-circle-dc", name: "Dupont Circle, DC" },
+]
+
 export default function Footer() {
   const { language } = useLanguage()
 
@@ -76,7 +93,7 @@ export default function Footer() {
                   <Phone aria-hidden="true" className="h-6 w-6 text-gray-500 dark:text-white" />
                 </dt>
                 <dd>
-                  <a href="tel:(240)-714-3180" className="hover:text-gray-900 dark:text-white">
+                  <a href="tel:(240)-714-3180" className="hover:text-gray-900 dark:hover:text-gray-300">
                     (240)-714-3180
                   </a>
                 </dd>
@@ -87,7 +104,7 @@ export default function Footer() {
                   <Printer aria-hidden="true" className="h-6 w-6 text-gray-500 dark:text-white" />
                 </dt>
                 <dd>
-                  <span className="text-gray-600 dark:text-white">(240)-714-3187</span>
+                  <span>(240)-714-3187</span>
                 </dd>
               </div>
               <div className="flex gap-x-4">
@@ -96,7 +113,7 @@ export default function Footer() {
                   <Mail aria-hidden="true" className="h-6 w-6 text-gray-500 dark:text-white" />
                 </dt>
                 <dd>
-                  <a href="mailto:info@creativekitchensmd.com" className="hover:text-gray-900 dark:text-white">
+                  <a href="mailto:info@creativekitchensmd.com" className="hover:text-gray-900 dark:hover:text-gray-300">
                     info@creativekitchensmd.com
                   </a>
                 </dd>
@@ -121,7 +138,7 @@ export default function Footer() {
               <li>
                 <Link
                   href={`/${language}/about`}
-                  className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white"
+                  className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-gray-300"
                 >
                   {language === "en" ? "About Us" : "Sobre Nosotros"}
                 </Link>
@@ -129,7 +146,7 @@ export default function Footer() {
               <li>
                 <Link
                   href={`/${language}/gallery`}
-                  className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white"
+                  className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-gray-300"
                 >
                   {language === "en" ? "Gallery" : "Galería"}
                 </Link>
@@ -137,18 +154,18 @@ export default function Footer() {
               <li>
                 <Link
                   href={`/${language}/contact`}
-                  className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white"
+                  className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-gray-300"
                 >
                   {language === "en" ? "Contact" : "Contacto"}
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white">
+                <Link href="#" className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-gray-300">
                   {language === "en" ? "Privacy Policy" : "Política de Privacidad"}
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white">
+                <Link href="#" className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-gray-300">
                   {language === "en" ? "Terms of Service" : "Términos de Servicio"}
                 </Link>
               </li>
@@ -164,7 +181,7 @@ export default function Footer() {
                 <li key={product.href}>
                   <Link
                     href={`/${language}/products/${product.href}`}
-                    className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white"
+                    className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-gray-300"
                   >
                     {language === "en" ? product.en : product.es}
                   </Link>
@@ -182,7 +199,7 @@ export default function Footer() {
                 <li key={product.href}>
                   <Link
                     href={`/${language}/products/${product.href}`}
-                    className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white"
+                    className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-gray-300"
                   >
                     {language === "en" ? product.en : product.es}
                   </Link>
@@ -192,7 +209,27 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-gray-200 dark:border-gray-800 pt-8">
+        {/* Areas We Serve Section */}
+        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+          <h3 className="text-lg font-semibold mb-6 text-center">
+            {language === "en" ? "Areas We Serve" : "Áreas Que Servimos"}
+          </h3>
+
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 max-w-5xl mx-auto">
+            {serviceAreas.map((area) => (
+              <Link
+                key={area.id}
+                href={`/${language}/areas/${area.id}`}
+                className="text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-gray-300"
+              >
+                {area.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Copyright and Social Links */}
+        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
           <div className="md:flex md:items-center md:justify-between">
             <div className="flex justify-center gap-x-6 md:order-2">
               {socialLinks.map((item) => (
@@ -201,7 +238,7 @@ export default function Footer() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-500 dark:text-white hover:text-gray-900 dark:hover:text-white"
+                  className="text-gray-500 dark:text-white hover:text-gray-900 dark:hover:text-gray-300"
                 >
                   <span className="sr-only">{item.name}</span>
                   <item.icon aria-hidden="true" className="h-6 w-6" />

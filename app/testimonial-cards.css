@@ -17,3 +17,19 @@
 .dark .testimonial-portrait {
   border-color: #27272a;
 }
+
+/* Add styles for dark background cards */
+.bg-\[\#733FC8\] h3,
+.bg-\[\#733FC8\] p,
+.bg-\[\#733FC8\] h1,
+.bg-\[\#733FC8\] h2,
+.bg-\[\#48556A\] h3,
+.bg-\[\#48556A\] p,
+.bg-\[\#48556A\] h1,
+.bg-\[\#48556A\] h2,
+.bg-\[\#19202D\] h3,
+.bg-\[\#19202D\] p,
+.bg-\[\#19202D\] h1,
+.bg-\[\#19202D\] h2 {
+  color: white;
+}
