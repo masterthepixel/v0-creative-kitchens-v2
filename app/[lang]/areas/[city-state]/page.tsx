@@ -3,7 +3,7 @@ import { getDictionary, type AreaData, type AreaCommon } from "@/lib/dictionary"
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
-import FAQ from "@/components/faq-section"
+import ProductServicesGrid, { type ServiceItem } from "@/components/product-services-grid"
 
 // Define the valid areas and languages
 const validAreas = [
@@ -140,8 +140,123 @@ export default async function AreaPage({ params }: AreaPageParams) {
     areaServed: formattedLocation,
   }
 
-  // Safely get FAQ items
-  const faqItems = areaDict?.faqs || []
+  // Create services data for the grid
+  const services: ServiceItem[] = [
+    {
+      title: lang === "en" ? "Cabinets" : "Gabinetes",
+      description:
+        lang === "en"
+          ? `Premium cabinet solutions for ${formattedLocation} homes.`
+          : `Soluciones premium de gabinetes para hogares en ${formattedLocation}.`,
+      link: `/${lang}/products/cabinets`,
+      image: "/modern-kitchen-cabinets.png",
+    },
+    {
+      title: lang === "en" ? "Countertops" : "Encimeras",
+      description:
+        lang === "en"
+          ? `Quality countertop options for ${formattedLocation} kitchens.`
+          : `Opciones de encimeras de calidad para cocinas en ${formattedLocation}.`,
+      link: `/${lang}/products/countertops`,
+      image: "/kitchen-countertops.png",
+    },
+    {
+      title: lang === "en" ? "Cabinet Lighting" : "Iluminación para Gabinetes",
+      description:
+        lang === "en"
+          ? `Enhance your ${formattedLocation} kitchen with perfect lighting.`
+          : `Mejore su cocina en ${formattedLocation} con iluminación perfecta.`,
+      link: `/${lang}/products/cabinet-lighting`,
+      image: "/cabinet-lighting.png",
+    },
+    {
+      title: lang === "en" ? "Bath Tubs" : "Bañeras",
+      description:
+        lang === "en"
+          ? `Luxury bath solutions for ${formattedLocation} homes.`
+          : `Soluciones de baño de lujo para hogares en ${formattedLocation}.`,
+      link: `/${lang}/products/bath-tubs`,
+      image: "/luxury-bathtub.png",
+    },
+    {
+      title: lang === "en" ? "Flooring" : "Pisos",
+      description:
+        lang === "en"
+          ? `Premium flooring options for ${formattedLocation} homes.`
+          : `Opciones premium de pisos para hogares en ${formattedLocation}.`,
+      link: `/${lang}/products/flooring`,
+      image: "/kitchen-flooring.png",
+    },
+    {
+      title: lang === "en" ? "Appliances" : "Electrodomésticos",
+      description:
+        lang === "en"
+          ? `Modern appliances for ${formattedLocation} kitchens.`
+          : `Electrodomésticos modernos para cocinas en ${formattedLocation}.`,
+      link: `/${lang}/products/appliances`,
+      image: "/modern-kitchen-appliances.png",
+    },
+    {
+      title: lang === "en" ? "Hardware" : "Herrajes",
+      description:
+        lang === "en"
+          ? `Quality hardware solutions for ${formattedLocation} homes.`
+          : `Soluciones de herrajes de calidad para hogares en ${formattedLocation}.`,
+      link: `/${lang}/products/hardware`,
+      image: "/cabinet-hardware.png",
+    },
+    {
+      title: lang === "en" ? "Medicine Cabinets" : "Botiquines",
+      description:
+        lang === "en"
+          ? `Stylish storage solutions for ${formattedLocation} bathrooms.`
+          : `Soluciones de almacenamiento elegantes para baños en ${formattedLocation}.`,
+      link: `/${lang}/products/medicine-cabinets`,
+      image: "/medicine-cabinet.png",
+    },
+    {
+      title: lang === "en" ? "Faucets" : "Grifos",
+      description:
+        lang === "en"
+          ? `Premium faucets for ${formattedLocation} kitchens and baths.`
+          : `Grifos premium para cocinas y baños en ${formattedLocation}.`,
+      link: `/${lang}/products/faucets`,
+      image: "/kitchen-faucets.png",
+    },
+    {
+      title: lang === "en" ? "Door Hardware" : "Herrajes para Puertas",
+      description:
+        lang === "en"
+          ? `Elegant door hardware for ${formattedLocation} homes.`
+          : `Herrajes elegantes para puertas en hogares de ${formattedLocation}.`,
+      link: `/${lang}/products/door-hardware`,
+      image: "/placeholder.svg?height=300&width=400&text=Door+Hardware",
+    },
+    {
+      title: lang === "en" ? "Plumbing" : "Plomería",
+      description:
+        lang === "en"
+          ? `Professional plumbing solutions for ${formattedLocation}.`
+          : `Soluciones profesionales de plomería para ${formattedLocation}.`,
+      link: `/${lang}/products/plumbing`,
+      image: "/plumbing-fixtures.png",
+    },
+    {
+      title: lang === "en" ? "Sinks" : "Fregaderos",
+      description:
+        lang === "en"
+          ? `Quality sinks for ${formattedLocation} kitchens and baths.`
+          : `Fregaderos de calidad para cocinas y baños en ${formattedLocation}.`,
+      link: `/${lang}/products/sinks`,
+      image: "/modern-kitchen-sink.png",
+    },
+  ]
+
+  // Custom CTA text based on location
+  const ctaText =
+    lang === "en"
+      ? `We proudly serve all of ${formattedLocation} and surrounding areas with premium kitchen and bathroom remodeling services. Our local expertise ensures your project will be completed to the highest standards while respecting the character of your ${formattedLocation.split(",")[0]} home.`
+      : `Servimos con orgullo a todo ${formattedLocation} y áreas circundantes con servicios premium de remodelación de cocinas y baños. Nuestra experiencia local garantiza que su proyecto se completará con los más altos estándares mientras respeta el carácter de su hogar en ${formattedLocation.split(",")[0]}.`
 
   return (
     <>
@@ -169,160 +284,94 @@ export default async function AreaPage({ params }: AreaPageParams) {
           </div>
         </section>
 
-        {/* Local Expertise Section */}
-        <section className="py-16 bg-gray-50">
+        {/* Local Expertise Section - Updated to remove Common Architectural Styles */}
+        <section className="py-16">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">
-              {commonDict.localExpertise} {formattedLocation}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <p className="text-lg text-gray-700 dark:text-gray-300">{areaDict.areaDescription}</p>
-                <p className="mt-6 text-lg text-gray-700 dark:text-gray-300">{areaDict.localExpertiseContent}</p>
-              </div>
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-                  {lang === "en" ? "Neighborhoods We Serve" : "Vecindarios Que Atendemos"}
-                </h3>
-                <ul className="grid grid-cols-2 gap-2 mb-8">
-                  {areaDict.neighborhoods.map((neighborhood: string) => (
-                    <li key={neighborhood} className="text-gray-700 dark:text-gray-300 py-1">
-                      • {neighborhood}
-                    </li>
-                  ))}
-                </ul>
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl font-bold mb-8 text-center text-amber-500">
+                {commonDict.localExpertise} {formattedLocation}
+              </h2>
 
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-                  {lang === "en" ? "Common Architectural Styles" : "Estilos Arquitectónicos Comunes"}
-                </h3>
-                <ul className="grid grid-cols-2 gap-2">
-                  {areaDict.architecturalStyles.map((style: string) => (
-                    <li key={style} className="text-gray-700 dark:text-gray-300 py-1">
-                      • {style}
-                    </li>
-                  ))}
-                </ul>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                  <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
+                    {lang === "en" ? "Our Local Expertise in" : "Nuestra Experiencia Local en"} {formattedLocation}
+                  </h3>
+                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">{areaDict.areaDescription}</p>
+                  <p className="text-lg text-gray-700 dark:text-gray-300">{areaDict.localExpertiseContent}</p>
+                </div>
+
+                <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+                    {lang === "en" ? "Neighborhoods We Serve" : "Vecindarios Que Atendemos"}
+                  </h3>
+                  <ul className="grid grid-cols-2 gap-2">
+                    {areaDict.neighborhoods.map((neighborhood: string) => (
+                      <li key={neighborhood} className="text-gray-700 dark:text-gray-300 py-1">
+                        • {neighborhood}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Services Section */}
-        <section className="py-16 bg-white dark:bg-gray-900">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">
-              {commonDict.servicesTitle} {formattedLocation}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {Object.entries(commonDict.services).map(([key, service]) => (
-                <div
-                  key={key}
-                  className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">{service}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {/* Service description would ideally come from dictionary */}
+        <ProductServicesGrid
+          title={lang === "en" ? "Our Services" : "Nuestros Servicios"}
+          location={formattedLocation}
+          lang={lang}
+          services={services}
+        />
+
+        {/* Call to Action - Updated with max-w-7xl */}
+        <section className="py-16">
+          <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="bg-blue-600 p-8 md:p-12 lg:px-16 lg:py-24">
+                <div className="mx-auto max-w-xl text-center">
+                  <h2 className="text-2xl font-bold text-white md:text-3xl">
                     {lang === "en"
-                      ? `Professional ${service.toLowerCase()} services tailored for ${formattedLocation} homes.`
-                      : `Servicios profesionales de ${service.toLowerCase()} adaptados para hogares en ${formattedLocation}.`}
-                  </p>
-                  <Link
-                    href={`/${lang}/services/${key}`}
-                    className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium"
-                  >
-                    {commonDict.readMore} →
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+                      ? `Ready to Transform Your Kitchen in ${formattedLocation}?`
+                      : `¿Listo para Transformar Su Cocina en ${formattedLocation}?`}
+                  </h2>
 
-        {/* Projects/Gallery Section */}
-        <section className="py-16 bg-gray-50 dark:bg-gray-800">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">
-              {commonDict.projectsTitle} {formattedLocation}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Placeholder for project images */}
-              {[1, 2, 3, 4, 5, 6].map((item) => (
-                <div key={item} className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md">
-                  <div className="relative h-64">
-                    <Image
-                      src={`/placeholder.svg?height=400&width=600&text=Project+${item}`}
-                      alt={`Project ${item}`}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                      {lang === "en"
-                        ? `${formattedLocation} Project ${item}`
-                        : `Proyecto ${item} en ${formattedLocation}`}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      {lang === "en"
-                        ? `Kitchen renovation featuring custom cabinetry and premium countertops.`
-                        : `Renovación de cocina con gabinetes personalizados y encimeras premium.`}
-                    </p>
+                  <p className="text-white/90 sm:mt-4 block">{ctaText}</p>
+
+                  <div className="mt-4 md:mt-8">
+                    <Link
+                      href={`tel:+13015551234`}
+                      className="inline-block rounded-sm border border-white bg-white px-12 py-3 text-sm font-medium text-blue-600 transition hover:bg-transparent hover:text-white focus:outline-none focus:ring focus:ring-yellow-400"
+                    >
+                      {commonDict.callNow}
+                    </Link>
                   </div>
                 </div>
-              ))}
-            </div>
-            <div className="text-center mt-10">
-              <Link
-                href={`/${lang}/gallery`}
-                className="inline-block bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors"
-              >
-                {commonDict.viewProjects}
-              </Link>
-            </div>
-          </div>
-        </section>
+              </div>
 
-        {/* FAQ Section - Only render if we have FAQs */}
-        {faqItems.length > 0 && (
-          <FAQ title={`${commonDict.faqTitle} ${formattedLocation} ${commonDict.homeowners}`} faqs={faqItems} />
-        )}
+              <div className="grid grid-cols-2 gap-4 md:grid-cols-1 lg:grid-cols-2">
+                <div className="bg-white">
+                  <Image
+                    alt="Kitchen remodeling"
+                    src="/modern-kitchen-cabinets.png"
+                    width={600}
+                    height={400}
+                    className="h-40 w-full object-cover sm:h-56 md:h-full"
+                  />
+                </div>
 
-        {/* Call to Action */}
-        <section className="py-16 bg-blue-600 text-white">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-6">
-              {commonDict.contactTitle} {formattedLocation}?
-            </h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
-              {lang === "en"
-                ? `Contact our team today to discuss your kitchen remodeling project in ${formattedLocation}.`
-                : `Contacte a nuestro equipo hoy para discutir su proyecto de remodelación de cocina en ${formattedLocation}.`}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href={`/${lang}/contact`}
-                className="bg-white text-blue-600 px-6 py-3 rounded-md hover:bg-gray-100 transition-colors font-medium"
-              >
-                {lang === "en" ? "Contact Us" : "Contáctenos"}
-              </Link>
-              <Link
-                href={`tel:+13015551234`}
-                className="bg-blue-700 text-white px-6 py-3 rounded-md hover:bg-blue-800 transition-colors font-medium"
-              >
-                {commonDict.callNow}
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Additional Area Information */}
-        <section className="py-16 bg-gray-50 dark:bg-gray-800">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">
-              {commonDict.areaServed} {formattedLocation}
-            </h2>
-            <div className="max-w-3xl mx-auto">
-              <p className="text-lg text-center text-gray-700 dark:text-gray-300">{areaDict.serviceContent}</p>
+                <div className="bg-white">
+                  <Image
+                    alt="Bathroom remodeling"
+                    src="/luxury-bathtub.png"
+                    width={600}
+                    height={400}
+                    className="h-40 w-full object-cover sm:h-56 md:h-full"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
