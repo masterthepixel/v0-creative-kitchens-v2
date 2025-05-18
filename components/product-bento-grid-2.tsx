@@ -60,7 +60,7 @@ export default function ProductBentoGrid2() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-2 max-w-lg text-4xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white sm:text-5xl"
+          className="mt-2 max-w-lg text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-5xl"
         >
           {gridData.heading}
         </motion.p>
@@ -72,10 +72,10 @@ export default function ProductBentoGrid2() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex p-px lg:col-span-4"
           >
-            <div className="overflow-hidden rounded-lg bg-white dark:bg-transparent ring-1 ring-gray-200 dark:ring-gray-700 max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]">
+            <div className="overflow-hidden rounded-lg bg-white dark:bg-transparent ring-1 ring-slate-200 dark:ring-slate-700 max-lg:rounded-t-[2rem] lg:rounded-tl-[2rem]">
               <img
                 alt={categories[0].title}
-                src="https://tailwindcss.com/plus-assets/img/component-images/bento-02-releases.png"
+                src="/flooring.jpg"
                 className="h-80 object-cover object-left"
               />
               <div className="p-10">
@@ -83,7 +83,7 @@ export default function ProductBentoGrid2() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="text-sm/4 font-semibold text-gray-500 dark:text-gray-400"
+                  className="text-sm/4 font-semibold text-slate-500 dark:text-slate-400"
                 >
                   {categories[0].title}
                 </motion.h3>
@@ -91,7 +91,7 @@ export default function ProductBentoGrid2() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  className="mt-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white"
+                  className="mt-2 text-lg font-medium tracking-tight text-slate-900 dark:text-white"
                 >
                   {categories[0].title}
                 </motion.p>
@@ -99,7 +99,7 @@ export default function ProductBentoGrid2() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
-                  className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300"
+                  className="mt-2 max-w-lg text-sm/6 text-slate-600 dark:text-slate-300"
                 >
                   {categories[0].description}
                 </motion.p>
@@ -114,10 +114,10 @@ export default function ProductBentoGrid2() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex p-px lg:col-span-2"
           >
-            <div className="overflow-hidden rounded-lg bg-white dark:bg-transparent ring-1 ring-gray-200 dark:ring-gray-700 lg:rounded-tr-[2rem]">
+            <div className="overflow-hidden rounded-lg bg-white dark:bg-transparent ring-1 ring-slate-200 dark:ring-slate-700 lg:rounded-tr-[2rem]">
               <img
                 alt={categories[1].title}
-                src="https://tailwindcss.com/plus-assets/img/component-images/bento-02-integrations.png"
+                src="/appliances.jpg"
                 className="h-80 object-cover"
               />
               <div className="p-10">
@@ -125,7 +125,7 @@ export default function ProductBentoGrid2() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  className="text-sm/4 font-semibold text-gray-500 dark:text-gray-400"
+                  className="text-sm/4 font-semibold text-slate-500 dark:text-slate-400"
                 >
                   {categories[1].title}
                 </motion.h3>
@@ -133,7 +133,7 @@ export default function ProductBentoGrid2() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
-                  className="mt-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white"
+                  className="mt-2 text-lg font-medium tracking-tight text-slate-900 dark:text-white"
                 >
                   {categories[1].title}
                 </motion.p>
@@ -141,7 +141,7 @@ export default function ProductBentoGrid2() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
-                  className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300"
+                  className="mt-2 max-w-lg text-sm/6 text-slate-600 dark:text-slate-300"
                 >
                   {categories[1].description}
                 </motion.p>
@@ -156,10 +156,10 @@ export default function ProductBentoGrid2() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex p-px lg:col-span-2"
           >
-            <div className="overflow-hidden rounded-lg bg-white dark:bg-transparent ring-1 ring-gray-200 dark:ring-gray-700 lg:rounded-bl-[2rem]">
+            <div className="overflow-hidden rounded-lg bg-white dark:bg-transparent ring-1 ring-slate-200 dark:ring-slate-700 lg:rounded-bl-[2rem]">
               <img
                 alt={categories[2].title}
-                src="https://tailwindcss.com/plus-assets/img/component-images/bento-02-security.png"
+                src="/hardware.jpg"
                 className="h-80 object-cover"
               />
               <div className="p-10">
@@ -167,7 +167,7 @@ export default function ProductBentoGrid2() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
-                  className="text-sm/4 font-semibold text-gray-500 dark:text-gray-400"
+                  className="text-sm/4 font-semibold text-slate-500 dark:text-slate-400"
                 >
                   {categories[2].title}
                 </motion.h3>
@@ -175,7 +175,7 @@ export default function ProductBentoGrid2() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
-                  className="mt-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white"
+                  className="mt-2 text-lg font-medium tracking-tight text-slate-900 dark:text-white"
                 >
                   {categories[2].title}
                 </motion.p>
@@ -183,7 +183,7 @@ export default function ProductBentoGrid2() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.7 }}
-                  className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300"
+                  className="mt-2 max-w-lg text-sm/6 text-slate-600 dark:text-slate-300"
                 >
                   {categories[2].description}
                 </motion.p>
@@ -198,10 +198,10 @@ export default function ProductBentoGrid2() {
             transition={{ duration: 0.5, delay: 0.5 }}
             className="flex p-px lg:col-span-4"
           >
-            <div className="overflow-hidden rounded-lg bg-white dark:bg-transparent ring-1 ring-gray-200 dark:ring-gray-700 max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]">
+            <div className="overflow-hidden rounded-lg bg-white dark:bg-transparent ring-1 ring-slate-200 dark:ring-slate-700 max-lg:rounded-b-[2rem] lg:rounded-br-[2rem]">
               <img
                 alt={categories[3].title}
-                src="https://tailwindcss.com/plus-assets/img/component-images/bento-02-performance.png"
+                src="/medicinecabinets.jpg"
                 className="h-80 object-cover object-left"
               />
               <div className="p-10">
@@ -209,7 +209,7 @@ export default function ProductBentoGrid2() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
-                  className="text-sm/4 font-semibold text-gray-500 dark:text-gray-400"
+                  className="text-sm/4 font-semibold text-slate-500 dark:text-slate-400"
                 >
                   {categories[3].title}
                 </motion.h3>
@@ -217,7 +217,7 @@ export default function ProductBentoGrid2() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.7 }}
-                  className="mt-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white"
+                  className="mt-2 text-lg font-medium tracking-tight text-slate-900 dark:text-white"
                 >
                   {categories[3].title}
                 </motion.p>
@@ -225,7 +225,7 @@ export default function ProductBentoGrid2() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.8 }}
-                  className="mt-2 max-w-lg text-sm/6 text-gray-600 dark:text-gray-300"
+                  className="mt-2 max-w-lg text-sm/6 text-slate-600 dark:text-slate-300"
                 >
                   {categories[3].description}
                 </motion.p>
