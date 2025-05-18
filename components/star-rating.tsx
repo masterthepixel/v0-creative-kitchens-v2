@@ -19,7 +19,7 @@ export default function StarRating({ rating = 5, maxRating = 5, size = "sm" }: S
         <Star
           key={i}
           className={`${sizeClasses[size]} ${
-            i < rating ? "text-yellow-400 fill-yellow-400" : "text-gray-300 dark:text-gray-600"
+            i < rating ? "text-yellow-400 fill-yellow-400" : "text-slate-300 dark:text-slate-600"
           }`}
         />
       ))}

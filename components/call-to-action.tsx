@@ -32,7 +32,7 @@ export default function CallToAction({
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href={`/${lang}${primaryButtonLink}`}
-            className="bg-white text-blue-600 px-6 py-3 rounded-md hover:bg-gray-100 transition-colors font-medium"
+            className="bg-white text-blue-600 px-6 py-3 rounded-md hover:bg-slate-100 transition-colors font-medium"
           >
             {primaryButtonText}
           </Link>

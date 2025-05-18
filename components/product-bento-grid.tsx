@@ -111,7 +111,7 @@ export default function ProductBentoGrid() {
         "Perfecciona tu diseño con nuestra colección de herrajes, donde los pequeños detalles generan un impacto significativo en tu espacio.",
       icon: <Wrench className="h-4 w-4 text-neutral-500" />,
       className: "md:col-span-2",
-      bgColor: "from-gray-50 to-gray-100 dark:from-gray-950/40 dark:to-gray-900/30",
+      bgColor: "from-slate-50 to-slate-100 dark:from-slate-950/40 dark:to-slate-900/30",
     },
     {
       name: "Medicine Cabinets",

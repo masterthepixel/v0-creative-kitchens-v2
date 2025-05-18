@@ -44,8 +44,8 @@
   --accent-foreground: 220.9 39.3% 11%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 20% 98%;
-  --border: 215 20% 90%; /* slate-200 instead of gray-200 */
-  --input: 215 20% 90%; /* slate-200 instead of gray-200 */
+  --border: 215 20% 90%; /* slate-200 instead of slate-200 */
+  --input: 215 20% 90%; /* slate-200 instead of slate-200 */
   --ring: 142.1 76.2% 36.3%;
   --radius: 0.5rem;
 }

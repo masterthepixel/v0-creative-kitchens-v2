@@ -59,15 +59,15 @@ export default function HeroSectionGallery() {
   ]
 
   return (
-    <div className="bg-white dark:bg-gray-900">
+    <div className="bg-white dark:bg-slate-900">
       <div className="overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 pt-24 pb-24 sm:pt-32 lg:px-8 lg:pt-32">
           <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
             <div className="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
-              <h1 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
+              <h1 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-5xl md:text-6xl">
                 {currentContent.headline}
               </h1>
-              <p className="mt-6 text-lg font-medium text-pretty text-gray-600 dark:text-gray-300 sm:max-w-md sm:text-xl/8 lg:max-w-none">
+              <p className="mt-6 text-lg font-medium text-pretty text-slate-600 dark:text-slate-300 sm:max-w-md sm:text-xl/8 lg:max-w-none">
                 {currentContent.description}
               </p>
               <div className="mt-10 flex items-center gap-x-6">
@@ -79,7 +79,7 @@ export default function HeroSectionGallery() {
                 </Link>
                 <Link
                   href={currentContent.secondaryCtaLink}
-                  className="text-sm/6 font-semibold text-gray-900 dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] transition-colors"
+                  className="text-sm/6 font-semibold text-slate-900 dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] transition-colors"
                 >
                   {currentContent.secondaryCta} <span aria-hidden="true">→</span>
                 </Link>
@@ -87,7 +87,7 @@ export default function HeroSectionGallery() {
               <div className="mt-6">
                 <a
                   href={`tel:${currentContent.phone}`}
-                  className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] transition-colors"
+                  className="inline-flex items-center text-base font-semibold text-slate-900 dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] transition-colors"
                 >
                   <Phone className="mr-2 h-5 w-5" />
                   {currentContent.callUs}: {currentContent.phone}
@@ -100,9 +100,9 @@ export default function HeroSectionGallery() {
                   <img
                     alt={kitchenImages[0].alt}
                     src={kitchenImages[0].src || "/placeholder.svg"}
-                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    className="aspect-[2/3] w-full rounded-xl bg-slate-900/5 object-cover shadow-lg"
                   />
-                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
+                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10 ring-inset" />
                 </div>
               </div>
               <div className="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
@@ -110,17 +110,17 @@ export default function HeroSectionGallery() {
                   <img
                     alt={kitchenImages[1].alt}
                     src={kitchenImages[1].src || "/placeholder.svg"}
-                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    className="aspect-[2/3] w-full rounded-xl bg-slate-900/5 object-cover shadow-lg"
                   />
-                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
+                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10 ring-inset" />
                 </div>
                 <div className="relative">
                   <img
                     alt={kitchenImages[2].alt}
                     src={kitchenImages[2].src || "/placeholder.svg"}
-                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    className="aspect-[2/3] w-full rounded-xl bg-slate-900/5 object-cover shadow-lg"
                   />
-                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
+                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10 ring-inset" />
                 </div>
               </div>
               <div className="w-44 flex-none space-y-8 pt-32 sm:pt-0">
@@ -128,17 +128,17 @@ export default function HeroSectionGallery() {
                   <img
                     alt={kitchenImages[3].alt}
                     src={kitchenImages[3].src || "/placeholder.svg"}
-                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    className="aspect-[2/3] w-full rounded-xl bg-slate-900/5 object-cover shadow-lg"
                   />
-                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
+                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10 ring-inset" />
                 </div>
                 <div className="relative">
                   <img
                     alt={kitchenImages[4].alt}
                     src={kitchenImages[4].src || "/placeholder.svg"}
-                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    className="aspect-[2/3] w-full rounded-xl bg-slate-900/5 object-cover shadow-lg"
                   />
-                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
+                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10 ring-inset" />
                 </div>
               </div>
             </div>

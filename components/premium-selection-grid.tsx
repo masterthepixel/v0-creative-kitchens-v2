@@ -25,7 +25,7 @@ export default function PremiumSelectionGrid({ lang }: PremiumSelectionGridProps
             <div className="bg-white rounded-xl shadow-sm overflow-hidden">
               <div className="p-6">
                 <h3 className="text-xl font-semibold">Cabinets</h3>
-                <p className="mt-2 text-gray-600">
+                <p className="mt-2 text-slate-600">
                   Transform your space with our premium cabinet collections, offering superior craftsmanship and
                   timeless designs to suit any style preference.
                 </p>
@@ -40,7 +40,7 @@ export default function PremiumSelectionGrid({ lang }: PremiumSelectionGridProps
             <div className="bg-white rounded-xl shadow-sm overflow-hidden">
               <div className="p-6">
                 <h3 className="text-xl font-semibold">Countertops</h3>
-                <p className="mt-2 text-gray-600">
+                <p className="mt-2 text-slate-600">
                   Discover durable, elegant countertop solutions in granite, quartz, marble and more, crafted to elevate
                   both functionality and aesthetics.
                 </p>
@@ -49,7 +49,7 @@ export default function PremiumSelectionGrid({ lang }: PremiumSelectionGridProps
                 <div className="p-6">
                   <div className="flex items-center">
                     <span className="text-3xl font-bold text-blue-600">1.04</span>
-                    <span className="ml-1 text-gray-500">s</span>
+                    <span className="ml-1 text-slate-500">s</span>
                     <span className="ml-auto text-red-500">-22%</span>
                   </div>
                   <div className="mt-4 flex space-x-1">
@@ -67,15 +67,15 @@ export default function PremiumSelectionGrid({ lang }: PremiumSelectionGridProps
             <div className="bg-white rounded-xl shadow-sm overflow-hidden">
               <div className="p-6">
                 <h3 className="text-xl font-semibold">Bath Tubs</h3>
-                <p className="mt-2 text-gray-600">
+                <p className="mt-2 text-slate-600">
                   Indulge in luxury with our selection of bathtubs, from sleek modern designs to classic styles that
                   create your perfect sanctuary.
                 </p>
               </div>
-              <div className="relative h-64 w-full bg-gray-900 text-white">
+              <div className="relative h-64 w-full bg-slate-900 text-white">
                 <div className="p-4">
                   <div className="flex mb-2">
-                    <div className="bg-gray-800 rounded px-3 py-1 mr-2">Bath Tubs.jsx</div>
+                    <div className="bg-slate-800 rounded px-3 py-1 mr-2">Bath Tubs.jsx</div>
                     <div className="bg-transparent rounded px-3 py-1">App.jsx</div>
                   </div>
                   <pre className="text-xs">
@@ -100,12 +100,12 @@ export default function BathTubs() {
             <div className="bg-white rounded-xl shadow-sm overflow-hidden">
               <div className="p-6">
                 <h3 className="text-xl font-semibold">Cabinet Lighting</h3>
-                <p className="mt-2 text-gray-600">
+                <p className="mt-2 text-slate-600">
                   Illuminate your space with strategic cabinet lighting options that combine energy efficiency with
                   stunning visual impact.
                 </p>
               </div>
-              <div className="relative h-64 w-full flex items-center justify-center bg-gray-50">
+              <div className="relative h-64 w-full flex items-center justify-center bg-slate-50">
                 <div className="flex space-x-8">
                   <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-md">
                     <svg

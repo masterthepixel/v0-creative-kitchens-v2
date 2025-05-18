@@ -38,9 +38,9 @@ const LogoCard = ({ src, name }: { src: string; name: string }) => {
       className={cn(
         "relative mx-4 h-20 w-40 cursor-pointer overflow-hidden rounded-xl border p-3 flex items-center justify-center",
         // light styles
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        "border-slate-950/[.1] bg-slate-950/[.01] hover:bg-slate-950/[.05]",
         // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+        "dark:border-slate-50/[.1] dark:bg-slate-50/[.10] dark:hover:bg-slate-50/[.15]",
       )}
       title={name}
     >

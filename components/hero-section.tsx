@@ -35,11 +35,11 @@ export default function HeroSection({ language }: HeroSectionProps) {
     <div className="relative overflow-hidden min-h-screen w-full flex items-center justify-center">
       {/* Content overlay - centered both horizontally and vertically */}
       <div className="relative z-20 w-full flex items-center justify-center min-h-screen px-4 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl backdrop-blur-md bg-white/50 dark:bg-gray-900/50 p-8 sm:p-10 rounded-2xl shadow-lg border border-white/20 dark:border-gray-800/30">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
+        <div className="text-center max-w-3xl backdrop-blur-md bg-white/50 dark:bg-slate-900/50 p-8 sm:p-10 rounded-2xl shadow-lg border border-white/20 dark:border-slate-800/30">
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl md:text-6xl">
             {currentContent.headline}
           </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-800 dark:text-gray-200 mx-auto max-w-2xl">
+          <p className="mt-6 text-lg leading-8 text-slate-800 dark:text-slate-200 mx-auto max-w-2xl">
             {currentContent.description}
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
@@ -51,7 +51,7 @@ export default function HeroSection({ language }: HeroSectionProps) {
             </Link>
             <a
               href={`tel:${currentContent.phone}`}
-              className="flex items-center text-base font-semibold text-gray-900 dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] transition-colors"
+              className="flex items-center text-base font-semibold text-slate-900 dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] transition-colors"
             >
               <Phone className="mr-2 h-5 w-5" />
               {currentContent.secondaryCta}: {currentContent.phone}

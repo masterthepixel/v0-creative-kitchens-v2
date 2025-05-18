@@ -64,13 +64,13 @@ const SkeletonOne = () => {
         className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2  items-center space-x-2 bg-white dark:bg-black"
       >
         <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 shrink-0" />
-        <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
+        <div className="w-full bg-slate-100 h-4 rounded-full dark:bg-neutral-900" />
       </motion.div>
       <motion.div
         variants={variantsSecond}
         className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 w-3/4 ml-auto bg-white dark:bg-black"
       >
-        <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
+        <div className="w-full bg-slate-100 h-4 rounded-full dark:bg-neutral-900" />
         <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 shrink-0" />
       </motion.div>
       <motion.div
@@ -78,7 +78,7 @@ const SkeletonOne = () => {
         className="flex flex-row rounded-full border border-neutral-100 dark:border-white/[0.2] p-2 items-center space-x-2 bg-white dark:bg-black"
       >
         <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 shrink-0" />
-        <div className="w-full bg-gray-100 h-4 rounded-full dark:bg-neutral-900" />
+        <div className="w-full bg-slate-100 h-4 rounded-full dark:bg-neutral-900" />
       </motion.div>
     </motion.div>
   )

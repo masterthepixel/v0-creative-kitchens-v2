@@ -62,7 +62,7 @@ export default function ThreeDMarqueeDemo() {
             </Link>
             <Link
               href="/en/contact"
-              className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-blue-600 shadow-md hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-blue-600 shadow-md hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               Contact Us <span aria-hidden="true">→</span>
             </Link>

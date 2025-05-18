@@ -114,7 +114,7 @@ export default function TestimonialsSection({ language }: { language: string }) 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-2xl">
           <h2 className="text-base/7 font-semibold text-primary">{title}</h2>
-          <p className="mt-2 text-4xl font-semibold tracking-tight text-balance text-gray-900 dark:text-white sm:text-5xl">
+          <p className="mt-2 text-4xl font-semibold tracking-tight text-balance text-slate-900 dark:text-white sm:text-5xl">
             {subtitle}
           </p>
         </div>

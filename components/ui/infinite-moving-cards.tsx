@@ -106,7 +106,7 @@ export const InfiniteMovingCards = ({
                   background: "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(120,120,120,0.2) 100%)",
                 }}
               ></div>
-              <span className="relative z-20 text-sm leading-[1.6] font-normal text-neutral-800 dark:text-gray-100">
+              <span className="relative z-20 text-sm leading-[1.6] font-normal text-neutral-800 dark:text-slate-100">
                 {item.quote}
               </span>
               <div className="relative z-20 mt-6 flex flex-row items-center gap-4">
@@ -121,7 +121,7 @@ export const InfiniteMovingCards = ({
                 )}
                 <span className="flex flex-col gap-1">
                   <span className="text-sm font-semibold text-neutral-900 dark:text-white">{item.name}</span>
-                  <span className="text-sm font-normal text-neutral-500 dark:text-gray-400">{item.title}</span>
+                  <span className="text-sm font-normal text-neutral-500 dark:text-slate-400">{item.title}</span>
                 </span>
               </div>
             </blockquote>

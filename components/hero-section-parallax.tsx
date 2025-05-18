@@ -128,16 +128,16 @@ export default function HeroSectionParallax() {
                     <span className="rounded-full bg-[#0070f3]/10 px-3 py-1 text-sm/6 font-semibold text-[#0070f3] ring-1 ring-[#0070f3]/10 ring-inset">
                       {currentContent.whatsNew}
                     </span>
-                    <span className="inline-flex items-center space-x-2 text-sm/6 font-medium text-gray-600 dark:text-gray-300">
+                    <span className="inline-flex items-center space-x-2 text-sm/6 font-medium text-slate-600 dark:text-slate-300">
                       <span>{currentContent.justShipped}</span>
-                      <ChevronRight className="size-5 text-gray-400" aria-hidden="true" />
+                      <ChevronRight className="size-5 text-slate-400" aria-hidden="true" />
                     </span>
                   </div>
                 </div>
-                <h1 className="mt-10 text-5xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white sm:text-7xl">
+                <h1 className="mt-10 text-5xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-7xl">
                   {currentContent.headline}
                 </h1>
-                <p className="mt-8 text-lg font-medium text-pretty text-gray-500 dark:text-gray-300 sm:text-xl/8">
+                <p className="mt-8 text-lg font-medium text-pretty text-slate-500 dark:text-slate-300 sm:text-xl/8">
                   {currentContent.description}
                 </p>
                 <div className="mt-10 flex items-center gap-x-6">
@@ -149,7 +149,7 @@ export default function HeroSectionParallax() {
                   </Link>
                   <Link
                     href={currentContent.secondaryCtaLink}
-                    className="text-sm/6 font-semibold text-gray-900 dark:text-white"
+                    className="text-sm/6 font-semibold text-slate-900 dark:text-white"
                   >
                     {currentContent.secondaryCta} <span aria-hidden="true">→</span>
                   </Link>

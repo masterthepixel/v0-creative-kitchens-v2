@@ -43,17 +43,17 @@ export default function HeroSectionCombined() {
           {/* Phone link above the headline */}
           <a
             href={`tel:${currentContent.phone}`}
-            className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] transition-colors mb-2 pb-1 border-b border-gray-200/30 dark:border-gray-800/30"
+            className="inline-flex items-center text-base font-semibold text-slate-900 dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] transition-colors mb-2 pb-1 border-b border-slate-200/30 dark:border-slate-800/30"
           >
             <Phone className="mr-2 h-5 w-5" />
             {currentContent.callUs}: {currentContent.phone}
           </a>
 
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
             {currentContent.headline}
           </h1>
 
-          <p className="text-lg text-gray-700 dark:text-gray-300">{currentContent.description}</p>
+          <p className="text-lg text-slate-700 dark:text-slate-300">{currentContent.description}</p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Link

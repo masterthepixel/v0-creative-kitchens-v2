@@ -301,10 +301,10 @@ export default async function AreaPage({ params }: AreaPageParams) {
                 <h2 className="text-base font-semibold text-amber-600">
                   {lang === "en" ? "Premium Kitchen Design" : "Diseño Premium de Cocinas"}
                 </h2>
-                <h1 className="text-5xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white sm:text-7xl">
+                <h1 className="text-5xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-7xl">
                   {areaDict.heroTitle}
                 </h1>
-                <p className="mt-8 text-lg font-medium text-pretty text-gray-600 dark:text-gray-300 sm:max-w-md sm:text-xl/8 lg:max-w-none">
+                <p className="mt-8 text-lg font-medium text-pretty text-slate-600 dark:text-slate-300 sm:max-w-md sm:text-xl/8 lg:max-w-none">
                   {areaDict.heroSubtitle}
                 </p>
 
@@ -338,8 +338,8 @@ export default async function AreaPage({ params }: AreaPageParams) {
                         <feature.icon className="size-6" />
                       </div>
                       <div className="ml-4">
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{feature.name}</h3>
-                        <p className="mt-1 text-base text-gray-600 dark:text-gray-300">{feature.description}</p>
+                        <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{feature.name}</h3>
+                        <p className="mt-1 text-base text-slate-600 dark:text-slate-300">{feature.description}</p>
                       </div>
                     </div>
                   ))}
@@ -372,21 +372,21 @@ export default async function AreaPage({ params }: AreaPageParams) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
-                <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
+                <h3 className="text-2xl font-semibold mb-4 text-slate-900 dark:text-white">
                   {lang === "en" ? "Our Local Expertise in" : "Nuestra Experiencia Local en"} {formattedLocation}
                 </h3>
-                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">{areaDict.areaDescription}</p>
-                <p className="text-lg text-gray-700 dark:text-gray-300">{areaDict.localExpertiseContent}</p>
+                <p className="text-lg text-slate-700 dark:text-slate-300 mb-6">{areaDict.areaDescription}</p>
+                <p className="text-lg text-slate-700 dark:text-slate-300">{areaDict.localExpertiseContent}</p>
               </div>
 
-              <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+              <div className="border border-slate-200 dark:border-slate-700 rounded-lg p-6">
+                <h3 className="text-xl font-semibold mb-4 text-slate-900 dark:text-white">
                   {lang === "en" ? "Neighborhoods We Serve" : "Vecindarios Que Atendemos"}
                 </h3>
                 <ul className="grid grid-cols-2 gap-2">
                   {areaDict.neighborhoods.map((neighborhood: string) => (
-                    <li key={neighborhood} className="flex items-center text-gray-700 dark:text-gray-300 py-1">
-                      <span className="inline-flex items-center justify-center bg-white dark:bg-gray-800 rounded-full p-1 mr-2">
+                    <li key={neighborhood} className="flex items-center text-slate-700 dark:text-slate-300 py-1">
+                      <span className="inline-flex items-center justify-center bg-white dark:bg-slate-800 rounded-full p-1 mr-2">
                         <MapPin size={16} className="text-amber-500" />
                       </span>
                       {neighborhood}

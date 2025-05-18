@@ -16,7 +16,7 @@ export default async function GalleryPage({
             <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">
               {lang === "en" ? "Our Project Gallery" : "Galería de Proyectos"}
             </h1>
-            <p className="max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+            <p className="max-w-[700px] text-slate-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-slate-400">
               {lang === "en"
                 ? "Explore our portfolio of kitchen and bathroom transformations. Click on any project to see more details."
                 : "Explore nuestro portafolio de transformaciones de cocinas y baños. Haga clic en cualquier proyecto para ver más detalles."}

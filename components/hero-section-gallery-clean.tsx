@@ -63,10 +63,10 @@ export default function HeroSectionGalleryClean() {
         <div className="mx-auto max-w-7xl px-6 pt-6 pb-8 lg:px-8 ">
           <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
             <div className="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
-              <h1 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              <h1 className="text-4xl font-semibold tracking-tight text-pretty text-slate-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
                 {currentContent.headline}
               </h1>
-              <p className="mt-6 text-base text-pretty text-gray-600 dark:text-gray-300 sm:mt-8 sm:text-lg md:text-xl lg:mt-8">
+              <p className="mt-6 text-base text-pretty text-slate-600 dark:text-slate-300 sm:mt-8 sm:text-lg md:text-xl lg:mt-8">
                 {currentContent.description}
               </p>
               <div className="mt-8 flex items-center gap-x-6 sm:mt-10">
@@ -78,7 +78,7 @@ export default function HeroSectionGalleryClean() {
                 </Link>
                 <Link
                   href={currentContent.secondaryCtaLink}
-                  className="text-sm font-semibold leading-6 text-gray-900 dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] transition-colors"
+                  className="text-sm font-semibold leading-6 text-slate-900 dark:text-white hover:text-[#0070f3] dark:hover:text-[#0070f3] transition-colors"
                 >
                   {currentContent.secondaryCta} <span aria-hidden="true">→</span>
                 </Link>
@@ -93,12 +93,12 @@ export default function HeroSectionGalleryClean() {
                   <img
                     alt={kitchenImages[0].alt}
                     src={kitchenImages[0].src || "/placeholder.svg"}
-                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    className="aspect-[2/3] w-full rounded-xl bg-slate-900/5 object-cover shadow-lg"
                     onError={(e) => {
                       e.currentTarget.src = "/placeholder.svg?height=600&width=400"
                     }}
                   />
-                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
+                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10 ring-inset" />
                 </div>
               </div>
 
@@ -108,23 +108,23 @@ export default function HeroSectionGalleryClean() {
                   <img
                     alt={kitchenImages[1].alt}
                     src={kitchenImages[1].src || "/placeholder.svg"}
-                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    className="aspect-[2/3] w-full rounded-xl bg-slate-900/5 object-cover shadow-lg"
                     onError={(e) => {
                       e.currentTarget.src = "/placeholder.svg?height=600&width=400"
                     }}
                   />
-                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
+                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10 ring-inset" />
                 </div>
                 <div className="relative">
                   <img
                     alt={kitchenImages[2].alt}
                     src={kitchenImages[2].src || "/placeholder.svg"}
-                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    className="aspect-[2/3] w-full rounded-xl bg-slate-900/5 object-cover shadow-lg"
                     onError={(e) => {
                       e.currentTarget.src = "/placeholder.svg?height=600&width=400"
                     }}
                   />
-                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
+                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10 ring-inset" />
                 </div>
               </div>
 
@@ -134,23 +134,23 @@ export default function HeroSectionGalleryClean() {
                   <img
                     alt={kitchenImages[3].alt}
                     src={kitchenImages[3].src || "/placeholder.svg"}
-                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    className="aspect-[2/3] w-full rounded-xl bg-slate-900/5 object-cover shadow-lg"
                     onError={(e) => {
                       e.currentTarget.src = "/placeholder.svg?height=600&width=400"
                     }}
                   />
-                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
+                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10 ring-inset" />
                 </div>
                 <div className="relative">
                   <img
                     alt={kitchenImages[4].alt}
                     src={kitchenImages[4].src || "/placeholder.svg"}
-                    className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                    className="aspect-[2/3] w-full rounded-xl bg-slate-900/5 object-cover shadow-lg"
                     onError={(e) => {
                       e.currentTarget.src = "/placeholder.svg?height=600&width=400"
                     }}
                   />
-                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
+                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-slate-900/10 dark:ring-white/10 ring-inset" />
                 </div>
               </div>
             </div>

@@ -155,13 +155,13 @@ export default function MobileBottomNav() {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed bottom-16 left-0 w-full z-50"
           >
-            <div className="mx-4 mb-2 rounded-xl overflow-hidden backdrop-blur-lg bg-white/80 dark:bg-gray-900/80 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-200 dark:border-gray-700">
+            <div className="mx-4 mb-2 rounded-xl overflow-hidden backdrop-blur-lg bg-white/80 dark:bg-slate-900/80 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-200 dark:border-slate-700">
               <div className="p-4">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-lg font-bold text-primary">{translations.kitchenEssentials}</h3>
                   <button
                     onClick={() => setActivePopover(null)}
-                    className="p-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
+                    className="p-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400"
                   >
                     <X size={16} />
                   </button>
@@ -171,10 +171,10 @@ export default function MobileBottomNav() {
                     <Link
                       key={item.href}
                       href={`/${language}/products/${item.href}`}
-                      className={`py-2 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center ${
+                      className={`py-2 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center ${
                         isProductActive(item.href)
                           ? "bg-primary/10 text-primary font-medium"
-                          : "text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                          : "text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary"
                       }`}
                       onClick={() => setActivePopover(null)}
                     >
@@ -199,13 +199,13 @@ export default function MobileBottomNav() {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed bottom-16 left-0 w-full z-50"
           >
-            <div className="mx-4 mb-2 rounded-xl overflow-hidden backdrop-blur-lg bg-white/80 dark:bg-gray-900/80 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-200 dark:border-gray-700">
+            <div className="mx-4 mb-2 rounded-xl overflow-hidden backdrop-blur-lg bg-white/80 dark:bg-slate-900/80 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-200 dark:border-slate-700">
               <div className="p-4">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-lg font-bold text-primary">{translations.bathroomSolutions}</h3>
                   <button
                     onClick={() => setActivePopover(null)}
-                    className="p-1 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
+                    className="p-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400"
                   >
                     <X size={16} />
                   </button>
@@ -215,10 +215,10 @@ export default function MobileBottomNav() {
                     <Link
                       key={item.href}
                       href={`/${language}/products/${item.href}`}
-                      className={`py-2 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors flex items-center ${
+                      className={`py-2 px-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center ${
                         isProductActive(item.href)
                           ? "bg-primary/10 text-primary font-medium"
-                          : "text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                          : "text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary"
                       }`}
                       onClick={() => setActivePopover(null)}
                     >
@@ -240,7 +240,7 @@ export default function MobileBottomNav() {
         transition={{ type: "spring", damping: 20, stiffness: 300, delay: 0.2 }}
         className="fixed bottom-0 left-0 right-0 z-50 lg:hidden"
       >
-        <div className="backdrop-blur-lg bg-white/80 dark:bg-gray-900/80 shadow-[0_-8px_30px_rgb(0,0,0,0.12)] border-t border-gray-200 dark:border-gray-800 py-2">
+        <div className="backdrop-blur-lg bg-white/80 dark:bg-slate-900/80 shadow-[0_-8px_30px_rgb(0,0,0,0.12)] border-t border-slate-200 dark:border-slate-800 py-2">
           <div className="flex justify-around">
             <div className="flex-1 group">
               <Link
@@ -248,7 +248,7 @@ export default function MobileBottomNav() {
                 className={`flex flex-col items-center justify-center text-center pt-1 ${
                   isActive(`/${language}`)
                     ? "text-primary"
-                    : "text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary"
+                    : "text-slate-500 dark:text-slate-400 group-hover:text-primary dark:group-hover:text-primary"
                 }`}
               >
                 <Home size={22} />
@@ -268,7 +268,7 @@ export default function MobileBottomNav() {
                 className={`w-full flex flex-col items-center justify-center text-center pt-1 focus:outline-none ${
                   isKitchenActive || activePopover === "kitchen"
                     ? "text-primary"
-                    : "text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary"
+                    : "text-slate-500 dark:text-slate-400 group-hover:text-primary dark:group-hover:text-primary"
                 }`}
               >
                 <ShoppingBag size={22} />
@@ -290,7 +290,7 @@ export default function MobileBottomNav() {
                 className={`w-full flex flex-col items-center justify-center text-center pt-1 focus:outline-none ${
                   isBathroomActive || activePopover === "bathroom"
                     ? "text-primary"
-                    : "text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary"
+                    : "text-slate-500 dark:text-slate-400 group-hover:text-primary dark:group-hover:text-primary"
                 }`}
               >
                 <Bath size={22} />
@@ -309,7 +309,7 @@ export default function MobileBottomNav() {
                 className={`flex flex-col items-center justify-center text-center pt-1 ${
                   isActive(`/${language}/gallery`)
                     ? "text-primary"
-                    : "text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary"
+                    : "text-slate-500 dark:text-slate-400 group-hover:text-primary dark:group-hover:text-primary"
                 }`}
               >
                 <ImageIcon size={22} />
@@ -328,7 +328,7 @@ export default function MobileBottomNav() {
                 className={`flex flex-col items-center justify-center text-center pt-1 ${
                   isActive(`/${language}/contact`)
                     ? "text-primary"
-                    : "text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary"
+                    : "text-slate-500 dark:text-slate-400 group-hover:text-primary dark:group-hover:text-primary"
                 }`}
               >
                 <Phone size={22} />

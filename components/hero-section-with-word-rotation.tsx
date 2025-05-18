@@ -79,9 +79,9 @@ export default function HeroSectionWithWordRotation() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center backdrop-blur-md bg-white/60 dark:bg-gray-900/60 p-8 sm:p-10 rounded-2xl shadow-lg border border-white/30 dark:border-gray-800/40 max-w-4xl mx-auto"
+            className="text-center backdrop-blur-md bg-white/60 dark:bg-slate-900/60 p-8 sm:p-10 rounded-2xl shadow-lg border border-white/30 dark:border-slate-800/40 max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl md:text-6xl lg:text-7xl">
               {content[language].preRotate}{" "}
               <WordRotate words={rotatingWords[language]} className="text-primary font-extrabold" duration={2000} />
             </h1>
@@ -90,7 +90,7 @@ export default function HeroSectionWithWordRotation() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="mt-6 text-xl text-gray-800 dark:text-gray-200 max-w-3xl mx-auto"
+              className="mt-6 text-xl text-slate-800 dark:text-slate-200 max-w-3xl mx-auto"
             >
               {content[language].description}
             </motion.p>
@@ -139,7 +139,7 @@ export default function HeroSectionWithWordRotation() {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-gray-500 dark:text-gray-400"
+          className="text-slate-500 dark:text-slate-400"
         >
           <path d="M12 5v14" />
           <path d="m19 12-7 7-7-7" />

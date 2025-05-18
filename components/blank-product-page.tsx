@@ -31,12 +31,12 @@ export default function BlankProductPage({ productNameEN, productNameES }: Blank
     <div className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">{title}</h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">{description}</p>
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-6xl">{title}</h1>
+          <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">{description}</p>
         </div>
         <div className="mt-16 flex justify-center">
-          <div className="relative h-64 w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-            <p className="text-gray-500 dark:text-gray-400">
+          <div className="relative h-64 w-full overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+            <p className="text-slate-500 dark:text-slate-400">
               {language === "en" ? "Content coming soon" : "Contenido próximamente"}
             </p>
           </div>

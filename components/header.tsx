@@ -169,7 +169,7 @@ export default function Header({ className = "" }: HeaderProps) {
           <Link
             href={`/${language}`}
             className={`font-bold text-xl transition-all duration-300 ${
-              scrolled ? "text-gray-900 dark:text-white" : "text-gray-900 dark:text-white drop-shadow-md"
+              scrolled ? "text-slate-900 dark:text-white" : "text-slate-900 dark:text-white drop-shadow-md"
             }`}
           >
             Creative Kitchens
@@ -180,7 +180,7 @@ export default function Header({ className = "" }: HeaderProps) {
           <Link
             href={`/${language}`}
             className={`text-sm font-medium transition-all duration-300 ${
-              scrolled ? "text-gray-900 dark:text-white" : "text-gray-900 dark:text-white drop-shadow-sm"
+              scrolled ? "text-slate-900 dark:text-white" : "text-slate-900 dark:text-white drop-shadow-sm"
             } hover:text-primary relative px-2 py-1 ${
               isActive(`/${language}`)
                 ? "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary"
@@ -195,7 +195,7 @@ export default function Header({ className = "" }: HeaderProps) {
               <>
                 <PopoverButton
                   className={`inline-flex items-center gap-x-1 text-sm font-medium transition-all duration-300 ${
-                    scrolled ? "text-gray-900 dark:text-white" : "text-gray-900 dark:text-white drop-shadow-sm"
+                    scrolled ? "text-slate-900 dark:text-white" : "text-slate-900 dark:text-white drop-shadow-sm"
                   } hover:text-primary px-2 py-1 ${open ? "text-primary" : ""}`}
                 >
                   <span>{language === "en" ? "Products" : "Productos"}</span>
@@ -203,42 +203,42 @@ export default function Header({ className = "" }: HeaderProps) {
                 </PopoverButton>
 
                 <PopoverPanel className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in">
-                  <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white dark:bg-gray-800 text-sm shadow-lg ring-1 ring-gray-900/10 dark:ring-gray-700/50 lg:max-w-3xl">
+                  <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white dark:bg-slate-800 text-sm shadow-lg ring-1 ring-slate-900/10 dark:ring-slate-700/50 lg:max-w-3xl">
                     <div className="grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2">
                       {products.map((item) => (
                         <div
                           key={item.name}
-                          className="dropdown-item group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300"
+                          className="dropdown-item group relative flex gap-x-6 rounded-lg p-4 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all duration-300"
                         >
-                          <div className="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700 group-hover:bg-white dark:group-hover:bg-gray-800 transition-all duration-300">
+                          <div className="mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-700 group-hover:bg-white dark:group-hover:bg-slate-800 transition-all duration-300">
                             <item.icon
                               aria-hidden="true"
-                              className="dropdown-icon size-6 text-gray-600 dark:text-yellow-400 transition-all duration-300"
+                              className="dropdown-icon size-6 text-slate-600 dark:text-yellow-400 transition-all duration-300"
                             />
                           </div>
                           <div>
                             <Link
                               href={item.href}
-                              className="dropdown-heading font-semibold text-gray-900 dark:text-white text-base"
+                              className="dropdown-heading font-semibold text-slate-900 dark:text-white text-base"
                             >
                               {item.name}
                               <span className="absolute inset-0" />
                             </Link>
-                            <p className="mt-1 text-xs text-gray-700 dark:text-gray-300">{item.description}</p>
+                            <p className="mt-1 text-xs text-slate-700 dark:text-slate-300">{item.description}</p>
                           </div>
                         </div>
                       ))}
                     </div>
-                    <div className="bg-gray-100 dark:bg-gray-700 px-8 py-6">
+                    <div className="bg-slate-100 dark:bg-slate-700 px-8 py-6">
                       <div className="flex items-center gap-x-3">
-                        <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+                        <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
                           {language === "en" ? "All Products" : "Todos los Productos"}
                         </h3>
                         <p className="rounded-full bg-primary/10 px-2.5 py-1.5 text-xs font-semibold text-primary dark:bg-yellow-400/20 dark:text-yellow-400">
                           {language === "en" ? "Browse" : "Explorar"}
                         </p>
                       </div>
-                      <p className="mt-2 text-xs text-gray-700 dark:text-gray-300">
+                      <p className="mt-2 text-xs text-slate-700 dark:text-slate-300">
                         {language === "en"
                           ? "Explore our complete collection of premium kitchen and bathroom products."
                           : "Explora nuestra colección completa de productos premium para cocina y baño."}
@@ -259,7 +259,7 @@ export default function Header({ className = "" }: HeaderProps) {
           <Link
             href={`/${language}/about`}
             className={`text-sm font-medium transition-all duration-300 ${
-              scrolled ? "text-gray-900 dark:text-white" : "text-gray-900 dark:text-white drop-shadow-sm"
+              scrolled ? "text-slate-900 dark:text-white" : "text-slate-900 dark:text-white drop-shadow-sm"
             } hover:text-primary relative px-2 py-1 ${
               isActive(`/${language}/about`)
                 ? "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary"
@@ -271,7 +271,7 @@ export default function Header({ className = "" }: HeaderProps) {
           <Link
             href={`/${language}/contact`}
             className={`text-sm font-medium transition-all duration-300 ${
-              scrolled ? "text-gray-900 dark:text-white" : "text-gray-900 dark:text-white drop-shadow-sm"
+              scrolled ? "text-slate-900 dark:text-white" : "text-slate-900 dark:text-white drop-shadow-sm"
             } hover:text-primary relative px-2 py-1 ${
               isActive(`/${language}/contact`)
                 ? "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary"
@@ -283,7 +283,7 @@ export default function Header({ className = "" }: HeaderProps) {
           <Link
             href={`/${language}/kitchen-sink`}
             className={`text-sm font-medium transition-all duration-300 ${
-              scrolled ? "text-gray-900 dark:text-white" : "text-gray-900 dark:text-white drop-shadow-sm"
+              scrolled ? "text-slate-900 dark:text-white" : "text-slate-900 dark:text-white drop-shadow-sm"
             } hover:text-primary relative px-2 py-1 ${
               isActive(`/${language}/kitchen-sink`)
                 ? "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-primary"

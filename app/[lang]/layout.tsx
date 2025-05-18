@@ -35,8 +35,8 @@ export default function RootLayout({
           <LanguageProvider lang={params.lang}>
             <Suspense
               fallback={
-                <div className="fixed inset-0 bg-white dark:bg-gray-900 flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900 dark:border-white"></div>
+                <div className="fixed inset-0 bg-white dark:bg-slate-900 flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-slate-900 dark:border-white"></div>
                 </div>
               }
             >
@@ -45,7 +45,7 @@ export default function RootLayout({
 
             <Suspense
               fallback={
-                <div className="h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800"></div>
+                <div className="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800"></div>
               }
             >
               <MainNavbar />
@@ -53,7 +53,7 @@ export default function RootLayout({
 
             <main className="pt-16">{children}</main>
 
-            <Suspense fallback={<div className="h-64 bg-gray-100 dark:bg-gray-800"></div>}>
+            <Suspense fallback={<div className="h-64 bg-slate-100 dark:bg-slate-800"></div>}>
               <Footer />
             </Suspense>
 

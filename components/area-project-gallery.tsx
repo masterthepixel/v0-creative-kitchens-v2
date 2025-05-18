@@ -64,7 +64,7 @@ export default function AreaProjectGallery({ location }: ProjectGalleryProps) {
   }
 
   return (
-    <div className="w-full bg-gray-900 py-16">
+    <div className="w-full bg-slate-900 py-16">
       <div className="container mx-auto max-w-7xl px-4 text-center mb-12">
         <h2 className="text-4xl font-bold mb-4 text-yellow-400">
           {language === "en" ? "Our Project Gallery" : "Nuestra Galería de Proyectos"}
@@ -105,7 +105,7 @@ export default function AreaProjectGallery({ location }: ProjectGalleryProps) {
         <div className="mt-10 text-center">
           <Link
             href={`/${language}/gallery`}
-            className="inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-md hover:bg-yellow-500 transition-colors font-medium"
+            className="inline-block bg-yellow-400 text-slate-900 px-6 py-3 rounded-md hover:bg-yellow-500 transition-colors font-medium"
           >
             {language === "en" ? "View All Projects" : "Ver Todos los Proyectos"}
           </Link>
@@ -126,7 +126,7 @@ export default function AreaProjectGallery({ location }: ProjectGalleryProps) {
             <div className="p-6">
               <h3 className="text-2xl font-bold mb-4">{projects.find((p) => p.id === selectedProject)?.title}</h3>
               <p className="mb-4">{projects.find((p) => p.id === selectedProject)?.description}</p>
-              <button className="bg-gray-900 text-white px-4 py-2 rounded" onClick={() => setSelectedProject(null)}>
+              <button className="bg-slate-900 text-white px-4 py-2 rounded" onClick={() => setSelectedProject(null)}>
                 {language === "en" ? "Close" : "Cerrar"}
               </button>
             </div>

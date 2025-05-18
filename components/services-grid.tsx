@@ -22,17 +22,17 @@ export default function ServicesGrid({ title = "Our Services", services, lang = 
   const serviceItems = services || defaultServices
 
   return (
-    <section className="py-16 bg-white dark:bg-gray-900">
+    <section className="py-16 bg-white dark:bg-slate-900">
       <div className="container mx-auto max-w-7xl px-4">
         <h2 className="text-3xl font-bold mb-12 text-center dark:text-white">{title}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {Object.entries(serviceItems).map(([key, service]) => (
             <div
               key={key}
-              className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              className="bg-slate-50 dark:bg-slate-800 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
             >
               <h3 className="text-xl font-semibold mb-3 dark:text-white">{service}</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
+              <p className="text-slate-600 dark:text-slate-300 mb-4">
                 {lang === "en"
                   ? `Professional ${service.toLowerCase()} services tailored for your home.`
                   : `Servicios profesionales de ${service.toLowerCase()} adaptados para su hogar.`}

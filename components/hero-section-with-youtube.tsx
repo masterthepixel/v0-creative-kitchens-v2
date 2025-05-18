@@ -98,7 +98,7 @@ export default function HeroSectionWithYouTube() {
             <Button
               asChild
               size="lg"
-              className="bg-white text-gray-900 hover:bg-gray-100 hover:text-gray-900 px-8 py-6 text-lg font-medium"
+              className="bg-white text-slate-900 hover:bg-slate-100 hover:text-slate-900 px-8 py-6 text-lg font-medium"
             >
               <Link href={content.ctaLink}>
                 {content.cta}

@@ -39,7 +39,7 @@ export default function ProductsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl"
+            className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-6xl"
           >
             {title}
           </motion.h1>
@@ -47,7 +47,7 @@ export default function ProductsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300"
+            className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300"
           >
             {description}
           </motion.p>
@@ -59,7 +59,7 @@ export default function ProductsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center mb-8"
+            className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white text-center mb-8"
           >
             {kitchenSectionTitle}
           </motion.h2>
@@ -72,7 +72,7 @@ export default function ProductsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
-            className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center mb-12"
+            className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white text-center mb-12"
           >
             {partnersTitle}
           </motion.h2>
@@ -85,7 +85,7 @@ export default function ProductsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center mb-8"
+            className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white text-center mb-8"
           >
             {bathroomSectionTitle}
           </motion.h2>

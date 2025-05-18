@@ -15,12 +15,12 @@ export default function FAQ({ title, faqs = [] }: FAQProps) {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto max-w-7xl px-4">
-        <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">{title}</h2>
+        <h2 className="text-3xl font-bold mb-12 text-center text-slate-900 dark:text-white">{title}</h2>
         <div className="max-w-3xl mx-auto">
           {faqs.map((faq, index) => (
-            <div key={index} className="mb-8 border-b border-gray-200 pb-6 last:border-0">
-              <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">{faq.question}</h3>
-              <p className="text-gray-700 dark:text-gray-300">{faq.answer}</p>
+            <div key={index} className="mb-8 border-b border-slate-200 pb-6 last:border-0">
+              <h3 className="text-xl font-semibold mb-3 text-slate-900 dark:text-white">{faq.question}</h3>
+              <p className="text-slate-700 dark:text-slate-300">{faq.answer}</p>
             </div>
           ))}
         </div>
