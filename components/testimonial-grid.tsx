@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { reviewsData } from "@/lib/testimonials-data"
+import { reviewsData } from "@/data/reviews-data"
+import "../app/testimonial-grid.css"
 
 type TestimonialItem = {
   name: string
@@ -9,7 +10,7 @@ type TestimonialItem = {
   heading: string
   text: string
   imageUrl: string
-  cardType: "purple" | "dark-gray" | "white" | "dark-blue"
+  cardType: "purple" | "dark-slate" | "white" | "dark-blue"
 }
 
 export default function TestimonialGrid({ language }: { language: string }) {
@@ -19,13 +20,13 @@ export default function TestimonialGrid({ language }: { language: string }) {
     // Get the top 5 reviews and format them
     const topReviews = reviewsData.reviews.slice(0, 5).map((review, index) => {
       // Determine card type based on index
-      let cardType: "purple" | "dark-gray" | "white" | "dark-blue"
+      let cardType: "purple" | "dark-slate" | "white" | "dark-blue"
       switch (index) {
         case 0:
           cardType = "purple"
           break
         case 1:
-          cardType = "dark-gray"
+          cardType = "dark-slate"
           break
         case 2:
           cardType = "white"
@@ -49,21 +50,12 @@ export default function TestimonialGrid({ language }: { language: string }) {
       // Get remaining text
       const remainingText = text.substring(firstSentence.length).trim()
 
-      // Get random face image
-      const faceImages = [
-        "https://randomuser.me/api/portraits/women/1.jpg",
-        "https://randomuser.me/api/portraits/men/1.jpg",
-        "https://randomuser.me/api/portraits/women/2.jpg",
-        "https://randomuser.me/api/portraits/men/2.jpg",
-        "https://randomuser.me/api/portraits/women/3.jpg",
-      ]
-
       return {
         name: review.name,
         title: review.location || (language === "en" ? "Verified Customer" : "Cliente Verificado"),
         heading: firstSentence,
         text: remainingText.length > 0 ? remainingText : text,
-        imageUrl: faceImages[index],
+        imageUrl: `/placeholder.svg?height=50&width=50&text=${review.name.charAt(0)}`,
         cardType,
       }
     })
@@ -72,7 +64,7 @@ export default function TestimonialGrid({ language }: { language: string }) {
   }, [language])
 
   return (
-    <div className="py-12 md:py-16 bg-[#ECF2F8] dark:bg-gray-900">
+    <div className="py-12 md:py-16 bg-[#ECF2F8] dark:bg-slate-900">
       <div className="container mx-auto px-4 md:px-6">
         <div className="testimonial-grid">
           {testimonials.map((testimonial, index) => (
@@ -81,11 +73,11 @@ export default function TestimonialGrid({ language }: { language: string }) {
               className={`card ${
                 testimonial.cardType === "purple"
                   ? "bg-[#733FC8] text-white"
-                  : testimonial.cardType === "dark-gray"
-                    ? "bg-[#48556A] text-white"
+                  : testimonial.cardType === "dark-slate"
+                    ? "bg-slate-700 text-white"
                     : testimonial.cardType === "dark-blue"
-                      ? "bg-[#19202D] text-white"
-                      : "bg-white text-[#48556A]"
+                      ? "bg-slate-800 text-white"
+                      : "bg-white text-slate-700"
               }`}
               id={`card-${index + 1}`}
             >

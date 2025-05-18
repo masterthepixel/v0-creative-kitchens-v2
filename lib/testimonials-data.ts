@@ -170,3 +170,14 @@ export const reviewsData = {
     business_name_es: "Cocinas Creativas",
   },
 }
+
+import { reviewsData as reviews } from "@/data/reviews-data"
+
+// Convert the reviews data to the format expected by the testimonials components
+export const testimonials = reviews.reviews.slice(0, 5).map((review) => ({
+  name: review.name,
+  title: review.location || "Verified Customer",
+  heading: review.text.split(".")[0] + ".",
+  text: review.text,
+  imageUrl: `/placeholder.svg?height=50&width=50&text=${review.name.charAt(0)}`,
+}))

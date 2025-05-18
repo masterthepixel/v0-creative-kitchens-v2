@@ -5,23 +5,7 @@ import { useState, useEffect } from "react"
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards"
 
 // Import the reviews data
-import { reviewsData } from "@/lib/testimonials-data"
-
-// Array of random face images
-const faceImages = [
-  "https://randomuser.me/api/portraits/women/1.jpg",
-  "https://randomuser.me/api/portraits/men/1.jpg",
-  "https://randomuser.me/api/portraits/women/2.jpg",
-  "https://randomuser.me/api/portraits/men/2.jpg",
-  "https://randomuser.me/api/portraits/women/3.jpg",
-  "https://randomuser.me/api/portraits/men/3.jpg",
-  "https://randomuser.me/api/portraits/women/4.jpg",
-  "https://randomuser.me/api/portraits/men/4.jpg",
-  "https://randomuser.me/api/portraits/women/5.jpg",
-  "https://randomuser.me/api/portraits/men/5.jpg",
-  "https://randomuser.me/api/portraits/women/6.jpg",
-  "https://randomuser.me/api/portraits/men/6.jpg",
-]
+import { reviewsData } from "@/data/reviews-data"
 
 // Define the testimonial item type to match what InfiniteMovingCards expects
 type TestimonialItem = {
@@ -50,14 +34,12 @@ export default function Testimonials() {
     }
 
     // Process testimonial items
-    const items = reviewsData.reviews
-      .filter((review) => review.name !== "Ruben L.") // Filter out Ruben L.
-      .map((review, index) => ({
-        quote: language === "en" ? review.text : review.text_es || review.text,
-        name: review.name,
-        title: review.location || (language === "en" ? "Customer" : "Cliente"),
-        imageUrl: faceImages[index % faceImages.length], // Add portrait images
-      }))
+    const items = reviewsData.reviews.map((review, index) => ({
+      quote: language === "en" ? review.text : review.text_es || review.text,
+      name: review.name,
+      title: review.location || (language === "en" ? "Verified Customer" : "Cliente Verificado"),
+      imageUrl: `/placeholder.svg?height=50&width=50&text=${review.name.charAt(0)}`,
+    }))
 
     setTestimonialItems(items)
     setIsLoaded(true)

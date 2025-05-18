@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useLanguage } from "./language-provider"
 import Link from "next/link"
 import { Menu, MenuItem } from "@/components/ui/navbar-menu"
@@ -9,7 +9,18 @@ import LanguageSwitcherWithFlags from "./language-switcher-with-flags"
 
 export default function MainNavbar() {
   const [active, setActive] = useState<string | null>(null)
+  const [isScrolled, setIsScrolled] = useState(false)
   const { language } = useLanguage()
+
+  // Detect scroll position to adjust glassmorphism effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   // Function to generate localized URLs
   const getLocalizedUrl = (path: string) => `/${language}${path}`
@@ -100,13 +111,24 @@ export default function MainNavbar() {
     },
   ]
 
+  // Glassmorphism classes with Firefox-specific adjustments - FIXED with correct syntax
+  const navbarClasses = `
+    fixed top-0 left-0 right-0 z-50 
+    ${isScrolled ? "py-2" : "py-4"} 
+    transition-all duration-300 ease-in-out
+    backdrop-blur-md 
+    bg-white/70 dark:bg-black/30
+    firefox:bg-opacity-80 firefox:dark:bg-opacity-40
+    border-b border-slate-200/50 dark:border-slate-800/20
+  `
+
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center py-4">
+    <div className={navbarClasses}>
       <div className="w-full max-w-7xl mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <Link
           href={getLocalizedUrl("/")}
-          className="font-bold text-2xl text-gray-900 dark:text-white hover:opacity-90 transition-colors"
+          className="font-bold text-2xl text-slate-900 dark:text-white hover:opacity-90 transition-colors"
         >
           Creative Kitchens
         </Link>
@@ -116,20 +138,20 @@ export default function MainNavbar() {
           <div className="relative z-50">
             <Menu setActive={setActive}>
               {/* Home - Simple link, no dropdown */}
-              <Link href={getLocalizedUrl("/")} className="text-black dark:text-white hover:opacity-90 px-4">
+              <Link href={getLocalizedUrl("/")} className="text-slate-900 dark:text-white hover:opacity-90 px-4">
                 {language === "en" ? "Home" : "Inicio"}
               </Link>
 
               {/* Products - With dropdown */}
               <MenuItem setActive={setActive} active={active} item={language === "en" ? "Products" : "Productos"}>
-                <div className="w-screen max-w-5xl flex-auto overflow-hidden rounded-3xl bg-white dark:bg-black text-sm shadow-lg ring-1 ring-gray-900/5 dark:ring-gray-100/10">
+                <div className="w-screen max-w-5xl flex-auto overflow-hidden rounded-3xl bg-white/90 dark:bg-black/50 firefox:bg-opacity-95 firefox:dark:bg-opacity-60 text-sm shadow-lg ring-1 ring-slate-900/5 dark:ring-slate-100/10 backdrop-blur-md">
                   <div className="grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-3">
                     {productCategories.map((item) => (
                       <div
                         key={item.name}
-                        className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-900"
+                        className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-slate-50/80 dark:hover:bg-slate-900/40"
                       >
-                        <div className="mt-1 flex size-16 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-gray-800 group-hover:bg-white dark:group-hover:bg-gray-700 overflow-hidden">
+                        <div className="mt-1 flex size-16 flex-none items-center justify-center rounded-lg bg-slate-50/90 dark:bg-slate-800/70 group-hover:bg-white/90 dark:group-hover:bg-slate-700/80 overflow-hidden">
                           <img
                             src={item.src || "/placeholder.svg"}
                             alt={item.name}
@@ -137,21 +159,21 @@ export default function MainNavbar() {
                           />
                         </div>
                         <div>
-                          <a href={item.href} className="font-semibold text-gray-900 dark:text-white">
+                          <a href={item.href} className="font-semibold text-slate-900 dark:text-white">
                             {item.name}
                             <span className="absolute inset-0" />
                           </a>
                           {/* Reduced line height for description text */}
-                          <p className="mt-1 text-gray-600 dark:text-gray-400 text-sm leading-tight">
+                          <p className="mt-1 text-slate-600 dark:text-slate-300 text-sm leading-tight">
                             {item.description}
                           </p>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <div className="bg-gray-50 dark:bg-gray-800 px-8 py-6">
+                  <div className="bg-slate-50/90 dark:bg-slate-800/50 firefox:bg-opacity-95 firefox:dark:bg-opacity-60 px-8 py-6 backdrop-blur-sm">
                     <div className="flex items-center gap-x-3">
-                      <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+                      <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
                         {language === "en" ? "Custom Solutions" : "Soluciones Personalizadas"}
                       </h3>
                       <p className="rounded-full bg-blue-600/10 px-2.5 py-1.5 text-xs font-semibold text-blue-600 dark:bg-blue-400/10 dark:text-blue-400">
@@ -159,7 +181,7 @@ export default function MainNavbar() {
                       </p>
                     </div>
                     {/* Reduced line height for description text */}
-                    <p className="mt-2 text-sm leading-tight text-gray-600 dark:text-gray-400">
+                    <p className="mt-2 text-sm leading-tight text-slate-600 dark:text-slate-300">
                       {language === "en"
                         ? "Explore our custom design services for your unique kitchen and bath needs."
                         : "Explore nuestros servicios de diseño personalizado para sus necesidades únicas de cocina y baño."}
@@ -177,12 +199,12 @@ export default function MainNavbar() {
               </MenuItem>
 
               {/* Gallery - Simple link, no dropdown */}
-              <Link href={getLocalizedUrl("/gallery")} className="text-black dark:text-white hover:opacity-90 px-4">
+              <Link href={getLocalizedUrl("/gallery")} className="text-slate-900 dark:text-white hover:opacity-90 px-4">
                 {language === "en" ? "Gallery" : "Galería"}
               </Link>
 
               {/* Contact - Simple link, no dropdown */}
-              <Link href={getLocalizedUrl("/contact")} className="text-black dark:text-white hover:opacity-90 px-4">
+              <Link href={getLocalizedUrl("/contact")} className="text-slate-900 dark:text-white hover:opacity-90 px-4">
                 {language === "en" ? "Contact" : "Contacto"}
               </Link>
             </Menu>

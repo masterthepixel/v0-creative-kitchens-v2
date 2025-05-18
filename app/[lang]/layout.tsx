@@ -14,6 +14,7 @@ import "@/app/globals.css"
 import "@/app/splide-custom.css"
 import "@/app/bento-grid.css"
 import "@/app/navbar.css"
+import "@/app/glassmorphism.css"
 
 export const metadata: Metadata = {
   title: "Creative Kitchens",

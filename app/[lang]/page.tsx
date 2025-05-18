@@ -1,103 +1,67 @@
 import { getDictionary } from "@/lib/dictionary"
-import ProductBentoGrid1 from "@/components/product-bento-grid-1"
+import HeroSectionGalleryClean from "@/components/hero-section-gallery-clean"
+import ProductBentoGrid from "@/components/product-bento-grid"
 import ProductBentoGrid2 from "@/components/product-bento-grid-2"
 import ProductBentoGrid3 from "@/components/product-bento-grid-3"
-import TestimonialsSection from "@/components/testimonials-section"
-import AboutUs from "@/components/about-us"
-import FaqSection from "@/components/faq-section"
-import HeroSectionGalleryClean from "@/components/hero-section-gallery-clean"
-import { Suspense } from "react"
+import LogoMarquee from "@/components/logo-marquee"
+import CallToAction from "@/components/call-to-action"
+import FAQSection from "@/components/faq-section"
+import ServicesGrid from "@/components/services-grid"
+import ProductServicesGrid from "@/components/product-services-grid"
+import BackToTop from "@/components/back-to-top"
+import Testimonials from "@/components/testimonials"
 
-export default async function Home({ params: { lang } }: { params: { lang: string } }) {
-  // Pre-fetch the dictionary data at the server level
-  const dict = await getDictionary(lang)
+export default async function Home({ params }: { params: { lang: string } }) {
+  const dict = await getDictionary(params.lang)
+
+  // Get services from dictionary if available
+  const services = dict.services || undefined
+
+  // Default product services
+  const productServices = [
+    {
+      title: "Kitchen Cabinets",
+      description: "Premium quality cabinets with custom designs and finishes.",
+      link: "/products/cabinets",
+      image: "/modern-kitchen-cabinets.png",
+    },
+    {
+      title: "Countertops",
+      description: "Elegant countertops in granite, quartz, marble, and more.",
+      link: "/products/countertops",
+      image: "/kitchen-countertops.png",
+    },
+    {
+      title: "Cabinet Lighting",
+      description: "Modern lighting solutions to enhance your kitchen's ambiance.",
+      link: "/products/cabinet-lighting",
+      image: "/cabinet-lighting.png",
+    },
+    {
+      title: "Flooring",
+      description: "Durable and stylish flooring options for your kitchen.",
+      link: "/products/flooring",
+      image: "/kitchen-flooring.png",
+    },
+  ]
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-      <div className="space-y-0 pb-8 w-full">
-        {/* Hero Section with Gallery */}
-        <section className="w-full">
-          <Suspense
-            fallback={
-              <div className="w-full h-[80vh] bg-gray-100 dark:bg-gray-800 animate-pulse flex items-center justify-center">
-                <div className="text-gray-500 dark:text-gray-400">Loading Hero Section...</div>
-              </div>
-            }
-          >
-            <HeroSectionGalleryClean />
-          </Suspense>
-        </section>
-
-        {/* Product Bento Grid 1 */}
-        <section className="w-full">
-          <Suspense
-            fallback={
-              <div className="w-full h-[400px] bg-gray-100 dark:bg-gray-800 animate-pulse flex items-center justify-center">
-                <div className="text-gray-500 dark:text-gray-400">Loading Products...</div>
-              </div>
-            }
-          >
-            <ProductBentoGrid1 />
-          </Suspense>
-        </section>
-
-        {/* Product Bento Grid 2 */}
-        <section className="w-full">
-          <Suspense
-            fallback={
-              <div className="w-full h-[400px] bg-gray-100 dark:bg-gray-800 animate-pulse flex items-center justify-center">
-                <div className="text-gray-500 dark:text-gray-400">Loading Products...</div>
-              </div>
-            }
-          >
-            <ProductBentoGrid2 />
-          </Suspense>
-        </section>
-
-        {/* Product Bento Grid 3 */}
-        <section className="w-full">
-          <Suspense
-            fallback={
-              <div className="w-full h-[400px] bg-gray-100 dark:bg-gray-800 animate-pulse flex items-center justify-center">
-                <div className="text-gray-500 dark:text-gray-400">Loading Products...</div>
-              </div>
-            }
-          >
-            <ProductBentoGrid3 />
-          </Suspense>
-        </section>
-
-        {/* About Us section - moved before Testimonials */}
-        <section className="w-full bg-gray-50 dark:bg-gray-800">
-          <Suspense
-            fallback={
-              <div className="w-full h-[300px] bg-gray-100 dark:bg-gray-800 animate-pulse flex items-center justify-center">
-                <div className="text-gray-500 dark:text-gray-400">Loading About Us...</div>
-              </div>
-            }
-          >
-            <AboutUs />
-          </Suspense>
-        </section>
-
-        {/* Testimonials section */}
-        <section className="w-full">
-          <TestimonialsSection language={lang} />
-        </section>
-
-        {/* FAQ section */}
-        <section className="w-full">
-          <Suspense
-            fallback={
-              <div className="w-full h-[300px] bg-gray-100 dark:bg-gray-800 animate-pulse flex items-center justify-center">
-                <div className="text-gray-500 dark:text-gray-400">Loading FAQs...</div>
-              </div>
-            }
-          >
-            <FaqSection />
-          </Suspense>
-        </section>
-      </div>
+      <HeroSectionGalleryClean language={params.lang} />
+      <ProductBentoGrid language={params.lang} />
+      <ServicesGrid title={dict.servicesTitle || "Our Services"} services={services} lang={params.lang} />
+      <ProductBentoGrid2 language={params.lang} />
+      <Testimonials />
+      <ProductBentoGrid3 language={params.lang} />
+      <LogoMarquee />
+      <ProductServicesGrid
+        title={dict.productServicesTitle || "Our Products"}
+        services={productServices}
+        lang={params.lang}
+      />
+      <FAQSection language={params.lang} />
+      <CallToAction language={params.lang} />
+      <BackToTop />
     </main>
   )
 }

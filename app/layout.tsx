@@ -6,6 +6,13 @@ import ScrollRestoration from "@/components/scroll-restoration"
 import type { Metadata } from "next"
 import { Suspense } from "react"
 
+// Remove the direct import of glassmorphism.css from the root layout
+// Change this:
+// import "./glassmorphism.css"
+
+// To this:
+// No direct import here, we'll move it to the language layout
+
 export const metadata: Metadata = {
   title: "Creative Kitchens",
   description: "Premium kitchen and bathroom solutions",

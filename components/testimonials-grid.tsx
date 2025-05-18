@@ -24,7 +24,7 @@ export function TestimonialsGrid({ testimonials }: { testimonials: TestimonialIt
       title: "Verified Customer",
       heading: "Great experience with Creative Kitchens",
       text: "The team was professional and delivered quality work. I'm very satisfied with my new kitchen.",
-      imageUrl: "https://randomuser.me/api/portraits/women/1.jpg",
+      imageUrl: "/placeholder.svg?height=50&width=50&text=C",
     })
   }
 

@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import plugin from "tailwindcss/plugin"
 
 const config: Config = {
   darkMode: ["class"],
@@ -51,6 +52,19 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Add custom color for light blue background
+        "light-blue": {
+          50: "#f2f8fc",
+          100: "#e6f1f9",
+          200: "#cce3f3",
+          300: "#b3d5ed",
+          400: "#99c7e7",
+          500: "#80b9e1",
+          600: "#66abdb",
+          700: "#4d9dd5",
+          800: "#338fcf",
+          900: "#1a81c9",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -79,7 +93,22 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    plugin(({ addVariant, e, postcss }) => {
+      addVariant("firefox", ({ container, separator }) => {
+        const isFirefoxRule = postcss.atRule({
+          name: "-moz-document",
+          params: "url-prefix()",
+        })
+        isFirefoxRule.append(container.nodes)
+        container.append(isFirefoxRule)
+        isFirefoxRule.walkRules((rule) => {
+          rule.selector = `.${e(`firefox${separator}${rule.selector.slice(1)}`)}`
+        })
+      })
+    }),
+  ],
 }
 
 export default config
