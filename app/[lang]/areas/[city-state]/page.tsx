@@ -385,8 +385,11 @@ export default async function AreaPage({ params }: AreaPageParams) {
                 </h3>
                 <ul className="grid grid-cols-2 gap-2">
                   {areaDict.neighborhoods.map((neighborhood: string) => (
-                    <li key={neighborhood} className="text-gray-700 dark:text-gray-300 py-1">
-                      • {neighborhood}
+                    <li key={neighborhood} className="flex items-center text-gray-700 dark:text-gray-300 py-1">
+                      <span className="inline-flex items-center justify-center bg-white dark:bg-gray-800 rounded-full p-1 mr-2">
+                        <MapPin size={16} className="text-amber-500" />
+                      </span>
+                      {neighborhood}
                     </li>
                   ))}
                 </ul>
