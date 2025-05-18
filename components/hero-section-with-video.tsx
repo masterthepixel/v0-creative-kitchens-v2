@@ -35,7 +35,7 @@ export default function HeroSectionWithVideo() {
       </div>
 
       {/* Carousel container */}
-      <div className="relative z-20 w-full px-4 py-16">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 py-16">
         <HeroCarousel />
       </div>
 

@@ -30,6 +30,7 @@ export default function HeroSectionGalleryClean() {
   const currentContent = content[language] || content.en
 
   // Kitchen images for the gallery
+  // CHANGED: Replaced blob URLs with local image paths to fix loading errors
   const kitchenImages = [
     {
       src: "/modern-kitchen-cabinets.png",
@@ -83,10 +84,14 @@ export default function HeroSectionGalleryClean() {
             <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
               <div className="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
                 <div className="relative">
+                  {/* CHANGED: Added fallback to placeholder if image fails to load */}
                   <img
                     alt={kitchenImages[0].alt}
                     src={kitchenImages[0].src || "/placeholder.svg"}
                     className="aspect-[2/3] w-full rounded-xl object-cover shadow-lg"
+                    onError={(e) => {
+                      e.currentTarget.src = "/placeholder.svg?height=600&width=400"
+                    }}
                   />
                   <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
                 </div>
@@ -97,6 +102,9 @@ export default function HeroSectionGalleryClean() {
                     alt={kitchenImages[1].alt}
                     src={kitchenImages[1].src || "/placeholder.svg"}
                     className="aspect-[2/3] w-full rounded-xl object-cover shadow-lg"
+                    onError={(e) => {
+                      e.currentTarget.src = "/placeholder.svg?height=600&width=400"
+                    }}
                   />
                   <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
                 </div>
@@ -105,6 +113,9 @@ export default function HeroSectionGalleryClean() {
                     alt={kitchenImages[2].alt}
                     src={kitchenImages[2].src || "/placeholder.svg"}
                     className="aspect-[2/3] w-full rounded-xl object-cover shadow-lg"
+                    onError={(e) => {
+                      e.currentTarget.src = "/placeholder.svg?height=600&width=400"
+                    }}
                   />
                   <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
                 </div>
@@ -115,6 +126,9 @@ export default function HeroSectionGalleryClean() {
                     alt={kitchenImages[3].alt}
                     src={kitchenImages[3].src || "/placeholder.svg"}
                     className="aspect-[2/3] w-full rounded-xl object-cover shadow-lg"
+                    onError={(e) => {
+                      e.currentTarget.src = "/placeholder.svg?height=600&width=400"
+                    }}
                   />
                   <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
                 </div>
@@ -123,6 +137,9 @@ export default function HeroSectionGalleryClean() {
                     alt={kitchenImages[4].alt}
                     src={kitchenImages[4].src || "/placeholder.svg"}
                     className="aspect-[2/3] w-full rounded-xl object-cover shadow-lg"
+                    onError={(e) => {
+                      e.currentTarget.src = "/placeholder.svg?height=600&width=400"
+                    }}
                   />
                   <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 dark:ring-white/10 ring-inset" />
                 </div>

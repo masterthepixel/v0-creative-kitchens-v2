@@ -65,7 +65,7 @@ export default function AreaProjectGallery({ location }: ProjectGalleryProps) {
 
   return (
     <div className="w-full bg-gray-900 py-16">
-      <div className="container mx-auto px-4 text-center mb-12">
+      <div className="container mx-auto max-w-7xl px-4 text-center mb-12">
         <h2 className="text-4xl font-bold mb-4 text-yellow-400">
           {language === "en" ? "Our Project Gallery" : "Nuestra Galería de Proyectos"}
         </h2>
@@ -76,7 +76,7 @@ export default function AreaProjectGallery({ location }: ProjectGalleryProps) {
         </p>
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto max-w-7xl px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
             <div

@@ -14,7 +14,7 @@ export default function FAQ({ title, faqs = [] }: FAQProps) {
 
   return (
     <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto max-w-7xl px-4">
         <h2 className="text-3xl font-bold mb-12 text-center text-gray-900 dark:text-white">{title}</h2>
         <div className="max-w-3xl mx-auto">
           {faqs.map((faq, index) => (

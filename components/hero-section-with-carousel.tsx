@@ -14,7 +14,7 @@ export default function HeroSectionWithCarousel() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="relative z-20 w-full px-4 py-4 md:py-8"
+          className="relative z-20 w-full max-w-7xl mx-auto px-4 py-4 md:py-8"
         >
           <HeroCarousel />
         </motion.div>

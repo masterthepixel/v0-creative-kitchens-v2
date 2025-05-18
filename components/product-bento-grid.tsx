@@ -209,7 +209,7 @@ export default function ProductBentoGrid() {
   )
 
   return (
-    <motion.div initial="hidden" animate="visible" variants={containerVariants} className="py-12">
+    <motion.div initial="hidden" animate="visible" variants={containerVariants} className="py-12 max-w-7xl mx-auto">
       <BentoGrid className="max-w-7xl mx-auto">
         {productCategories.map((category, i) => (
           <motion.div key={category.slug} variants={itemVariants}>

@@ -82,7 +82,7 @@ export default function HeroSectionWithYouTube() {
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={containerVariants}
-        className="container relative z-20 px-4 py-32 sm:px-6 lg:px-8 mx-auto text-center"
+        className="container relative z-20 px-4 py-32 sm:px-6 lg:px-8 mx-auto text-center max-w-7xl"
       >
         <div className="max-w-4xl mx-auto">
           <motion.h1
