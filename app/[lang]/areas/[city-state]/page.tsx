@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import ProductServicesGrid, { type ServiceItem } from "@/components/product-services-grid"
+import { MapPin, Home, PenToolIcon as Tool } from "lucide-react"
 
 // Define the valid areas and languages
 const validAreas = [
@@ -140,6 +141,34 @@ export default async function AreaPage({ params }: AreaPageParams) {
     areaServed: formattedLocation,
   }
 
+  // Define features for the hero section
+  const features = [
+    {
+      name: lang === "en" ? "Local Expertise" : "Experiencia Local",
+      description:
+        lang === "en"
+          ? `Our team has extensive experience working in ${formattedLocation} homes and understands local architectural styles.`
+          : `Nuestro equipo tiene amplia experiencia trabajando en hogares de ${formattedLocation} y comprende los estilos arquitectónicos locales.`,
+      icon: MapPin,
+    },
+    {
+      name: lang === "en" ? "Premium Materials" : "Materiales Premium",
+      description:
+        lang === "en"
+          ? "We use only the highest quality materials for all our kitchen and bathroom remodeling projects."
+          : "Utilizamos solo materiales de la más alta calidad para todos nuestros proyectos de remodelación de cocinas y baños.",
+      icon: Home,
+    },
+    {
+      name: lang === "en" ? "Expert Craftsmanship" : "Artesanía Experta",
+      description:
+        lang === "en"
+          ? "Our skilled craftsmen deliver exceptional attention to detail and superior finishing on every project."
+          : "Nuestros artesanos calificados brindan una atención excepcional a los detalles y un acabado superior en cada proyecto.",
+      icon: Tool,
+    },
+  ]
+
   // Create services data for the grid
   const services: ServiceItem[] = [
     {
@@ -264,55 +293,103 @@ export default async function AreaPage({ params }: AreaPageParams) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <main>
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-r from-gray-900 to-gray-800 text-white">
-          <div className="absolute inset-0 opacity-40">
-            {/* Fallback image if area-specific one doesn't exist */}
-            <Image
-              src={`/placeholder.svg?height=800&width=1600`}
-              alt={formattedLocation}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-          <div className="container mx-auto px-4 py-24 relative z-10">
-            <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">{areaDict.heroTitle}</h1>
-              <p className="text-xl md:text-2xl">{areaDict.heroSubtitle}</p>
+        {/* Hero Section - No background color, max-w-7xl */}
+        <div className="overflow-hidden py-12 sm:py-16">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-4 lg:mx-0 lg:grid-cols-2 items-center">
+              <div>
+                <h2 className="text-base font-semibold text-amber-600">
+                  {lang === "en" ? "Premium Kitchen Design" : "Diseño Premium de Cocinas"}
+                </h2>
+                <h1 className="text-5xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white sm:text-7xl">
+                  {areaDict.heroTitle}
+                </h1>
+                <p className="mt-8 text-lg font-medium text-pretty text-gray-600 dark:text-gray-300 sm:max-w-md sm:text-xl/8 lg:max-w-none">
+                  {areaDict.heroSubtitle}
+                </p>
+
+                <div className="mt-6">
+                  <Link
+                    href={`tel:+13015551234`}
+                    className="inline-flex items-center justify-center rounded-md bg-amber-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition-colors duration-200"
+                  >
+                    {lang === "en" ? "Call for a Free Consultation" : "Llame para una Consulta Gratis"}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="ml-2 h-5 w-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+                      />
+                    </svg>
+                  </Link>
+                </div>
+
+                <div className="mt-10 space-y-6">
+                  {features.map((feature) => (
+                    <div key={feature.name} className="flex items-start">
+                      <div className="flex-shrink-0 text-amber-500">
+                        <feature.icon className="size-6" />
+                      </div>
+                      <div className="ml-4">
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{feature.name}</h3>
+                        <p className="mt-1 text-base text-gray-600 dark:text-gray-300">{feature.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-8 lg:mt-0">
+                <div className="relative">
+                  <Image
+                    alt={`Kitchen design in ${formattedLocation}`}
+                    src="/modern-kitchen-cabinets.png"
+                    width={600}
+                    height={400}
+                    className="w-full rounded-xl shadow-xl object-cover"
+                    style={{ opacity: 1 }} // Ensure image is not transparent
+                    priority
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* Local Expertise Section - Updated to remove Common Architectural Styles */}
+        {/* Local Expertise Section */}
         <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-bold mb-8 text-center text-amber-500">
-                {commonDict.localExpertise} {formattedLocation}
-              </h2>
+          <div className="mx-auto max-w-7xl px-4">
+            <h2 className="text-3xl font-bold mb-8 text-center text-amber-500">
+              {commonDict.localExpertise} {formattedLocation}
+            </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
-                    {lang === "en" ? "Our Local Expertise in" : "Nuestra Experiencia Local en"} {formattedLocation}
-                  </h3>
-                  <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">{areaDict.areaDescription}</p>
-                  <p className="text-lg text-gray-700 dark:text-gray-300">{areaDict.localExpertiseContent}</p>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div>
+                <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
+                  {lang === "en" ? "Our Local Expertise in" : "Nuestra Experiencia Local en"} {formattedLocation}
+                </h3>
+                <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">{areaDict.areaDescription}</p>
+                <p className="text-lg text-gray-700 dark:text-gray-300">{areaDict.localExpertiseContent}</p>
+              </div>
 
-                <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-                    {lang === "en" ? "Neighborhoods We Serve" : "Vecindarios Que Atendemos"}
-                  </h3>
-                  <ul className="grid grid-cols-2 gap-2">
-                    {areaDict.neighborhoods.map((neighborhood: string) => (
-                      <li key={neighborhood} className="text-gray-700 dark:text-gray-300 py-1">
-                        • {neighborhood}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+                  {lang === "en" ? "Neighborhoods We Serve" : "Vecindarios Que Atendemos"}
+                </h3>
+                <ul className="grid grid-cols-2 gap-2">
+                  {areaDict.neighborhoods.map((neighborhood: string) => (
+                    <li key={neighborhood} className="text-gray-700 dark:text-gray-300 py-1">
+                      • {neighborhood}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
@@ -326,7 +403,7 @@ export default async function AreaPage({ params }: AreaPageParams) {
           services={services}
         />
 
-        {/* Call to Action - Updated with max-w-7xl */}
+        {/* Call to Action */}
         <section className="py-16">
           <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
